@@ -27,6 +27,8 @@ model Tuto {
   chapo           String           @db.LongText
   intro           String           @db.LongText
   contenu         String           @db.LongText
+  MetaTitle       String?          @db.VarChar(70)
+  MetaDescription String?          @db.VarChar(190)
   image           String           @db.VarChar(255)
   statut          StatutTuto       @default(brouillon)
   created_at      DateTime         @default(now()) @db.Timestamp(0)

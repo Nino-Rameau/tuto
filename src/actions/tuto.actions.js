@@ -14,6 +14,9 @@ const schemaCreationTuto = z.object({
     image: z.string().trim().optional(),
     statut: z.enum(["brouillon", "en_ligne"]),
     categorieId: z.number().int().positive("La catégorie est requise."),
+    MetaTitle: z.string().trim().min(50, "Le title doit faire au moins 50 caractères.").max(70, "Le title doit faire au maximum 70 caractères."),
+    MetaDescription: z.string().trim().min(130, "La meta description doit faire au moins 130 caractères.").max(190, "La meta description doit faire au maximum 190 caractères."),
+
 });
 
 function slugify(texte) {
@@ -55,6 +58,8 @@ export async function creerTutoriel(dataTuto) {
         statut: dataTuto.statut,
         slug: slugNettoye,
         categorieId: Number(dataTuto.categorieId),
+        MetaTitle: dataTuto.MetaTitle,
+        MetaDescription: dataTuto.MetaDescription,
     });
 
     if (!donneesValidees.success) {
@@ -78,6 +83,8 @@ export async function creerTutoriel(dataTuto) {
                 contenu: data.contenu,
                 image: data.image || "/img/placeholder-img.png",
                 statut: data.statut,
+                MetaTitle: data.MetaTitle,
+                MetaDescription: data.MetaDescription,
                 tuto_categories: {
                     create: {
                         categorie_id: data.categorieId,
@@ -116,6 +123,8 @@ export async function mettreAJourTutoriel(donneesRecues) {
         statut: donneesRecues.statut,
         slug: slugNettoye,
         categorieId: Number(donneesRecues.categorieId),
+        MetaTitle: donneesRecues.MetaTitle,
+        MetaDescription: donneesRecues.MetaDescription,
     });
 
     if (!donneesValidees.success) {
@@ -146,6 +155,8 @@ export async function mettreAJourTutoriel(donneesRecues) {
                     contenu: data.contenu,
                     image: data.image || "/img/placeholder-img.png",
                     statut: data.statut,
+                    MetaTitle: data.MetaTitle,
+                    MetaDescription: data.MetaDescription,
                 },
             });
 

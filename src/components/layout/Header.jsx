@@ -9,8 +9,8 @@ const Header = async () => {
     return (
         <header className="bg-[#080866] sticky top-0 z-50 flex flex-row justify-between items-center px-4 py-4">
             
-            <Link href="/" className="w-32 md:w-48">
-                <Image src="/img/logo.svg" alt="Logo" width={300} height={100} className="w-full h-auto" />
+            <Link href="/" className="w-32 md:w-48 h-auto">
+                <Image src="/img/logo.svg" alt="Logo" width={300} height={100} className="w-full h-auto" priority/>
             </Link>
 
             <nav className="flex flex-row gap-10 items-center pr-10">
@@ -26,7 +26,7 @@ const Header = async () => {
 
                         {session.user?.profil === "admin" && (
                             <Link href="/admin" className="text-white"> 
-                                Administration 
+                                Gestion des tutoriels 
                             </Link>
                         )}
 

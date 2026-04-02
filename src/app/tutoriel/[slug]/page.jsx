@@ -60,14 +60,17 @@ export async function generateMetadata({ params }) {
     const { slug } = await params;
     const tuto = await prisma.tuto.findUnique({
         where: { slug },
-        select: { titre: true, chapo: true },
+        select: {
+            MetaTitle: true,
+            MetaDescription: true,
+        },
     });
 
     if (!tuto) return { title: "Tutoriel introuvable" };
 
     return {
-        title: `${tuto.titre} | tuto`,
-        description: tuto.chapo,
+        title: tuto.MetaTitle || `${tuto.titre} | tuto`,
+        description: tuto.MetaDescription || tuto.chapo,
     };
 }
 

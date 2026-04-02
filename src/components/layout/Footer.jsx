@@ -4,7 +4,7 @@ import Image from "next/image";
 const Footer = () => {
     return (
         <footer className="text-white">
-            <div className="flex flex-col md:flex-row justify-center gap-5 md:gap-30 p-4 bg-[#080866]">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-30 p-4 bg-[#080866]">
                 
                 <div className="max-w-[40%]">
                     <Image src="/img/logo.svg" alt="Logo du site" width={200} height={50} className="mb-4" />
@@ -12,11 +12,10 @@ const Footer = () => {
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                    <p>Pages :</p>
                     <Link href="/" className="flex items-center gap-2">Accueil</Link>
                     <Link href="/tutoriel" className="flex items-center gap-2">Tutoriels</Link>
                     <Link href="/support-de-communication" className="flex items-center gap-2">Support de communication</Link>
-                    <Link href="/mention-legale" className="flex items-center gap-2">Mention légale</Link>
+                    <Link href="/mentions-legales" className="flex items-center gap-2">Mentions légales</Link>
                 </div>
             </div>
 

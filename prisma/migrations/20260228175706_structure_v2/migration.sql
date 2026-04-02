@@ -1,4 +1,3 @@
--- CreateTable
 CREATE TABLE `utilisateur` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(255) NOT NULL,
@@ -11,7 +10,6 @@ CREATE TABLE `utilisateur` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
 CREATE TABLE `tuto` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `titre` VARCHAR(100) NOT NULL,
@@ -31,7 +29,6 @@ CREATE TABLE `tuto` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
 CREATE TABLE `progression` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `user_id` INTEGER NOT NULL,
@@ -44,7 +41,6 @@ CREATE TABLE `progression` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
 CREATE TABLE `categorie` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(50) NOT NULL,
@@ -53,7 +49,6 @@ CREATE TABLE `categorie` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- CreateTable
 CREATE TABLE `tuto_categorie` (
     `categorie_id` INTEGER NOT NULL,
     `tuto_id` INTEGER NOT NULL,
@@ -61,14 +56,10 @@ CREATE TABLE `tuto_categorie` (
     PRIMARY KEY (`categorie_id`, `tuto_id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
--- AddForeignKey
 ALTER TABLE `progression` ADD CONSTRAINT `progression_user_id_fkey` FOREIGN KEY (`user_id`) REFERENCES `utilisateur`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
--- AddForeignKey
 ALTER TABLE `progression` ADD CONSTRAINT `progression_tuto_id_fkey` FOREIGN KEY (`tuto_id`) REFERENCES `tuto`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
--- AddForeignKey
 ALTER TABLE `tuto_categorie` ADD CONSTRAINT `tuto_categorie_categorie_id_fkey` FOREIGN KEY (`categorie_id`) REFERENCES `categorie`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
--- AddForeignKey
 ALTER TABLE `tuto_categorie` ADD CONSTRAINT `tuto_categorie_tuto_id_fkey` FOREIGN KEY (`tuto_id`) REFERENCES `tuto`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;

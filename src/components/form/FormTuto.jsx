@@ -62,6 +62,8 @@ const FormTuto = ({ categories, initialData = null }) => {
                 categorieId: formData.get('categorie'),
                 statut: formData.get('statut'),
                 image: imageUrl,
+                MetaTitle: formData.get('MetaTitle'),
+                MetaDescription: formData.get('MetaDescription'),
                 contenu: contenu,
             };
 
@@ -156,6 +158,18 @@ const FormTuto = ({ categories, initialData = null }) => {
                             <option value="en_ligne">En ligne</option>
                         </select>
                     </div>
+                </div>
+            </div>
+
+            <div className='flex flex-row justify-between gap-8'>
+                <div className="flex flex-col flex-1">
+                    <label htmlFor="MetaTitle" className="font-semibold mb-1">Title :</label>
+                    <input type="text" id="MetaTitle" name="MetaTitle" required defaultValue={initialData?.MetaTitle || ''} className="border border-gray-400 p-2 rounded" />
+                </div>
+                
+                <div className="flex flex-col flex-1">
+                    <label htmlFor="MetaDescription" className="font-semibold mb-1">Meta description :</label>
+                    <textarea id="MetaDescription" name="MetaDescription" rows="2" required defaultValue={initialData?.MetaDescription || ''} className="border border-gray-400 p-2 rounded"></textarea>
                 </div>
             </div>
 
