@@ -1,9 +1,9 @@
-"use client"; 
+"use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { inscrireUtilisateur, connecterUtilisateur } from "@/actions/auth.actions";
 
-const Connexion = () => {
+const FormConnexion = () => {
   const [etatInscription, actionInscription, enAttenteInscription] = useActionState(inscrireUtilisateur, null);
   const [etatConnexion, actionConnexion, enAttenteConnexion] = useActionState(connecterUtilisateur, null);
 
@@ -30,8 +30,6 @@ const Connexion = () => {
           {enAttenteConnexion ? "Connexion en cours..." : "Se connecter"}
         </button>
       </form>
-
-
 
 
       <form action={actionInscription} className="flex flex-col gap-6 items-start border border-gray-500 mt-10 p-10">
@@ -76,6 +74,40 @@ const Connexion = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Connexion;
+const BtnFormConnexion = () => {
+  const [estOuvert, setEstOuvert] = useState(false);
+
+  return (
+    <>
+      <button type="button" onClick={() => setEstOuvert(true)} className="text-white">
+        Connexion
+      </button>
+
+      {estOuvert && (
+        <div
+          className="fixed inset-0 z-60 bg-black/60 flex items-center justify-center px-4"
+          onClick={() => setEstOuvert(false)}
+        >
+          <div
+            className="relative bg-white max-h-[90vh] overflow-y-auto w-full max-w-3xl rounded-md p-6"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setEstOuvert(false)}
+              className="absolute top-3 right-3 text-gray-700 hover:text-black"
+            >
+              X
+            </button>
+
+            <FormConnexion />
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default BtnFormConnexion;

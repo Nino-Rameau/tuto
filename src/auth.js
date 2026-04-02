@@ -7,10 +7,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
       name: "Credentials",
+      
       credentials: {
         email: { label: "Email", type: "email" },
         motDePasse: { label: "Mot de passe", type: "password" }
       },
+
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.motDePasse) return null;
 
@@ -30,11 +32,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return {
           id: utilisateur.id.toString(), 
           email: utilisateur.email,
-          profil: utilisateur.profil 
+          profil: utilisateur.profil
         };
       }
+
     })
   ],
+
+  session: {
+    strategy: "jwt",
+    maxAge: 60 * 60 * 6, // token valable 6h
+  },
+  
   callbacks: {
     async jwt({ token, user }) {
       if (user) {

@@ -13,7 +13,6 @@
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sans);
-    color: var(--color-black);
   }
 
   h1{
@@ -35,7 +34,6 @@
 
   p, a, li, span, button {
     font-family: var(--font-sans);
-    color: var(--color-black);
     font-size: 1rem;
     font-weight: 400;
   }
