@@ -115,7 +115,7 @@ export default async function TutorielDetailPage({ params }) {
                 {preRequis.length > 0 ? (
                     <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                         <p className="mb-2">Prerequis :</p>
-                        <ul className="list-disc pl-5 space-y-1">
+                        <ul className="list-disc pl-5">
                             {preRequis.map((item, index) => (
                                 <li key={`${item}-${index}`}>{item}</li>
                             ))}

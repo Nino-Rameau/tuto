@@ -18,12 +18,12 @@ const tutoriel = async () => {
             
             <select className="border border-gray-300 rounded-md p-2 mt-5">
                 <option value="">Trier par</option>
-                <option value="date_maj_desc">Date de mise à jour (du plus récent au plus ancien)</option>
-                <option value="date_maj_asc">Date de mise à jour (du plus ancien au plus récent)</option>
-                <option value="date_crea_desc">Date de création (du plus récent au plus ancien)</option>
-                <option value="date_crea_asc">Date de création (du plus ancien au plus récent)</option>
+                <option value="date_maj_desc">Tutoriel en cours</option>
+                <option value="date_maj_desc">Tutoriel terminé</option>
                 <option value="titre_asc">Titre (A-Z)</option>
                 <option value="titre_desc">Titre (Z-A)</option>
+                <option value="date_crea_desc">Date de création (du plus récent au plus ancien)</option>
+                <option value="date_crea_asc">Date de création (du plus ancien au plus récent)</option>
             </select>
 
             <div className="flex flex-wrap gap-3 mt-3">

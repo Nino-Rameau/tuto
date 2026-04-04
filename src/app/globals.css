@@ -3,16 +3,18 @@
 @theme {
   --color-bleu: #4269b1;
   --color-bleu-fonce: #28337e;
+  --color-bleu-fonce2: #080866;
   --color-bleu-clair: #acddf6;
   --color-black: #000000;
   --color-white: #FFFFFF;
 
-  --font-sans: "Poppins", sans-serif;
+  --font-titre: "Orbitron", sans-serif;
+  --font-texte: "Poppins", sans-serif;
 }
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sans);
+    font-family: var(--font-titre);
   }
 
   h1{
@@ -32,8 +34,8 @@
     font-weight: 500;
   }
 
-  p, a, li, span, button {
-    font-family: var(--font-sans);
+  p, a, li, span {
+    font-family: var(--font-texte);
     font-size: 1rem;
     font-weight: 400;
   }
