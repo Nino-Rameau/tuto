@@ -26,7 +26,7 @@ const tutoriel = async () => {
                 <option value="date_crea_asc">Date de création (du plus ancien au plus récent)</option>
             </select>
 
-            <div className="flex flex-wrap justify-center gap-3 mt-3">
+            <div className="flex flex-wrap justify-center gap-4 mt-3">
                 {tuto.map((item) => (
                     <Link
                         key={item.id} 

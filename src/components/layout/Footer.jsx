@@ -22,10 +22,8 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row p-4 justify-around items-center bg-bleu-fonce gap-8 md:gap-0">
                 <p>Réalisé par <a href="https://nino-rameau.fr" target="_blank" className="underline">Nino Rameau</a></p>
                 
-                <div className="flex flex-col justify-center items-center gap-4 text-center">
-                    <p>Copyright © {new Date().getFullYear()} tuto.nino-rameau.fr</p>
-                    <p>Travail pédagogique sans objectifs commerciaux</p>
-                </div>
+                <p>Copyright © {new Date().getFullYear()} nws.nino-rameau.fr</p>
+                <p>Travail pédagogique sans objectifs commerciaux</p>
             </div>
         </footer>
     )

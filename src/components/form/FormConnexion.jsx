@@ -81,7 +81,7 @@ const BtnFormConnexion = () => {
 
   return (
     <>
-      <button type="button" onClick={() => setEstOuvert(true)} className="text-white">
+      <button type="button" onClick={() => setEstOuvert(true)} className="text-white bg-bleu-fonce2 p-4 rounded-xl cursor-pointer">
         Connexion
       </button>
 

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { auth} from "@/auth";
+import FormConnexion from "@/components/form/FormConnexion";
 
 function extraireIdYoutube(urlVideo) {
     try {
@@ -98,8 +99,8 @@ export default async function TutorielDetailPage({ params }) {
 
     return (
         <article className="max-w-7xl mx-auto p-5 space-y-4">
-            <div className="flex flex-row justify-between">
-                <div className="max-w-[70%]">
+            <div className="flex flex-col md:flex-row justify-between gap-4">
+                <div className="md:max-w-[70%] flex flex-col gap-4">
                     <h1>{tuto.titre}</h1>
                     <p className="text-gray-700 italic">{tuto.chapo}</p>
                     
@@ -136,18 +137,27 @@ export default async function TutorielDetailPage({ params }) {
 
             {session ? (
                 <>
-                <section
-                className="prose prose-blue max-w-none"
-                dangerouslySetInnerHTML={{ __html: contenuFormate }}
-                />
+                <button className="bg-gray-800 text-white p-3 rounded-full cursor-pointer hover:bg-gray-700" onClick={() => setEstCommencer(true)}>
+                    Démarrer le tutoriel
+                </button>
 
-                <button className="bg-gray-800 text-white p-3 rounded-full cursor-pointer hover:bg-gray-700">
-                    Terminer le tutoriel
+                {estCommencer && (
+                    <section
+                    className="prose prose-blue max-w-none"
+                    dangerouslySetInnerHTML={{ __html: contenuFormate }}
+                    />
+                )}
+
+                <button className="bg-gray-800 text-white p-3 rounded-full cursor-pointer hover:bg-gray-700" onClick={() => setEstTermine(true)}>
+                    Valider le tutoriel
                 </button>
                 </>
             ) : (
-                <div>
-                    <p className="text-red-500 text-4xl bg-gray-500 p-5">Vous devez être connecté pour voir le contenu du tutoriel.</p>
+                <div className="flex flex-col gap-4">
+                    <h2>Vous devez être connecté pour accéder au contenu du tutoriel.</h2>
+                    <div>
+                        <FormConnexion />
+                    </div>
                 </div>
             )}
 

@@ -8,7 +8,7 @@ const profil = async () => {
 
     return (
         <div className="p-5">
-            <h1 className="text-2xl font-bold">Mention légale</h1>
+            <h1 className="text-2xl font-bold">Mentions légales</h1>
         
         </div>
     );
