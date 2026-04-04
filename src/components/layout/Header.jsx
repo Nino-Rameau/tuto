@@ -1,6 +1,6 @@
 "use client";
 
-import { signOut } from "next-auth/react"; // Vérifie bien cet import
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import FormConnexion from "@/components/form/FormConnexion";
