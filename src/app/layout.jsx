@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -10,11 +11,12 @@ const poppins = Poppins({
 });
 
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await auth();
   return (
     <html lang="fr">
       <body className={`flex flex-col min-h-screen ${poppins.className}`}>
-          <Header />
+          <Header session={session}/>
           <main className="grow mx-auto"> {children} </main>
           <Footer />
       </body>

@@ -4,11 +4,11 @@ import BtnSuppTuto from "@/components/ui/BtnSuppTuto";
 
 const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, statut}) => {
     return (
-        <section className="flex flex-col md:flex-row bg-gray-200 rounded-xl p-5 justify-between">
+        <section className="flex flex-col md:flex-row bg-bleu-clair/30 rounded-xl gap-10 p-5 justify-between">
             
-            <Image src={image || "/img/placeholder-img.png"} alt="Visuel d'un tutoriel" width={200} height={120} className="rounded object-cover" />
+            <Image src={image || "/img/placeholder-img.png"} alt="Visuel d'un tutoriel" width={200} height={120} className="mx-auto rounded object-cover" />
             
-            <div className="flex flex-col justify-between max-w-[50%]">
+            <div className="flex flex-col justify-between md:max-w-[50%] text-center md:text-left">
                 <h2>{titre}</h2>
                 <p>{chapo}</p>
 

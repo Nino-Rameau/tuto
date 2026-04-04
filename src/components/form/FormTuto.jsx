@@ -188,7 +188,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                 <Ckeditor value={contenu} onChange={setContenu} />
             </div>
             
-            <div className="flex flex-col max-w-[300px]">
+            <div className="flex flex-col max-w-75">
                 <label htmlFor="statut" className="font-semibold mb-1">Statut :</label>
                 <select id="statut" name="statut" defaultValue={initialData?.statut || 'brouillon'} className="border border-gray-400 p-2 rounded bg-white">
                     <option value="brouillon">Brouillon</option>
