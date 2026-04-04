@@ -121,7 +121,12 @@ export default async function TutorielDetailPage({ params }) {
                             ))}
                         </ul>
                     </div>
-                ) : null}
+                ) : (
+                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <p className="mb-2">Prerequis :</p>
+                        <p>Aucun prérequis nécessaire pour ce tutoriel.</p>
+                    </div>
+                )}
             </div>
 
             <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 my-6">

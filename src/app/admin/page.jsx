@@ -17,7 +17,7 @@ const administration = async () => {
             },
         },
         orderBy: {
-            updated_at: "desc",
+            created_at: "desc",
         },
     });
 

@@ -46,6 +46,18 @@ const Ckeditor = ({ onChange, value }) => {
                 
                 .ck-content ul { list-style-type: disc !important; margin-left: 1.5rem !important; }
                 .ck-content ol { list-style-type: decimal !important; margin-left: 1.5rem !important; }
+
+                .ck.ck-toolbar.ck-toolbar_grouping > .ck-toolbar__items {flex-wrap: wrap !important; }
+
+                @media (max-width: 720px) {
+                    .prose-editor-container {
+                        max-width: 90vh !important; 
+                    }
+                    
+                    .ck.ck-toolbar > .ck-toolbar__items {
+                        justify-content: center;
+                    }
+                }
                 
                 .ck-content .bg-blue-50 { background-color: #eff6ff !important; border-left: 4px solid #3b82f6 !important; padding: 1.5rem !important; color: #1d4ed8 !important; margin: 1.5rem 0 !important; }
                 .ck-content .bg-orange-50 { background-color: #fff7ed !important; border-left: 4px solid #f97316 !important; padding: 1.5rem !important; color: #c2410c !important; margin: 1.5rem 0 !important; }

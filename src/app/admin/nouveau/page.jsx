@@ -10,8 +10,8 @@ export default async function NouveauTutorielPage() {
     const categories = await prisma.categorie.findMany();
 
     return (
-        <div className="p-5">
-            <h1 className="text-2xl font-bold mb-6">Créer un tutoriel :</h1>
+        <div className="p-2 md:p-5">
+            <h1 className="mb-6">Créer un nouveau tutoriel :</h1>
             <FormTuto categories={categories} />
         </div>
     );

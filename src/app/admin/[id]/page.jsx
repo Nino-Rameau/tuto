@@ -33,8 +33,8 @@ export default async function EditTutoPage({ params }) {
     }
 
     return (
-        <div className="p-5">
-            <h1 className="text-2xl font-bold mb-6">Editer le tutoriel</h1>
+        <div className="p-2 md:p-5">
+            <h1 className="mb-6">Editer le tutoriel</h1>
             <FormTuto categories={categories} initialData={tuto} />
         </div>
     );

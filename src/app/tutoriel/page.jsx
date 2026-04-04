@@ -31,10 +31,10 @@ const tutoriel = async () => {
                     <Link
                         key={item.id} 
                         href={`/tutoriel/${item.slug}`}
-                        className="px-4 py-3 border border-gray-300 rounded-md w-full max-w-lg hover:bg-gray-50 flex flex-col items-center gap-4"
+                        className="px-4 py-3 border border-gray-300 rounded-md w-full max-w-lg hover:bg-gray-100 flex flex-col items-center gap-4"
                     >
-                        <h2 className="text-center">{item.titre}</h2>
-                        <p>{item.chapo}</p>
+                        <h2 className="text-center line-clamp-2 h-20">{item.titre}</h2>
+                        <p className="line-clamp-3 h-20">{item.chapo}</p>
                         <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} width={400} height={200} className="mt-2 rounded object-cover" />
                     </Link>
                 ))}

@@ -9,9 +9,12 @@ const Header = async () => {
     return (
         <header className="bg-bleu-fonce2 sticky top-0 z-50 flex flex-row justify-between items-center px-4 py-4">
             
-            <Link href="/" className="w-32 md:w-48 h-auto">
-                <Image src="/img/logo.svg" alt="Logo" width={300} height={100} className="w-full h-auto" priority/>
-            </Link>
+            <div className="flex flex-col items-center">
+                <Link href="/" className="w-32 md:w-48 h-auto">
+                    <Image src="/img/logo.svg" alt="Logo" width={300} height={100} className="w-full h-auto" priority/>
+                </Link>
+                <p className="text-xl font-titre text-transparent bg-clip-text bg-linear-to-r from-bleu-clair via-bleu to-bleu-fonce">Nino Web Succes</p>
+            </div>
 
             <nav className="flex flex-row gap-10 items-center pr-10">
                 <Link href="/tutoriel" className="text-white"> Nos tutoriels </Link>

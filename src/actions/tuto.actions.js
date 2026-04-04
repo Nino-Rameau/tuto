@@ -5,11 +5,11 @@ import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
 const schemaCreationTuto = z.object({
-    titre: z.string().trim().min(5, "Le titre doit faire au moins 5 caractères."),
-    slug: z.string().trim().min(3, "Le slug doit faire au moins 3 caractères."),
+    titre: z.string().trim().min(5, "Le titre doit faire au moins 5 caractères.").max(100, "Le titre doit faire au maximum 100 caractères."),
+    slug: z.string().trim().min(3, "Le slug doit faire au moins 3 caractères.").max(100, "Le slug doit faire au maximum 100 caractères."),
     preRequis: z.string().trim().optional(),
-    chapo: z.string().trim().min(20, "Le chapo est requis."),
-    intro: z.string().trim().min(100, "L'introduction est requise."),
+    chapo: z.string().trim().min(20, "Le chapo est requis.").max(200, "Le chapo doit faire au maximum 200 caractères."),
+    intro: z.string().trim().min(100, "L'introduction est requise.").max(500, "L'introduction doit faire au maximum 500 caractères."),
     contenu: z.string().trim().min(50, "Le contenu est requis."),
     image: z.string().trim().optional(),
     statut: z.enum(["brouillon", "en_ligne"]),
