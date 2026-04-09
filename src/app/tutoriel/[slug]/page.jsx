@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { auth} from "@/auth";
 import FormConnexion from "@/components/form/FormConnexion";
+import ContenuTutoriel from "@/components/layout/ContenuTutoriel";
 
 function extraireIdYoutube(urlVideo) {
     try {
@@ -94,7 +95,25 @@ export default async function TutorielDetailPage({ params }) {
         notFound();
     }
 
-    const contenuFormate = formatContenu(tuto.contenu);
+    let etatInitialTuto = null;
+
+    if (session?.user?.email) {
+        const progression = await prisma.progression.findFirst({
+            where: {
+                tuto_id: tuto.id,
+                utilisateur: {
+                    email: session.user.email,
+                },
+            },
+            select: {
+                etat: true,
+            },
+        });
+
+        etatInitialTuto = progression?.etat || null;
+    }
+
+    const contenuFormater = formatContenu(tuto.contenu);
     const preRequis = extrairePreRequis(tuto.pre_requis);
 
     return (
@@ -137,20 +156,12 @@ export default async function TutorielDetailPage({ params }) {
 
             {session ? (
                 <>
-                <button className="bg-gray-800 text-white p-3 rounded-full cursor-pointer hover:bg-gray-700" onClick={() => setEstCommencer(true)}>
-                    Démarrer le tutoriel
-                </button>
-
-                {estCommencer && (
-                    <section
-                    className="prose prose-blue max-w-none"
-                    dangerouslySetInnerHTML={{ __html: contenuFormate }}
+                    <ContenuTutoriel
+                        tutoId={tuto.id}
+                        slug={tuto.slug}
+                        contenuFormater={contenuFormater}
+                        etatInitialTuto={etatInitialTuto}
                     />
-                )}
-
-                <button className="bg-gray-800 text-white p-3 rounded-full cursor-pointer hover:bg-gray-700" onClick={() => setEstTermine(true)}>
-                    Valider le tutoriel
-                </button>
                 </>
             ) : (
                 <div className="flex flex-col gap-4">
