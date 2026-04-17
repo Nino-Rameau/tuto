@@ -9,7 +9,7 @@ import { AiOutlineUpload } from "react-icons/ai";
 
 const Ckeditor = dynamic(() => import('@/components/layout/Ckeditor'), { 
     ssr: false,
-    loading: () => <div className="h-125 w-full bg-gray-100 animate-pulse rounded-md border border-gray-300 flex items-center justify-center text-gray-400">Chargement de l&#39;éditeur...</div>
+    loading: () => <div className="flex items-center justify-center w-full text-gray-400 bg-gray-100 border border-gray-300 h-125 animate-pulse rounded-md">Chargement de l&#39;éditeur...</div>
 });
 
 const FormTuto = ({ categories, initialData = null }) => {
@@ -92,23 +92,23 @@ const FormTuto = ({ categories, initialData = null }) => {
             {isEditMode ? <input type="hidden" name="id" value={initialData.id} /> : null}
             {isEditMode ? <input type="hidden" name="currentImage" value={initialData.image || ''} /> : null}
 
-            <div className="gap-8 py-1 md:py-8 bg-bleu-clair/30">
+            <div className="py-1 gap-8 md:py-8 bg-bleu-clair/30">
                 <h2 className='px-8 pb-4'>Contenu du tutoriel :</h2>
-                <div className='flex flex-col md:flex-row p-1 md:p-8 border-t md:gap-8'>
-                    <div className="flex flex-col gap-4 flex-1">
+                <div className='flex flex-col p-1 border-t md:flex-row md:p-8 md:gap-8'>
+                    <div className="flex flex-col flex-1 gap-4">
                         <div className="flex flex-col">
-                            <label htmlFor="titre" className="font-semibold mb-1">Titre :</label>
-                            <input type="text" id="titre" name="titre" required defaultValue={initialData?.titre || ''} className="border border-gray-400 p-2 rounded" />
+                            <label htmlFor="titre" className="mb-1 font-semibold">Titre :</label>
+                            <input type="text" id="titre" name="titre" required defaultValue={initialData?.titre || ''} className="p-2 border border-gray-400 rounded" />
                         </div>
 
                         <div className="flex flex-col">
-                            <label htmlFor="slug" className="font-semibold mb-1">Slug :</label>
-                            <input type="text" id="slug" name="slug" required defaultValue={initialData?.slug || ''} className="border border-gray-400 p-2 rounded"/>
+                            <label htmlFor="slug" className="mb-1 font-semibold">Slug :</label>
+                            <input type="text" id="slug" name="slug" required defaultValue={initialData?.slug || ''} className="p-2 border border-gray-400 rounded"/>
                         </div>
                         
                         <div className="flex flex-col">
-                            <label htmlFor="categorie" className="font-semibold mb-1">Catégorie :</label>
-                            <select id="categorie" name="categorie" required defaultValue={String(initialData?.tuto_categories?.[0]?.categorie_id || '')} className="border border-gray-400 p-2 rounded">
+                            <label htmlFor="categorie" className="mb-1 font-semibold">Catégorie :</label>
+                            <select id="categorie" name="categorie" required defaultValue={String(initialData?.tuto_categories?.[0]?.categorie_id || '')} className="p-2 border border-gray-400 rounded">
                                 <option value="">Choisir une catégorie...</option>
                                 {categories.map((cat) => (
                                     <option key={cat.id} value={cat.id}>
@@ -118,22 +118,22 @@ const FormTuto = ({ categories, initialData = null }) => {
                             </select>
                         </div>
 
-                        <label htmlFor="image" className="font-semibold mb-1">Image :</label>
+                        <label htmlFor="image" className="mb-1 font-semibold">Image :</label>
                         <div className="h-50 md:h-40 min-w-min md:w-[50%] rounded-lg border-2 border-bleu-fonce bg-gray-50 justify-center items-center">
                             <div className="flex flex-col items-center justify-center">
                                 {isEditMode && initialData?.image ? (
                                     <>
                                         <AiOutlineUpload className='w-12 h-auto text-bleu-fonce'/>
-                                        <span className="text-gray-500 font-semibold text-center">Ajouté ici pour changer l image</span>
-                                        <div className='flex flex-row gap-5 items-center'>
-                                            <p className="text-sm text-gray-600 mt-1">Image actuelle :</p>
-                                            <Image src={initialData.image} alt="Image actuelle du tutoriel" width={75} height={75} className="mt-2 rounded object-cover" />
+                                        <span className="font-semibold text-center text-gray-500">Ajouté ici pour changer l image</span>
+                                        <div className='flex flex-row items-center gap-5'>
+                                            <p className="mt-1 text-sm text-gray-600">Image actuelle :</p>
+                                            <Image src={initialData.image} alt="Image actuelle du tutoriel" width={75} height={75} className="object-cover mt-2 rounded" />
                                         </div>
                                     </>
                                 ) : (
                                     <>
                                         <AiOutlineUpload className='w-12 h-auto text-bleu-fonce'/>
-                                        <span className="text-gray-500 font-semibold">Ajouté l image ici</span>
+                                        <span className="font-semibold text-gray-500">Ajouté l image ici</span>
                                     </>
                                 )}
                             </div>
@@ -142,27 +142,27 @@ const FormTuto = ({ categories, initialData = null }) => {
                         
                     </div>
 
-                    <div className="flex flex-col gap-4 flex-1">
+                    <div className="flex flex-col flex-1 gap-4">
                         <div className="flex flex-col">
-                            <label htmlFor="prerequis" className="font-semibold mb-1">Prérequis :</label>
+                            <label htmlFor="prerequis" className="mb-1 font-semibold">Prérequis :</label>
                             <textarea
                                 id="prerequis"
                                 name="prerequis"
                                 rows="4"
                                 defaultValue={initialData?.pre_requis || ''}
-                                className="border border-gray-400 p-2 rounded"
+                                className="p-2 border border-gray-400 rounded"
                             />
-                            <p className="text-xs text-gray-600 mt-1">Saisis un prerequis par ligne, sans point ou tiret, il seront ajooutés automatiquement.</p>
+                            <p className="mt-1 text-xs text-gray-600">Saisis un prerequis par ligne, sans point ou tiret, il seront ajooutés automatiquement.</p>
                         </div>
 
                         <div className="flex flex-col">
-                            <label htmlFor="chapo" className="font-semibold mb-1">Chapo :</label>
-                            <textarea id="chapo" name="chapo" rows="3" required defaultValue={initialData?.chapo || ''} className="border border-gray-400 p-2 rounded"></textarea>
+                            <label htmlFor="chapo" className="mb-1 font-semibold">Chapo :</label>
+                            <textarea id="chapo" name="chapo" rows="3" required defaultValue={initialData?.chapo || ''} className="p-2 border border-gray-400 rounded"></textarea>
                         </div>
                         
                         <div className="flex flex-col">
-                            <label htmlFor="introduction" className="font-semibold mb-1">Introduction :</label>
-                            <textarea id="introduction" name="introduction" rows="5" required defaultValue={initialData?.intro || ''} className="border border-gray-400 p-2 rounded"></textarea>
+                            <label htmlFor="introduction" className="mb-1 font-semibold">Introduction :</label>
+                            <textarea id="introduction" name="introduction" rows="5" required defaultValue={initialData?.intro || ''} className="p-2 border border-gray-400 rounded"></textarea>
                         </div>
                     </div>
                 </div>
@@ -170,52 +170,52 @@ const FormTuto = ({ categories, initialData = null }) => {
 
             <div className='py-8 bg-bleu-clair/30'>
                 <h2 className='px-8 pb-4'>Balise meta pour le SEO du tutoriel :</h2>
-                <div className='flex flex-col md:flex-row justify-between gap-8 border-t px-8 pt-4'>
+                <div className='flex flex-col justify-between px-8 pt-4 border-t md:flex-row gap-8'>
                     <div className="flex flex-col flex-1">
-                        <label htmlFor="MetaTitle" className="font-semibold mb-1">Title :</label>
-                        <input type="text" id="MetaTitle" name="MetaTitle" required defaultValue={initialData?.MetaTitle || ''} className="border border-gray-400 p-2 rounded" />
+                        <label htmlFor="MetaTitle" className="mb-1 font-semibold">Title :</label>
+                        <input type="text" id="MetaTitle" name="MetaTitle" required defaultValue={initialData?.MetaTitle || ''} className="p-2 border border-gray-400 rounded" />
                     </div>
                     
                     <div className="flex flex-col flex-1">
-                        <label htmlFor="MetaDescription" className="font-semibold mb-1">Meta description :</label>
-                        <textarea id="MetaDescription" name="MetaDescription" rows="2" required defaultValue={initialData?.MetaDescription || ''} className="border border-gray-400 p-2 rounded"></textarea>
+                        <label htmlFor="MetaDescription" className="mb-1 font-semibold">Meta description :</label>
+                        <textarea id="MetaDescription" name="MetaDescription" rows="2" required defaultValue={initialData?.MetaDescription || ''} className="p-2 border border-gray-400 rounded"></textarea>
                     </div>
                 </div>
             </div>
 
             <div className="flex flex-col mt-4">
-                <label htmlFor="contenu" className="font-semibold mb-1">Contenu :</label>
+                <label htmlFor="contenu" className="mb-1 font-semibold">Contenu :</label>
                 <Ckeditor value={contenu} onChange={setContenu} />
             </div>
             
             <div className="flex flex-col max-w-75">
-                <label htmlFor="statut" className="font-semibold mb-1">Statut :</label>
-                <select id="statut" name="statut" defaultValue={initialData?.statut || 'brouillon'} className="border border-gray-400 p-2 rounded bg-white">
+                <label htmlFor="statut" className="mb-1 font-semibold">Statut :</label>
+                <select id="statut" name="statut" defaultValue={initialData?.statut || 'brouillon'} className="p-2 bg-white border border-gray-400 rounded">
                     <option value="brouillon">Brouillon</option>
                     <option value="en_ligne">En ligne</option>
                 </select>
             </div>
 
             <div className='flex flex-col md:flex-row gap-12'>
-                <button type="submit" disabled={FormEnCours} className='bg-bleu-clair/30 text-black p-2 rounded-md hover:bg-bleu-fonce hover:text-white text-center'>
+                <button type="submit" disabled={FormEnCours} className='p-2 text-center text-black bg-bleu-clair/30 rounded-md hover:bg-bleu-fonce hover:text-white'>
                     {FormEnCours && (isEditMode ? 'Mise à jour en cours...' : 'Création en cours...')}
                     
                     {!FormEnCours && (isEditMode ? 'Mettre à jour le tutoriel' : 'Créer le tutoriel')}
                 </button>
 
                 {isEditMode && initialData?.slug ? (
-                    <Link href={`/tutoriel/${initialData.slug}`} target='__blank' className='bg-bleu-clair/30 text-black p-2 rounded-md hover:bg-bleu-fonce hover:text-white text-center'>
+                    <Link href={`/tutoriel/${initialData.slug}`} target='__blank' className='p-2 text-center text-black bg-bleu-clair/30 rounded-md hover:bg-bleu-fonce hover:text-white'>
                         Voir le tutoriel
                     </Link>
                 ) : null}
 
-                <Link href="/admin" className='bg-bleu-clair/30 text-black p-2 rounded-md hover:bg-bleu-fonce hover:text-white text-center'>
+                <Link href="/admin" className='p-2 text-center text-black bg-bleu-clair/30 rounded-md hover:bg-bleu-fonce hover:text-white'>
                     Aller à la page liste
                 </Link>
             </div>
 
-            {error ? <p className="text-red-600 font-medium">{error}</p> : null}
-            {message ? <p className="text-green-700 font-medium">{message}</p> : null}
+            {error ? <p className="font-medium text-red-600">{error}</p> : null}
+            {message ? <p className="font-medium text-green-700">{message}</p> : null}
         </form>
     );
 };

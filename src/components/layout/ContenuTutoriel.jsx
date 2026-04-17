@@ -57,7 +57,7 @@ export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatIni
                     type="button"
                     onClick={demarrerTuto}
                     disabled={enChargement}
-                    className="bg-bleu text-white p-3 rounded-full cursor-pointer hover:bg-bleu-fonce"
+                    className="p-3 text-white rounded-full cursor-pointer bg-bleu hover:bg-bleu-fonce"
                 >
                     {enChargement ? 'Démarrage...' : 'Démarrer le tutoriel'}
                 </button>
@@ -74,17 +74,17 @@ export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatIni
                     type="button"
                     onClick={TerminerTuto}
                     disabled={enChargement}
-                    className="bg-bleu text-white p-3 rounded-full cursor-pointer hover:bg-bleu-fonce"
+                    className="p-3 text-white rounded-full cursor-pointer bg-bleu hover:bg-bleu-fonce"
                 >
                     {enChargement ? 'Validation en cours...' : 'Terminer le tutoriel'}
                 </button>
             ) : null}
 
             {estTermine ? (
-                <p className="text-bleu-fonce font-semibold">Tutoriel terminé.</p>
+                <p className="font-semibold text-bleu-fonce">Tutoriel terminé.</p>
             ) : null}
 
-            {erreur ? <p className="text-red-600 font-medium">{erreur}</p> : null}
+            {erreur ? <p className="font-medium text-red-600">{erreur}</p> : null}
         </>
     );
 }

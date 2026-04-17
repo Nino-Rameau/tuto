@@ -29,7 +29,7 @@ function formatContenu(html) {
         }
 
         return `
-        <div class="aspect-video my-8 w-full">
+        <div class="w-full my-8 aspect-video">
             <iframe 
                 width="100%" 
                 height="100%" 
@@ -117,15 +117,15 @@ export default async function TutorielDetailPage({ params }) {
     const preRequis = extrairePreRequis(tuto.pre_requis);
 
     return (
-        <article className="max-w-7xl mx-auto p-5 space-y-4">
-            <div className="flex flex-col md:flex-row justify-between gap-4">
+        <article className="p-5 mx-auto space-y-4 max-w-7xl">
+            <div className="flex flex-col justify-between gap-4 md:flex-row">
                 <div className="md:max-w-[70%] flex flex-col gap-4">
                     <h1>{tuto.titre}</h1>
-                    <p className="text-gray-700 italic">{tuto.chapo}</p>
+                    <p className="italic text-gray-700">{tuto.chapo}</p>
                     
                     <ul className="flex flex-wrap gap-2">
                         {tuto.tuto_categories.map((item) => (
-                            <li key={item.categorie_id} className="bg-gray-100 border border-gray-300 rounded-full px-3 py-1">
+                            <li key={item.categorie_id} className="px-3 py-1 bg-gray-100 border border-gray-300 rounded-full">
                             {item.categorie.nom}
                         </li>
                         ))}
@@ -133,23 +133,23 @@ export default async function TutorielDetailPage({ params }) {
                 </div>
 
                 {preRequis.length > 0 ? (
-                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
                         <p className="mb-2">Prerequis :</p>
-                        <ul className="list-disc pl-5">
+                        <ul className="pl-5 list-disc">
                             {preRequis.map((item, index) => (
                                 <li key={`${item}-${index}`}>{item}</li>
                             ))}
                         </ul>
                     </div>
                 ) : (
-                    <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
                         <p className="mb-2">Prerequis :</p>
                         <p>Aucun prérequis nécessaire pour ce tutoriel.</p>
                     </div>
                 )}
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 my-6">
+            <div className="p-4 my-6 border-l-4 border-blue-500 rounded-lg bg-blue-50">
                 <p>Introduction :</p>
                 <p>{tuto.intro}</p>
             </div>

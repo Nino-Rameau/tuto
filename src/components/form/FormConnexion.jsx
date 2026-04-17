@@ -11,53 +11,53 @@ const FormConnexion = () => {
     <div>
       <h1>Connexion</h1>
 
-      <form action={actionConnexion} className="flex flex-col gap-6 items-start border border-gray-500 p-10">
+      <form action={actionConnexion} className="flex flex-col items-start p-10 border border-gray-500 gap-6">
         <h2>Formulaire de connexion :</h2>
         
-        {etatConnexion?.erreur && <p className="text-red-600 font-bold bg-red-100 p-2">{etatConnexion.erreur}</p>}
+        {etatConnexion?.erreur && <p className="p-2 font-bold text-red-600 bg-red-100">{etatConnexion.erreur}</p>}
 
-        <label className="flex flex-col gap-1 w-full">
+        <label className="flex flex-col w-full gap-1">
           Email
-          <input type="email" name="email" className="bg-gray-300 p-1" />
+          <input type="email" name="email" className="p-1 bg-gray-300" />
         </label>
 
-        <label className="flex flex-col gap-1 w-full">
+        <label className="flex flex-col w-full gap-1">
           Mot de passe
-          <input type="password" name="motDePasse" className="bg-gray-300 p-1"/>
+          <input type="password" name="motDePasse" className="p-1 bg-gray-300"/>
         </label>
 
-        <button type="submit" disabled={enAttenteConnexion} className="bg-blue-600 text-white px-4 py-2 mt-4">
+        <button type="submit" disabled={enAttenteConnexion} className="px-4 py-2 mt-4 text-white bg-blue-600">
           {enAttenteConnexion ? "Connexion en cours..." : "Se connecter"}
         </button>
       </form>
 
 
-      <form action={actionInscription} className="flex flex-col gap-6 items-start border border-gray-500 mt-10 p-10">
+      <form action={actionInscription} className="flex flex-col items-start p-10 mt-10 border border-gray-500 gap-6">
         <h2>Formulaire d&apos;inscription :</h2>
 
-        {etatInscription?.erreur && <p className="text-red-600 font-bold bg-red-100 p-2">{etatInscription.erreur}</p>}
+        {etatInscription?.erreur && <p className="p-2 font-bold text-red-600 bg-red-100">{etatInscription.erreur}</p>}
         
-        <label className="flex flex-col gap-1 w-full">
+        <label className="flex flex-col w-full gap-1">
           Email
-          <input type="email" name="email"  defaultValue={etatInscription?.donnees?.email || ""}  className="bg-gray-300 p-1" />
+          <input type="email" name="email"  defaultValue={etatInscription?.donnees?.email || ""}  className="p-1 bg-gray-300" />
         </label>
 
-        <label className="flex flex-col gap-1 w-full">
+        <label className="flex flex-col w-full gap-1">
           Mot de passe
-          <input type="password" name="motDePasse" defaultValue={etatInscription?.donnees?.motDePasse || ""} className="bg-gray-300 p-1" />
+          <input type="password" name="motDePasse" defaultValue={etatInscription?.donnees?.motDePasse || ""} className="p-1 bg-gray-300" />
         </label>
         
-        <label className="flex flex-col gap-1 w-full">
+        <label className="flex flex-col w-full gap-1">
           Confirmer le mot de passe
-          <input type="password" name="confirmationMotDePasse" defaultValue={etatInscription?.donnees?.confirmationMotDePasse || ""} className="bg-gray-300 p-1" />
+          <input type="password" name="confirmationMotDePasse" defaultValue={etatInscription?.donnees?.confirmationMotDePasse || ""} className="p-1 bg-gray-300" />
         </label>
         
-        <label className="flex flex-row items-center gap-2 cursor-pointer">
-          <input type="checkbox" name="conditions" className="bg-gray-300 w-5 h-5"/>
+        <label className="flex flex-row items-center cursor-pointer gap-2">
+          <input type="checkbox" name="conditions" className="w-5 h-5 bg-gray-300"/>
           J&apos;accepte les RGPD
         </label>
 
-        <button type="submit" disabled={enAttenteInscription} className="bg-blue-600 text-white px-4 py-2 mt-4">
+        <button type="submit" disabled={enAttenteInscription} className="px-4 py-2 mt-4 text-white bg-blue-600">
           {enAttenteInscription ? "Création en cours..." : "S'inscrire"}
         </button>
       </form>
@@ -81,13 +81,13 @@ const BtnFormConnexion = () => {
 
   return (
     <>
-      <button type="button" onClick={() => setEstOuvert(true)} className="text-white bg-bleu-fonce2 p-4 rounded-xl cursor-pointer">
+      <button type="button" onClick={() => setEstOuvert(true)} className="p-4 text-white cursor-pointer bg-bleu-fonce2 rounded-xl">
         Connexion
       </button>
 
       {estOuvert && (
         <div
-          className="fixed inset-0 z-60 bg-black/60 flex items-center justify-center px-4"
+          className="fixed inset-0 flex items-center justify-center px-4 z-60 bg-black/60"
           onClick={() => setEstOuvert(false)}
         >
           <div
@@ -97,7 +97,7 @@ const BtnFormConnexion = () => {
             <button
               type="button"
               onClick={() => setEstOuvert(false)}
-              className="absolute top-3 right-3 text-gray-700 hover:text-black"
+              className="absolute text-gray-700 top-3 right-3 hover:text-black"
             >
               X
             </button>

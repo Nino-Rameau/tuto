@@ -13,19 +13,19 @@ const Header = ({session}) => {
     const [MenuBruger, setMenuBurger] = useState(false);
 
     return (
-        <header className="bg-bleu-fonce2 sticky top-0 z-50 flex flex-row justify-around items-center px-4 py-4">
+        <header className="sticky top-0 z-50 flex flex-row items-center justify-around px-4 py-4 bg-bleu-fonce2">
             
-            <Link href="/" className="w-32 md:w-48 h-auto flex flex-col items-center">
+            <Link href="/" className="flex flex-col items-center w-32 h-auto md:w-48">
                 <Image src="/img/logo.svg" alt="Logo" width={300} height={100} className="w-full h-auto" priority/>
-                <p className="text-xl font-titre text-nowrap text-transparent bg-clip-text bg-linear-to-r from-bleu-clair via-bleu to-bleu-fonce">Nino Web Succes</p>
+                <p className="text-xl text-transparent font-titre text-nowrap bg-clip-text bg-linear-to-r from-bleu-clair via-bleu to-bleu-fonce">Nino Web Succes</p>
             </Link>
 
             <div>
                 <button onClick={() => setMenuBurger(!MenuBruger)}>
                     {MenuBruger ? 
-                        <CgClose className="text-white w-12 h-auto md:hidden"/>
+                        <CgClose className="w-12 h-auto text-white md:hidden"/>
                     : 
-                        <CiMenuBurger className="text-white w-12 h-auto md:hidden"/>
+                        <CiMenuBurger className="w-12 h-auto text-white md:hidden"/>
                     }
                 </button>
             </div>
@@ -36,7 +36,7 @@ const Header = ({session}) => {
                     bg-bleu-fonce2 w-full md:w-auto h-auto items-center
                     ${MenuBruger ? 'flex' : 'hidden'}`
                 }>
-                <Link href="/tutoriel" className="text-white py-4 md:py-0" onClick={() => setMenuBurger(!MenuBruger)}> Nos tutoriels </Link>
+                <Link href="/tutoriel" className="py-4 text-white md:py-0" onClick={() => setMenuBurger(!MenuBruger)}> Nos tutoriels </Link>
 
                 {!session && (
                     <FormConnexion />
@@ -44,10 +44,10 @@ const Header = ({session}) => {
 
                 {session && (
                     <>
-                        <Link href="/profil" className="text-white py-4 md:py-0" onClick={() => setMenuBurger(!MenuBruger)}> Profil </Link>
+                        <Link href="/profil" className="py-4 text-white md:py-0" onClick={() => setMenuBurger(!MenuBruger)}> Profil </Link>
 
                         {session.user?.profil === "admin" && (
-                            <Link href="/admin" className="text-white py-4 md:py-0" onClick={() => setMenuBurger(!MenuBruger)}> 
+                            <Link href="/admin" className="py-4 text-white md:py-0" onClick={() => setMenuBurger(!MenuBruger)}> 
                                 Gestion des tutoriels 
                             </Link>
                         )}
@@ -57,7 +57,7 @@ const Header = ({session}) => {
                                 signOut({ callbackUrl: "/" });
                                 setMenuBurger(!MenuBruger);
                             }}
-                            className="text-white py-4 md:py-0"
+                            className="py-4 text-white md:py-0"
                         >
                             Déconnexion
                         </button>

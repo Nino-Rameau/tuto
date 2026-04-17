@@ -17,7 +17,7 @@ export default async function RootLayout({ children }) {
     <html lang="fr">
       <body className={`flex flex-col min-h-screen ${poppins.className}`}>
           <Header session={session}/>
-          <main className="grow mx-auto"> {children} </main>
+          <main className="mx-auto grow"> {children} </main>
           <Footer />
       </body>
     </html>

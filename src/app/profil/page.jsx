@@ -47,10 +47,10 @@ const profil = async () => {
             {progressions.length > 0 ? (
                 <div className="flex flex-col gap-5">
                     {progressions.map((progression) => (
-                        <article key={progression.id} className="border border-gray-200 p-4">
-                            <div className="flex justify-between items-center">
+                        <article key={progression.id} className="p-4 border border-gray-200">
+                            <div className="flex items-center justify-between">
                                 <h2>{progression.tuto.titre}</h2>
-                                <p className="rounded-full bg-gray-100 px-3 py-1 text-sm capitalize">
+                                <p className="px-3 py-1 text-sm capitalize bg-gray-100 rounded-full">
                                     {progression.etat === "en_cours" ? "En cours" : "Terminé"}
                                 </p>
                             </div>

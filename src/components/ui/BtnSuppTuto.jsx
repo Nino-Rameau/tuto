@@ -29,7 +29,7 @@ const BtnSuppTuto = ({ id, titre }) => {
                 type="button"
                 onClick={SuppTuto}
                 disabled={enCours}
-                className="bg-red-600 hover:bg-red-800 text-white py-2 px-4 rounded-xl text-center"
+                className="px-4 py-2 text-center text-white bg-red-600 hover:bg-red-800 rounded-xl"
             >
                 {enCours ? 'Suppression...' : 'Supprimer'}
             </button>

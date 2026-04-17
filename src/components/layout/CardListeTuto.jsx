@@ -4,9 +4,9 @@ import BtnSuppTuto from "@/components/ui/BtnSuppTuto";
 
 const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, statut}) => {
     return (
-        <section className="flex flex-col md:flex-row bg-bleu-clair/30 rounded-xl gap-10 p-5 justify-between">
+        <section className="flex flex-col justify-between p-5 md:flex-row bg-bleu-clair/30 rounded-xl gap-10">
             
-            <Image src={image || "/img/placeholder-img.png"} alt="Visuel d'un tutoriel" width={200} height={120} className="mx-auto rounded object-cover h-40 w-auto" />
+            <Image src={image || "/img/placeholder-img.png"} alt="Visuel d'un tutoriel" width={200} height={120} className="object-cover w-auto h-40 mx-auto rounded" />
             
             <div className="flex flex-col justify-between md:max-w-[50%] text-center md:text-left">
                 <h2>{titre}</h2>
@@ -14,7 +14,7 @@ const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, 
 
                 <ul className="flex flex-row gap-5">
                     {tags.map((tag, index) => (
-                        <li key={index} className="border-black border-2 px-2 rounded-xl">
+                        <li key={index} className="px-2 border-2 border-black rounded-xl">
                             {tag}
                         </li>
                     ))}
@@ -32,8 +32,8 @@ const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, 
             </div>
 
             <div className="flex flex-col justify-around gap-5">
-                <Link href={`/admin/${id}`} className="bg-bleu hover:bg-bleu-fonce text-white py-2 px-4 rounded-xl text-center">Editer</Link>
-                <Link href={`/tutoriel/${slug}`} target="_blank" className="bg-green-600 hover:bg-green-800 text-white py-2 px-4 rounded-xl text-center">Afficher</Link>
+                <Link href={`/admin/${id}`} className="px-4 py-2 text-center text-white bg-bleu hover:bg-bleu-fonce rounded-xl">Editer</Link>
+                <Link href={`/tutoriel/${slug}`} target="_blank" className="px-4 py-2 text-center text-white bg-green-600 hover:bg-green-800 rounded-xl">Afficher</Link>
                 <BtnSuppTuto id={id} titre={titre} />
             </div>
 
