@@ -1,11 +1,12 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { signIn } from "@/auth"; 
+import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { isRedirectError } from "next/navigation";
 import bcrypt from "bcrypt";
 import { z } from "zod";
+import { verifierRateLimit, obtenirIp } from "@/lib/rate-limit";
 
 const schemaInscription = z.object({
     email: z.string().email("L'email doit être valide."),
@@ -13,7 +14,13 @@ const schemaInscription = z.object({
 });
 
 export async function inscrireUtilisateur(etatPrecedent, formData) {
-    const email = formData.get("email"); 
+    const ip = await obtenirIp();
+    const limite = verifierRateLimit(`inscription:${ip}`, { max: 5, fenetreMs: 60_000 });
+    if (!limite.autorise) {
+        return { erreur: `Trop de tentatives. Réessayez dans ${limite.attente}s.` };
+    }
+
+    const email = formData.get("email");
     const motDePasse = formData.get("motDePasse");
     const confirmationMotDePasse = formData.get("confirmationMotDePasse");
     const conditionsAcceptees = formData.get("conditions");
@@ -77,6 +84,12 @@ export async function inscrireUtilisateur(etatPrecedent, formData) {
 }
 
 export async function connecterUtilisateur(etatPrecedent, formData) {
+    const ip = await obtenirIp();
+    const limite = verifierRateLimit(`login:${ip}`, { max: 5, fenetreMs: 60_000 });
+    if (!limite.autorise) {
+        return { erreur: `Trop de tentatives. Réessayez dans ${limite.attente}s.` };
+    }
+
     const email = formData.get("email");
     const motDePasse = formData.get("motDePasse");
 
