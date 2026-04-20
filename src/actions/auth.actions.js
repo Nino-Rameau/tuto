@@ -15,7 +15,7 @@ const schemaInscription = z.object({
 
 export async function inscrireUtilisateur(etatPrecedent, formData) {
     const ip = await obtenirIp();
-    const limite = verifierRateLimit(`inscription:${ip}`, { max: 5, fenetreMs: 60_000 });
+    const limite = verifierRateLimit(`inscription:${ip}`, { maxAppels: 5, fenetreMs: 60_000 });
     if (!limite.autorise) {
         return { erreur: `Trop de tentatives. Réessayez dans ${limite.attente}s.` };
     }
@@ -85,7 +85,7 @@ export async function inscrireUtilisateur(etatPrecedent, formData) {
 
 export async function connecterUtilisateur(etatPrecedent, formData) {
     const ip = await obtenirIp();
-    const limite = verifierRateLimit(`login:${ip}`, { max: 5, fenetreMs: 60_000 });
+    const limite = verifierRateLimit(`login:${ip}`, { maxAppels: 5, fenetreMs: 60_000 });
     if (!limite.autorise) {
         return { erreur: `Trop de tentatives. Réessayez dans ${limite.attente}s.` };
     }

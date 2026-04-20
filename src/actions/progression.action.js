@@ -3,7 +3,6 @@
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
-import { verifierConnecte } from "@/lib/auth-controle";
 
 function FormatterIdTuto(idTuto) {
     const tutoId = Number(idTuto);
@@ -24,18 +23,6 @@ async function RecupererIdUtilisateur() {
     });
 
     return utilisateur?.id ?? null;
-}
-
-export async function AjouterProgressionTuto(idTuto, idUser) {
-    const erreurConnexion = await verifierConnecte();
-    if (erreurConnexion) return erreurConnexion;
-
-    await prisma.progression.create({
-        data: {
-            tuto_id: idTuto,
-            user_id: idUser,
-        },
-    });
 }
 
 export async function demarrerTutoriel(idTuto, slug) {

@@ -24,7 +24,7 @@ export async function POST(request) {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0].trim()
         ?? request.headers.get("x-real-ip")
         ?? "unknown";
-    const limite = verifierRateLimit(`upload:${ip}`, { max: 20, fenetreMs: 60_000 });
+    const limite = verifierRateLimit(`upload:${ip}`, { maxAppels: 20, fenetreMs: 60_000 });
     if (!limite.autorise) {
         return NextResponse.json({ error: `Trop de requêtes. Réessayez dans ${limite.attente}s.` }, { status: 429 });
     }
