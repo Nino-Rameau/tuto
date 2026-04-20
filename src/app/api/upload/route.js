@@ -1,12 +1,20 @@
 import { writeFile, mkdir } from 'fs/promises';
 import { NextResponse } from 'next/server';
 import path from 'path';
+import { verifierAdmin } from '@/lib/auth-controle';
 
 export async function POST(request) {
+    const erreurConnexion = await verifierAdmin();
+    if (erreurConnexion) return NextResponse.json({ error: erreurConnexion.error }, { status: 403 });
+
     const data = await request.formData();
-    const fichier = data.get('upload'); 
-    
+    const fichier = data.get('upload');
+
     const slug = data.get('slug') || '';
+
+    if (slug.includes('..')) {
+        return NextResponse.json({ error: "Slug invalide." }, { status: 400 });
+    }
 
     if (!fichier) return NextResponse.json({ error: "Aucun fichier" }, { status: 400 });
 
