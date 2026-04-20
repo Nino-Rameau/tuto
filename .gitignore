@@ -12,3 +12,5 @@
 *.pem
 
 npm-debug.log*
+
+CLAUDE.md

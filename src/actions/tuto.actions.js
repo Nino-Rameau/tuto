@@ -3,6 +3,7 @@
 import { z } from "zod";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { verifierAdmin } from "@/lib/auth-controle";
 
 const schemaCreationTuto = z.object({
     titre: z.string().trim().min(5, "Le titre doit faire au moins 5 caractères.").max(100, "Le titre doit faire au maximum 100 caractères."),
@@ -45,7 +46,9 @@ function formaterPreRequisEnListe(texte) {
 
 
 export async function creerTutoriel(dataTuto) {
-    
+    const erreurConnexion = await verifierAdmin();
+    if (erreurConnexion) return erreurConnexion;
+
     const slugNettoye = slugify(dataTuto.slug);
 
     const donneesValidees = schemaCreationTuto.safeParse({
@@ -111,6 +114,9 @@ export async function creerTutoriel(dataTuto) {
 
 
 export async function mettreAJourTutoriel(donneesRecues) {
+    const erreurConnexion = await verifierAdmin();
+    if (erreurConnexion) return erreurConnexion;
+
     const slugNettoye = slugify(donneesRecues.slug);
 
     const donneesValidees = schemaCreationTuto.safeParse({
@@ -190,6 +196,9 @@ export async function mettreAJourTutoriel(donneesRecues) {
 
 
 export async function supprimerTutoriel(id) {
+    const erreurConnexion = await verifierAdmin();
+    if (erreurConnexion) return erreurConnexion;
+
     const tutoId = Number(id);
 
     if (!Number.isInteger(tutoId) || tutoId <= 0) {
