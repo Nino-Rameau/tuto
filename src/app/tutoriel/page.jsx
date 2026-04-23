@@ -1,35 +1,68 @@
 import Link from "next/link";
 import prisma from "@/lib/prisma";
 import Image from "next/image";
+import { auth } from "@/auth";
+import TriTuto from "@/components/ui/TriTuto";
 
 export const metadata = {
     title: "Tutoriels | tuto",
     description: "",
 };
 
-const tutoriel = async () => {
-    const tuto = await prisma.tuto.findMany({ where: { statut: "en_ligne", },
-    });
+const tutoriel = async ({ searchParams }) => {
+    const { tri } = await searchParams;
+    const session = await auth();
+
+    let tutos = [];
+
+    if (tri === "en_cours" || tri === "termine") {
+        if (!session?.user) {
+            tutos = [];
+        } else {
+            const utilisateur = await prisma.utilisateur.findUnique({
+                where: { email: session.user.email },
+                select: { id: true },
+            });
+
+            const etat = tri === "en_cours" ? "en_cours" : "termine";
+
+            const progressions = await prisma.progression.findMany({
+                where: { user_id: utilisateur.id, etat },
+                include: { tuto: true },
+            });
+
+            tutos = progressions
+                .map((p) => p.tuto)
+                .filter((t) => t.statut === "en_ligne");
+        }
+    } else {
+        const orderBy =
+            tri === "titre_az" ? { titre: "asc" }
+            : tri === "titre_za" ? { titre: "desc" }
+            : tri === "date_recent" ? { created_at: "asc" }
+            : { created_at: "desc" };
+
+        tutos = await prisma.tuto.findMany({
+            where: { statut: "en_ligne" },
+            orderBy,
+        });
+    }
 
     return (
         <div className="flex flex-col items-center md:p-5">
-            
+
             <h1 className="text-2xl font-bold text-center">Tutoriels :</h1>
-            
-            <select className="border border-gray-300 rounded-md p-2 mt-5 w-[80%] md:w-full max-w-100">
-                <option value="">Trier par</option>
-                <option value="date_maj_desc">Tutoriel en cours</option>
-                <option value="date_maj_desc">Tutoriel terminé</option>
-                <option value="titre_asc">Titre (A-Z)</option>
-                <option value="titre_desc">Titre (Z-A)</option>
-                <option value="date_crea_desc">Date de création (du plus récent au plus ancien)</option>
-                <option value="date_crea_asc">Date de création (du plus ancien au plus récent)</option>
-            </select>
+
+            <TriTuto />
+
+            {(tri === "en_cours" || tri === "termine") && !session?.user && (
+                <p className="mt-5 text-gray-500">Connectez-vous pour filtrer par progression.</p>
+            )}
 
             <div className="flex flex-wrap justify-center gap-4 mt-3">
-                {tuto.map((item) => (
+                {tutos.map((item) => (
                     <Link
-                        key={item.id} 
+                        key={item.id}
                         href={`/tutoriel/${item.slug}`}
                         className="w-[90%] md:w-full max-w-md flex flex-col items-center gap-4 p-2 rounded-md bg-bleu-clair/30 hover:bg-bleu-clair transform transition duration-300"
                     >
@@ -39,8 +72,9 @@ const tutoriel = async () => {
                     </Link>
                 ))}
             </div>
+
         </div>
     );
-}
+};
 
 export default tutoriel;
