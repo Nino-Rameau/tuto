@@ -8,7 +8,7 @@ const Footer = () => {
                 
                 <div className="md:max-w-[40%]">
                     <Image src="/img/logo.svg" alt="Logo du site" width={200} height={50} className="mb-4" />
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, ipsa ipsam. Cumque ea similique, accusamus laudantium iure labore quasi rem at sed voluptatem. Molestiae amet, sequi officia eveniet dolorum suscipit.</p>
+                    <p> Bienvenue chez Nino Web Succès, une plateforme de tutoriels dédiée à l&apos;apprentissage du développement web. Retrouvez ici des ressources pédagogiques pour progresser à votre rythme.</p>
                 </div>
                 
                 <div className="flex flex-col gap-4 md:gap-2">
