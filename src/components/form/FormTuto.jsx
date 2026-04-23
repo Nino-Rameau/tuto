@@ -9,7 +9,7 @@ import { AiOutlineUpload } from "react-icons/ai";
 
 const Ckeditor = dynamic(() => import('@/components/layout/Ckeditor'), { 
     ssr: false,
-    loading: () => <div className="flex items-center justify-center w-full text-gray-400 bg-gray-100 border border-gray-300 h-125 animate-pulse rounded-md">Chargement de l&#39;éditeur...</div>
+    loading: () => <div className="flex items-center justify-center w-full text-gray-400 bg-gray-100 border border-gray-300 h-125 animate-pulse rounded-md">Chargement de l&apos;éditeur...</div>
 });
 
 const FormTuto = ({ categories, initialData = null }) => {
