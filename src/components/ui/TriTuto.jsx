@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-const TriTutoriels = () => {
+const TriTuto = ({ page }) => {
     const routeur = useRouter();
     const parametresRecherche = useSearchParams();
     
@@ -19,14 +19,14 @@ const TriTutoriels = () => {
             params.delete("tri");
         }
         
-        routeur.push(`/tutoriel?${params.toString()}`);
+        routeur.push(`/${page}?${params.toString()}`);
     };
 
     return (
         <select
             value={triActuel}
             onChange={gererChangement}
-            className="border border-gray-300 rounded-md p-2 mt-5 w-[80%] md:w-full max-w-100"
+            className="border border-gray-300 rounded-md p-1 w-[80%] md:w-full max-w-40"
         >
             <option value="">Trier par</option>
             <option value="en_cours">Tutoriel en cours</option>
@@ -39,4 +39,4 @@ const TriTutoriels = () => {
     );
 };
 
-export default TriTutoriels;
+export default TriTuto;

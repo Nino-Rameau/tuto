@@ -8,6 +8,7 @@ datasource db {
 
 model Utilisateur {
   id         Int           @id @default(autoincrement())
+  nom        String        @db.VarChar(50)
   email      String        @unique @db.VarChar(255)
   password   String        @db.VarChar(255)
   profil     Profil        @default(user)

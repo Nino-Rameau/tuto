@@ -30,7 +30,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!motsDePasseCorrespondent) return null; 
 
         return {
-          id: utilisateur.id.toString(), 
+          id: utilisateur.id.toString(),
+          nom: utilisateur.nom,
           email: utilisateur.email,
           profil: utilisateur.profil
         };
@@ -47,12 +48,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.profil = user.profil; 
+        token.nom = user.nom;
+        token.profil = user.profil;
       }
       return token;
     },
     async session({ session, token }) {
       if (token) {
+        session.user.nom = token.nom;
         session.user.profil = token.profil;
       }
       return session;

@@ -39,7 +39,7 @@ const tutoriel = async ({ searchParams }) => {
         const orderBy =
             tri === "titre_az" ? { titre: "asc" }
             : tri === "titre_za" ? { titre: "desc" }
-            : tri === "date_recent" ? { created_at: "asc" }
+            : tri === "date_ancien" ? { created_at: "asc" }
             : { created_at: "desc" };
 
         tutos = await prisma.tuto.findMany({
@@ -51,24 +51,24 @@ const tutoriel = async ({ searchParams }) => {
     return (
         <div className="flex flex-col items-center md:p-5">
 
-            <h1 className="text-2xl font-bold text-center">Tutoriels :</h1>
+            <h1 className="mb-5 text-2xl font-bold text-center">Tutoriels :</h1>
 
-            <TriTuto />
+            <TriTuto page="tutoriel" />
 
             {(tri === "en_cours" || tri === "termine") && !session?.user && (
                 <p className="mt-5 text-gray-500">Connectez-vous pour filtrer par progression.</p>
             )}
 
-            <div className="flex flex-wrap justify-center gap-4 mt-3">
+            <div className="flex flex-wrap justify-center mt-3 gap-4">
                 {tutos.map((item) => (
                     <Link
                         key={item.id}
                         href={`/tutoriel/${item.slug}`}
                         className="w-[90%] md:w-full max-w-md flex flex-col items-center gap-4 p-2 rounded-md bg-bleu-clair/30 hover:bg-bleu-clair transform transition duration-300"
                     >
-                        <h2 className="h-20 line-clamp-2 text-center text-bleu-fonce">{item.titre}</h2>
-                        <p className="line-clamp-3 h-19 px-2">{item.chapo}</p>
-                        <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} width={300} height={200} className="mt-2 rounded object-cover" />
+                        <h2 className="h-20 text-center line-clamp-2 text-bleu-fonce">{item.titre}</h2>
+                        <p className="px-2 line-clamp-3 h-19">{item.chapo}</p>
+                        <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} width={300} height={200} className="object-cover mt-2 rounded" />
                     </Link>
                 ))}
             </div>

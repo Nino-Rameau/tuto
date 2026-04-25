@@ -38,8 +38,13 @@ const FormConnexion = () => {
         {etatInscription?.erreur && <p className="p-2 font-bold text-red-600 bg-red-100">{etatInscription.erreur}</p>}
         
         <label className="flex flex-col w-full gap-1">
+          Nom ou pseudo
+          <input type="text" name="nom" defaultValue={etatInscription?.donnees?.nom || ""} className="p-1 bg-gray-300" />
+        </label>
+
+        <label className="flex flex-col w-full gap-1">
           Email
-          <input type="email" name="email"  defaultValue={etatInscription?.donnees?.email || ""}  className="p-1 bg-gray-300" />
+          <input type="email" name="email" defaultValue={etatInscription?.donnees?.email || ""} className="p-1 bg-gray-300" />
         </label>
 
         <label className="flex flex-col w-full gap-1">

@@ -14,7 +14,7 @@ const accueil = async () => {
       
       <div className="mt-5">
         <h2 className="text-xl font-semibold">Nos thématiques :</h2>
-        <div className="flex flex-wrap gap-3 mt-3">
+        <div className="flex flex-wrap mt-3 gap-3">
           {categories.map((cat) => (
             <span 
               key={cat.id} 

@@ -9,6 +9,7 @@ import { z } from "zod";
 import { verifierRateLimit, obtenirIp } from "@/lib/rate-limit";
 
 const schemaInscription = z.object({
+    nom: z.string().min(3, "Le nom doit faire au moins 3 caractères.").max(50, "Le nom ne peut pas dépasser 50 caractères."),
     email: z.string().email("L'email doit être valide."),
     motDePasse: z.string().min(6, "Le mot de passe doit faire au moins 6 caractères."),
 });
@@ -20,12 +21,14 @@ export async function inscrireUtilisateur(etatPrecedent, formData) {
         return { erreur: `Trop de tentatives. Réessayez dans ${limite.attente}s.` };
     }
 
+    const nom = formData.get("nom");
     const email = formData.get("email");
     const motDePasse = formData.get("motDePasse");
     const confirmationMotDePasse = formData.get("confirmationMotDePasse");
     const conditionsAcceptees = formData.get("conditions");
 
     const donneesSaisies = {
+        nom: nom,
         email: email,
         motDePasse: motDePasse,
         confirmationMotDePasse: confirmationMotDePasse
@@ -34,12 +37,12 @@ export async function inscrireUtilisateur(etatPrecedent, formData) {
     if (motDePasse !== confirmationMotDePasse) {
         return { erreur: "Les mots de passe ne correspondent pas.", donnees: donneesSaisies };
     }
-    
+
     if (!conditionsAcceptees) {
         return { erreur: "Vous devez accepter les RGPD.", donnees: donneesSaisies };
     }
 
-    const validation = schemaInscription.safeParse({ email, motDePasse });
+    const validation = schemaInscription.safeParse({ nom, email, motDePasse });
     if (!validation.success) {
         return { erreur: validation.error?.issues?.[0]?.message || "Les données saisies sont invalides.", donnees: donneesSaisies };
     }
@@ -57,6 +60,7 @@ export async function inscrireUtilisateur(etatPrecedent, formData) {
 
     await prisma.utilisateur.create({
       data: {
+        nom: nom,
         email: email,
         password: motDePasseHache,
       }
