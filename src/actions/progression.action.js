@@ -3,6 +3,7 @@
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
+import { verifierConnecte } from "@/lib/auth-controle";
 
 function FormatterIdTuto(idTuto) {
     const tutoId = Number(idTuto);
@@ -26,6 +27,9 @@ async function RecupererIdUtilisateur() {
 }
 
 export async function demarrerTutoriel(idTuto, slug) {
+    const erreurConnexion = await verifierConnecte();
+    if (erreurConnexion) return { success: false, error: erreurConnexion.error };
+
     const tutoId = FormatterIdTuto(idTuto);
 
     if (!tutoId) {
@@ -66,6 +70,9 @@ export async function demarrerTutoriel(idTuto, slug) {
 }
 
 export async function validerTutoriel(idTuto, slug) {
+    const erreurConnexion = await verifierConnecte();
+    if (erreurConnexion) return { success: false, error: erreurConnexion.error };
+
     const tutoId = FormatterIdTuto(idTuto);
 
     if (!tutoId) {

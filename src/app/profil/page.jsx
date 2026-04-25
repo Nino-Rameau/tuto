@@ -2,6 +2,9 @@ import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import Link from "next/link";
 import TriTutoriels from "@/components/ui/TriTuto";
+import FormChangerNom from "@/components/form/FormChangerNom";
+import FormChangerMotDePasse from "@/components/form/FormChangerMotDePasse";
+import FormSupprimerCompte from "@/components/form/FormSupprimerCompte";
 
 export const metadata = {
     title: "Profil | tuto",
@@ -53,7 +56,7 @@ const profil = async ({ searchParams }) => {
             </div>
 
             <div className="flex flex-col gap-10 md:flex-row">
-                <div className="flex flex-col gap-5 py-5 pl-4 bg-gray-300 w-100 md:h-screen">
+                <div className="flex flex-col py-5 pl-4 bg-gray-300 gap-5 w-100 md:min-h-max">
                     <a href="#profil" className="hover:bg-gray-200">Mon Profil</a>
                     <a href="#tutoriels" className="hover:bg-gray-200">Mes Tutoriels</a>
                     <a href="#securite" className="hover:bg-gray-200">Sécurité</a>
@@ -62,11 +65,11 @@ const profil = async ({ searchParams }) => {
                 <div className="w-full">
                     <h2 id="profil">Mon Profil</h2>
 
-                    <div className="flex flex-row gap-10 my-5">
-                        <div className="flex flex-col gap-2 p-4 border border-gray-300 rounded-md">
+                    <div className="flex flex-row my-5 gap-10">
+                        <div className="flex flex-col p-4 border border-gray-300 gap-2 rounded-md">
                             Tutoriel terminé : {progressions.filter(p => p.etat === "termine").length}
                         </div>
-                        <div className="flex flex-col gap-2 p-4 border border-gray-300 rounded-md">
+                        <div className="flex flex-col p-4 border border-gray-300 gap-2 rounded-md">
                             Tutoriel en cours : {progressions.filter(p => p.etat === "en_cours").length}
                         </div>
                     </div>
@@ -77,7 +80,7 @@ const profil = async ({ searchParams }) => {
                     </div>
 
                     {progressions.length > 0 ? (
-                        <div className="flex flex-col gap-5 my-5">
+                        <div className="flex flex-col my-5 gap-5">
                             {progressions.map((progression) => (
                                 <article key={progression.id} className="p-4 border border-gray-200">
                                     <div className="flex items-center justify-between">
@@ -102,11 +105,18 @@ const profil = async ({ searchParams }) => {
                         </>
                     )}
 
-                    <h2 id="securite">Sécurité</h2>
+                    <div className="flex flex-col my-10 gap-5">
+                        <h2 id="securite">Sécurité</h2>
 
-                    <h3>Changer de pseudo :</h3>
-                    <h3>Changer de mot de passe :</h3>
-                    <h3>Supprimer le compte :</h3>
+                        <h3>Changer de pseudo :</h3>
+                        <FormChangerNom />
+
+                        <h3>Changer de mot de passe :</h3>
+                        <FormChangerMotDePasse />
+
+                        <h3>Supprimer le compte :</h3>
+                        <FormSupprimerCompte />
+                    </div>
 
                 </div>
             </div>
