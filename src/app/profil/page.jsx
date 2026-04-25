@@ -56,14 +56,16 @@ const profil = async ({ searchParams }) => {
             </div>
 
             <div className="flex flex-col gap-10 md:flex-row">
-                <div className="flex flex-col py-5 pl-4 bg-gray-300 gap-5 w-100 md:min-h-max">
-                    <a href="#profil" className="hover:bg-gray-200">Mon Profil</a>
-                    <a href="#tutoriels" className="hover:bg-gray-200">Mes Tutoriels</a>
-                    <a href="#securite" className="hover:bg-gray-200">Sécurité</a>
+                <div className="w-full bg-gray-300 md:w-100">
+                    <div className="sticky flex flex-col py-5 pl-10 gap-5 top-40">
+                        <a href="#profil" className="cursor-pointer hover:text-bleu-fonce hover:font-semibold">Mon Profil</a>
+                        <a href="#tutoriels" className="cursor-pointer hover:text-bleu-fonce hover:font-semibold">Mes Tutoriels</a>
+                        <a href="#securite" className="cursor-pointer hover:text-bleu-fonce hover:font-semibold">Sécurité</a>
+                    </div>
                 </div>
 
                 <div className="w-full">
-                    <h2 id="profil">Mon Profil</h2>
+                    <h2 id="profil" className="scroll-mt-40">Mon Profil</h2>
 
                     <div className="flex flex-row my-5 gap-10">
                         <div className="flex flex-col p-4 border border-gray-300 gap-2 rounded-md">
@@ -75,38 +77,38 @@ const profil = async ({ searchParams }) => {
                     </div>
 
                     <div className="flex flex-row items-center justify-between mb-3">
-                        <h2 id="tutoriels">Mes tutoriels</h2>
-                        <TriTutoriels page="profil" />
+                        <h2 id="tutoriels" className="scroll-mt-40">Mes tutoriels</h2>
+
+                        {progressions.length > 0 && <TriTutoriels page="profil" />}
                     </div>
 
                     {progressions.length > 0 ? (
                         <div className="flex flex-col my-5 gap-5">
                             {progressions.map((progression) => (
-                                <article key={progression.id} className="p-4 border border-gray-200">
-                                    <div className="flex items-center justify-between">
+                                <div key={progression.id} className="flex flex-row justify-between p-3 border border-gray-200 rounded">
+                                    <div className="flex flex-col gap-4">
                                         <h2>{progression.tuto.titre}</h2>
-                                        <p className="px-3 py-1 text-sm capitalize bg-gray-100 rounded-full">
+                                        <p>{progression.tuto.chapo}</p>
+                                    </div>
+                                    <div className="flex flex-col items-end justify-between gap-3">
+                                        <p className="px-2 py-1 border-2 rounded text-[12px] border-bleu-fonce">
                                             {progression.etat === "en_cours" ? "En cours" : "Terminé"}
                                         </p>
+                                        <Link href={`/tutoriel/${progression.tuto.slug}`} className="px-3 py-1 border-2 rounded border-bleu-fonce hover:border-bleu-clair">
+                                            Voir le tutoriel
+                                        </Link>
                                     </div>
-                                    <p>{progression.tuto.chapo}</p>
-                                    <p>
-                                        Catégories: {progression.tuto.tuto_categories.map((item) => item.categorie.nom).join(", ")}
-                                    </p>
-                                </article>
+                                </div>
                             ))}
                         </div>
                     ) : (
                         <>
                             <p>Aucun tutoriel en cours ou terminé pour le moment.</p>
-                            <Link href="/tutoriels">
-                                Découvrez nos tutoriels
-                            </Link>
                         </>
                     )}
 
                     <div className="flex flex-col my-10 gap-5">
-                        <h2 id="securite">Sécurité</h2>
+                        <h2 id="securite" className="scroll-mt-40">Sécurité</h2>
 
                         <h3>Changer de pseudo :</h3>
                         <FormChangerNom />
