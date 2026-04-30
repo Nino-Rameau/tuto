@@ -15,39 +15,29 @@ const profil = async ({ searchParams }) => {
     const { tri } = await searchParams;
     const session = await auth();
 
-    const utilisateur = await prisma.utilisateur.findUnique({
-        where: { email: session.user.email },
-        select: { id: true },
-    });
-
-    const whereEtat =
-        tri === "en_cours" ? { etat: "en_cours" }
-        : tri === "termine" ? { etat: "termine" }
-        : { etat: { in: ["en_cours", "termine"] } };
-
     const orderBy =
         tri === "titre_az" ? { tuto: { titre: "asc" } }
         : tri === "titre_za" ? { tuto: { titre: "desc" } }
         : tri === "date_ancien" ? { updated_at: "asc" }
         : { updated_at: "desc" };
 
-    const progressions = utilisateur
-        ? await prisma.progression.findMany({
-                where: { user_id: utilisateur.id, ...whereEtat },
-                include: {
-                    tuto: {
-                        include: {
-                            tuto_categories: {
-                                include: {
-                                    categorie: true,
-                                },
-                            },
-                        },
-                    },
-                },
-                orderBy,
-            })
-        : [];
+    const progressions = await prisma.progression.findMany({
+        where: { user_id: Number(session.user.id) },
+        select: {
+            id: true,
+            etat: true,
+            updated_at: true,
+            tuto: {
+                select: { titre: true, chapo: true, slug: true },
+            },
+        },
+        orderBy,
+    });
+
+    const progressionsAffichees =
+        tri === "en_cours" ? progressions.filter(p => p.etat === "en_cours")
+        : tri === "termine" ? progressions.filter(p => p.etat === "termine")
+        : progressions;
 
     return (
         <>
@@ -57,7 +47,7 @@ const profil = async ({ searchParams }) => {
 
             <div className="flex flex-col md:flex-row">
                 <div className="w-full bg-gray-300 md:w-100">
-                    <div className="sticky flex flex-col py-5 pl-10 gap-5 top-40">
+                    <div className="sticky flex flex-col gap-5 py-5 pl-10 top-40">
                         <a href="#profil" className="cursor-pointer hover:text-bleu-fonce hover:font-semibold">Mon Profil</a>
                         <a href="#tutoriels" className="cursor-pointer hover:text-bleu-fonce hover:font-semibold">Mes Tutoriels</a>
                         <a href="#securite" className="cursor-pointer hover:text-bleu-fonce hover:font-semibold">Sécurité</a>
@@ -67,11 +57,11 @@ const profil = async ({ searchParams }) => {
                 <div className="w-full mx-10">
                     <h2 id="profil" className="scroll-mt-40">Mon Profil</h2>
 
-                    <div className="flex flex-row my-5 gap-10">
-                        <div className="flex flex-col p-4 border border-gray-300 gap-2 rounded-md">
+                    <div className="flex flex-row gap-10 my-5">
+                        <div className="flex flex-col gap-2 p-4 border border-gray-300 rounded-md">
                             Tutoriel terminé : {progressions.filter(p => p.etat === "termine").length}
                         </div>
-                        <div className="flex flex-col p-4 border border-gray-300 gap-2 rounded-md">
+                        <div className="flex flex-col gap-2 p-4 border border-gray-300 rounded-md">
                             Tutoriel en cours : {progressions.filter(p => p.etat === "en_cours").length}
                         </div>
                     </div>
@@ -82,9 +72,9 @@ const profil = async ({ searchParams }) => {
                         {progressions.length > 0 && <TriTutoriels page="profil" />}
                     </div>
 
-                    {progressions.length > 0 ? (
-                        <div className="flex flex-col my-5 gap-5">
-                            {progressions.map((progression) => (
+                    {progressionsAffichees.length > 0 ? (
+                        <div className="flex flex-col gap-5 my-5">
+                            {progressionsAffichees.map((progression) => (
                                 <div key={progression.id} className="flex flex-row justify-between p-3 border border-gray-200 rounded">
                                     <div className="flex flex-col gap-4">
                                         <h2>{progression.tuto.titre}</h2>
@@ -102,12 +92,10 @@ const profil = async ({ searchParams }) => {
                             ))}
                         </div>
                     ) : (
-                        <>
-                            <p>Aucun tutoriel en cours ou terminé pour le moment.</p>
-                        </>
+                        <p>Aucun tutoriel en cours ou terminé pour le moment.</p>
                     )}
 
-                    <div className="flex flex-col my-10 gap-5">
+                    <div className="flex flex-col gap-5 my-10">
                         <h2 id="securite" className="scroll-mt-40">Sécurité</h2>
 
                         <h3>Changer de pseudo :</h3>

@@ -9,16 +9,22 @@ export const metadata = {
 
 const administration = async () => {
     const tutos = await prisma.tuto.findMany({
-        include: {
+        select: {
+            id: true,
+            titre: true,
+            chapo: true,
+            slug: true,
+            image: true,
+            statut: true,
+            updated_at: true,
+            created_at: true,
             tuto_categories: {
-                include: {
-                    categorie: true,
+                select: {
+                    categorie: { select: { nom: true } },
                 },
             },
         },
-        orderBy: {
-            created_at: "desc",
-        },
+        orderBy: { created_at: "desc" },
     });
 
     return (

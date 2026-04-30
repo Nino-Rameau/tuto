@@ -12,18 +12,8 @@ function FormatterIdTuto(idTuto) {
 
 async function RecupererIdUtilisateur() {
     const session = await auth();
-    const email = session?.user?.email;
-
-    if (!email) {
-        return null;
-    }
-
-    const utilisateur = await prisma.utilisateur.findUnique({
-        where: { email },
-        select: { id: true },
-    });
-
-    return utilisateur?.id ?? null;
+    const id = session?.user?.id;
+    return id ? Number(id) : null;
 }
 
 export async function demarrerTutoriel(idTuto, slug) {

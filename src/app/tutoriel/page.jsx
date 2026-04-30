@@ -19,21 +19,20 @@ const tutoriel = async ({ searchParams }) => {
         if (!session?.user) {
             tutos = [];
         } else {
-            const utilisateur = await prisma.utilisateur.findUnique({
-                where: { email: session.user.email },
-                select: { id: true },
-            });
-
             const etat = tri === "en_cours" ? "en_cours" : "termine";
-
             const progressions = await prisma.progression.findMany({
-                where: { user_id: utilisateur.id, etat },
-                include: { tuto: true },
+                where: {
+                    user_id: Number(session.user.id),
+                    etat,
+                    tuto: { statut: "en_ligne" },
+                },
+                select: {
+                    tuto: {
+                        select: { id: true, titre: true, slug: true, chapo: true, image: true },
+                    },
+                },
             });
-
-            tutos = progressions
-                .map((p) => p.tuto)
-                .filter((t) => t.statut === "en_ligne");
+            tutos = progressions.map((p) => p.tuto);
         }
     } else {
         const orderBy =
@@ -44,6 +43,7 @@ const tutoriel = async ({ searchParams }) => {
 
         tutos = await prisma.tuto.findMany({
             where: { statut: "en_ligne" },
+            select: { id: true, titre: true, slug: true, chapo: true, image: true },
             orderBy,
         });
     }

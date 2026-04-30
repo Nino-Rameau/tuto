@@ -97,17 +97,15 @@ export default async function TutorielDetailPage({ params }) {
 
     let etatInitialTuto = null;
 
-    if (session?.user?.email) {
-        const progression = await prisma.progression.findFirst({
+    if (session?.user?.id) {
+        const progression = await prisma.progression.findUnique({
             where: {
-                tuto_id: tuto.id,
-                utilisateur: {
-                    email: session.user.email,
+                user_id_tuto_id: {
+                    user_id: Number(session.user.id),
+                    tuto_id: tuto.id,
                 },
             },
-            select: {
-                etat: true,
-            },
+            select: { etat: true },
         });
 
         etatInitialTuto = progression?.etat || null;

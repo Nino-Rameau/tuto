@@ -51,7 +51,8 @@ export async function inscrireUtilisateur(etatPrecedent, formData) {
 
     try {
         const utilisateurExistant = await prisma.utilisateur.findUnique({
-            where: { email: email }
+            where: { email: email },
+            select: { id: true },
         });
 
         if (utilisateurExistant) {
@@ -105,6 +106,7 @@ export async function changerNom(etatPrecedent, formData) {
 
     const utilisateur = await prisma.utilisateur.findUnique({
         where: { email: session.user.email },
+        select: { password: true },
     });
 
     if (!utilisateur) {
@@ -145,6 +147,7 @@ export async function changerMotDePasse(etatPrecedent, formData) {
 
     const utilisateur = await prisma.utilisateur.findUnique({
         where: { email: session.user.email },
+        select: { password: true },
     });
 
     if (!utilisateur) {
@@ -176,6 +179,7 @@ export async function supprimerCompte(etatPrecedent, formData) {
 
     const utilisateur = await prisma.utilisateur.findUnique({
         where: { email: session.user.email },
+        select: { id: true, password: true },
     });
 
     if (!utilisateur) {
