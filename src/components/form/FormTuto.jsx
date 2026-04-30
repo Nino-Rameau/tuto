@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { creerTutoriel, mettreAJourTutoriel } from '@/actions/tuto.actions';
+import { creerTutoriel, mettreAJourTutoriel, creerCategorie } from '@/actions/tuto.actions';
 import Image from 'next/image';
 import { AiOutlineUpload } from "react-icons/ai"; 
 
 const Ckeditor = dynamic(() => import('@/components/layout/Ckeditor'), { 
     ssr: false,
-    loading: () => <div className="flex items-center justify-center w-full text-gray-400 bg-gray-100 border border-gray-300 h-125 animate-pulse rounded-md">Chargement de l&apos;éditeur...</div>
+    loading: () => <div className="flex items-center justify-center w-full text-gray-400 bg-gray-100 border border-gray-300 rounded-md h-125 animate-pulse">Chargement de l&apos;éditeur...</div>
 });
 
 const FormTuto = ({ categories, initialData = null }) => {
@@ -19,9 +19,36 @@ const FormTuto = ({ categories, initialData = null }) => {
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
 
+    const [listeCategories, setlisteCategories] = useState(categories);
+    const [categorieId, setCategorieId] = useState(String(initialData?.tuto_categories?.[0]?.categorie_id || ''));
+    const [afficherFormNouvelleCategorie, setAfficherFormNouvelleCategorie] = useState(false);
+    const [nomNouvelleCategorie, setNomNouvelleCategorie] = useState('');
+    const [creerCatEnCours, setCreerCatEnCours] = useState(false);
+    const [erreurCategorie, setErreurCategorie] = useState('');
+
     useEffect(() => {
         setContenu(initialData?.contenu || '');
     }, [initialData]);
+
+    const handleCreerCategorie = async () => {
+        if (!nomNouvelleCategorie.trim()) return;
+        setCreerCatEnCours(true);
+        setErreurCategorie('');
+
+        const result = await creerCategorie(nomNouvelleCategorie.trim());
+
+        if (!result.success) {
+            setErreurCategorie(result.error);
+            setCreerCatEnCours(false);
+            return;
+        }
+
+        setlisteCategories(prev => [...prev, result.categorie]);
+        setCategorieId(String(result.categorie.id)); // Sélectionne automatiquement la nouvelle catégorie
+        setNomNouvelleCategorie('');
+        setAfficherFormNouvelleCategorie(false);
+        setCreerCatEnCours(false);
+    };
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -92,7 +119,7 @@ const FormTuto = ({ categories, initialData = null }) => {
             {isEditMode ? <input type="hidden" name="id" value={initialData.id} /> : null}
             {isEditMode ? <input type="hidden" name="currentImage" value={initialData.image || ''} /> : null}
 
-            <div className="py-1 gap-8 md:py-8 bg-bleu-clair/30">
+            <div className="gap-8 py-1 md:py-8 bg-bleu-clair/30">
                 <h2 className='px-8 pb-4'>Contenu du tutoriel :</h2>
                 <div className='flex flex-col p-1 border-t md:flex-row md:p-8 md:gap-8'>
                     <div className="flex flex-col flex-1 gap-4">
@@ -108,36 +135,84 @@ const FormTuto = ({ categories, initialData = null }) => {
                         
                         <div className="flex flex-col">
                             <label htmlFor="categorie" className="mb-1 font-semibold">Catégorie :</label>
-                            <select id="categorie" name="categorie" required defaultValue={String(initialData?.tuto_categories?.[0]?.categorie_id || '')} className="p-2 border border-gray-400 rounded">
-                                <option value="">Choisir une catégorie...</option>
-                                {categories.map((cat) => (
-                                    <option key={cat.id} value={cat.id}>
-                                        {cat.nom}
-                                    </option>
-                                ))}
-                            </select>
+                            <div className="flex gap-2">
+                                
+                                <select id="categorie" name="categorie" required value={categorieId}
+                                    onChange={(e) => setCategorieId(e.target.value)}
+                                    className="flex-1 p-2 border border-gray-400 rounded"
+                                >
+                                    <option value="">Choisir une catégorie...</option>
+                                    {listeCategories.map((cat) => (
+                                        <option key={cat.id} value={cat.id}>
+                                            {cat.nom}
+                                        </option>
+                                    ))}
+                                </select>
+
+                                <button
+                                    type="button"
+                                    onClick={() => { setAfficherFormNouvelleCategorie(v => !v); setErreurCategorie(''); setNomNouvelleCategorie(''); }}
+                                    className="px-3 py-1 text-sm border border-gray-400 rounded hover:bg-bleu-fonce hover:text-white"
+                                >
+                                    Créer une catégorie
+                                </button>
+                            </div>
+
+                            {afficherFormNouvelleCategorie && (
+                                <div className="flex flex-col gap-1 mt-2">
+                                    <div className="flex gap-2">
+                                        <input
+                                            type="text"
+                                            value={nomNouvelleCategorie}
+                                            onChange={(e) => setNomNouvelleCategorie(e.target.value)}
+                                            placeholder="Nom de la catégorie"
+                                            className="flex-1 p-2 border border-gray-400 rounded"
+                                            autoFocus
+                                        />
+
+                                        <button
+                                            type="button"
+                                            onClick={handleCreerCategorie}
+                                            disabled={creerCatEnCours}
+                                            className="px-3 py-1 text-sm border border-gray-400 rounded hover:bg-bleu-fonce hover:text-white disabled:opacity-50"
+                                        >
+                                            {creerCatEnCours ? 'Création...' : 'Créer'}
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => { setAfficherFormNouvelleCategorie(false); setNomNouvelleCategorie(''); setErreurCategorie(''); }}
+                                            className="px-3 py-1 text-sm border border-gray-400 rounded hover:bg-red-500 hover:text-white"
+                                        >
+                                            Annuler
+                                        </button>
+                                        
+                                    </div>
+                                    {erreurCategorie && <p className="text-sm text-red-600">{erreurCategorie}</p>}
+                                </div>
+                            )}
                         </div>
 
                         <label htmlFor="image" className="mb-1 font-semibold">Image :</label>
-                        <div className="h-50 md:h-40 min-w-min md:w-[50%] rounded-lg border-2 border-bleu-fonce bg-gray-50 justify-center items-center">
-                            <div className="flex flex-col items-center justify-center">
+                        <div className="h-full min-w-min md:w-[50%] rounded-lg border-2 border-bleu-fonce bg-gray-50 justify-center items-center">
+                            <div className="relative flex flex-col items-center justify-center h-full">
                                 {isEditMode && initialData?.image ? (
                                     <>
                                         <AiOutlineUpload className='w-12 h-auto text-bleu-fonce'/>
-                                        <span className="font-semibold text-center text-gray-500">Ajouté ici pour changer l image</span>
+                                        <span className="font-semibold text-center text-gray-500">Ajouté ici pour changer l&apos;image</span>
                                         <div className='flex flex-row items-center gap-5'>
                                             <p className="mt-1 text-sm text-gray-600">Image actuelle :</p>
                                             <Image src={initialData.image} alt="Image actuelle du tutoriel" width={75} height={75} className="object-cover mt-2 rounded" />
                                         </div>
                                     </>
                                 ) : (
-                                    <>
+                                    <div className="flex flex-col items-center justify-center">
                                         <AiOutlineUpload className='w-12 h-auto text-bleu-fonce'/>
-                                        <span className="font-semibold text-gray-500">Ajouté l image ici</span>
-                                    </>
+                                        <span className="font-semibold text-gray-500">Ajouté l&apos;image ici</span>
+                                    </div>
                                 )}
+                                <input type="file" name="image" id="image" accept='image/*' className="absolute w-full h-full opacity-0 cursor-pointer" />
                             </div>
-                            <input type="file" name="image" id="image" accept='image/*' className="opacity-0 cursor-pointer" />
                         </div>
                         
                     </div>
@@ -170,7 +245,7 @@ const FormTuto = ({ categories, initialData = null }) => {
 
             <div className='py-8 bg-bleu-clair/30'>
                 <h2 className='px-8 pb-4'>Balise meta pour le SEO du tutoriel :</h2>
-                <div className='flex flex-col justify-between px-8 pt-4 border-t md:flex-row gap-8'>
+                <div className='flex flex-col justify-between gap-8 px-8 pt-4 border-t md:flex-row'>
                     <div className="flex flex-col flex-1">
                         <label htmlFor="MetaTitle" className="mb-1 font-semibold">Title :</label>
                         <input type="text" id="MetaTitle" name="MetaTitle" required defaultValue={initialData?.MetaTitle || ''} className="p-2 border border-gray-400 rounded" />
@@ -196,20 +271,20 @@ const FormTuto = ({ categories, initialData = null }) => {
                 </select>
             </div>
 
-            <div className='flex flex-col md:flex-row gap-12'>
-                <button type="submit" disabled={FormEnCours} className='p-2 text-center text-black bg-bleu-clair/30 rounded-md hover:bg-bleu-fonce hover:text-white'>
+            <div className='flex flex-col gap-12 md:flex-row'>
+                <button type="submit" disabled={FormEnCours} className='p-2 text-center text-black rounded-md bg-bleu-clair/30 hover:bg-bleu-fonce hover:text-white'>
                     {FormEnCours && (isEditMode ? 'Mise à jour en cours...' : 'Création en cours...')}
                     
                     {!FormEnCours && (isEditMode ? 'Mettre à jour le tutoriel' : 'Créer le tutoriel')}
                 </button>
 
                 {isEditMode && initialData?.slug ? (
-                    <Link href={`/tutoriel/${initialData.slug}`} target='__blank' className='p-2 text-center text-black bg-bleu-clair/30 rounded-md hover:bg-bleu-fonce hover:text-white'>
+                    <Link href={`/tutoriel/${initialData.slug}`} target='__blank' className='p-2 text-center text-black rounded-md bg-bleu-clair/30 hover:bg-bleu-fonce hover:text-white'>
                         Voir le tutoriel
                     </Link>
                 ) : null}
 
-                <Link href="/admin" className='p-2 text-center text-black bg-bleu-clair/30 rounded-md hover:bg-bleu-fonce hover:text-white'>
+                <Link href="/admin" className='p-2 text-center text-black rounded-md bg-bleu-clair/30 hover:bg-bleu-fonce hover:text-white'>
                     Aller à la page liste
                 </Link>
             </div>

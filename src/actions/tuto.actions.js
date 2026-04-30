@@ -195,6 +195,32 @@ export async function mettreAJourTutoriel(donneesRecues) {
 
 
 
+export async function creerCategorie(nom) {
+    const erreurConnexion = await verifierAdmin();
+    if (erreurConnexion) return erreurConnexion;
+
+    const nomNettoye = nom?.trim();
+    if (!nomNettoye || nomNettoye.length < 2) {
+        return { success: false, error: "Le nom doit faire au moins 2 caractères." };
+    }
+
+    try {
+        const categorie = await prisma.categorie.create({
+            data: { nom: nomNettoye },
+        });
+
+        revalidatePath("/admin");
+        revalidatePath("/admin/nouveau");
+
+        return { success: true, categorie };
+    } catch (error) {
+        console.error("Erreur création catégorie:", error);
+        return { success: false, error: "Erreur serveur lors de la création de la catégorie." };
+    }
+}
+
+
+
 export async function supprimerTutoriel(id) {
     const erreurConnexion = await verifierAdmin();
     if (erreurConnexion) return erreurConnexion;
