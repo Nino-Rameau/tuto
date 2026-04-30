@@ -51,11 +51,11 @@ const profil = async ({ searchParams }) => {
 
     return (
         <>
-            <div className="w-screen py-8 bg-gray-100">
+            <div className="w-full py-8 bg-gray-100">
                 <h1 className="text-2xl font-bold text-center">Bienvenue sur votre profil, {session?.user?.nom || "utilisateur"} !</h1>
             </div>
 
-            <div className="flex flex-col gap-10 md:flex-row">
+            <div className="flex flex-col md:flex-row">
                 <div className="w-full bg-gray-300 md:w-100">
                     <div className="sticky flex flex-col gap-5 py-5 pl-10 top-40">
                         <a href="#profil" className="cursor-pointer hover:text-bleu-fonce hover:font-semibold">Mon Profil</a>
@@ -64,7 +64,7 @@ const profil = async ({ searchParams }) => {
                     </div>
                 </div>
 
-                <div className="w-full">
+                <div className="w-full mx-10">
                     <h2 id="profil" className="scroll-mt-40">Mon Profil</h2>
 
                     <div className="flex flex-row gap-10 my-5">
