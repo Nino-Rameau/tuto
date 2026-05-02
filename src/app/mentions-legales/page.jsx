@@ -1,17 +1,17 @@
 export const metadata = {
-    title: "Mentions légales | Nino Web Succès",
-    description: "Mentions légales du site Nino Web Succès.",
+    title: "Mentions légales | Nino Web Success",
+    description: "Mentions légales du site Nino Web Success.",
 };
 
 const MentionsLegales = () => {
     return (
-        <div className="flex flex-col px-6 py-10 mx-auto gap-8">
+        <div className="flex flex-col gap-8 px-6 py-10 mx-auto">
             <h1 className="text-center">Mentions légales</h1>
 
             <section className="flex flex-col gap-3">
                 <h2>Éditeur du site</h2>
                 <p>
-                    Le site <strong>Nino Web Succès</strong> (nws.nino-rameau.fr) est édité par <strong>Nino Rameau</strong>.
+                    Le site <strong>Nino Web Success</strong> (nws.nino-rameau.fr) est édité par <strong>Nino Rameau</strong>.
                 </p>
                 <p>
                     Contact : <a href="mailto:nrameau@normandiewebschool.fr" className="underline text-bleu">nrameau@normandiewebschool.fr</a>

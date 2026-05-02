@@ -4,11 +4,11 @@ import Image from "next/image";
 const Footer = () => {
     return (
         <footer className="text-white">
-            <div className="flex flex-col items-center justify-center p-4 gap-5 md:flex-row md:gap-30 bg-bleu-fonce2">
+            <div className="flex flex-col items-center justify-center gap-5 p-4 md:flex-row md:gap-30 bg-bleu-fonce2">
                 
                 <div className="md:max-w-[40%]">
                     <Image src="/img/logo.svg" alt="Logo du site" width={200} height={50} className="mb-4" />
-                    <p> Bienvenue chez Nino Web Succès, une plateforme de tutoriels dédiée à l&apos;apprentissage du développement web. Retrouvez ici des ressources pédagogiques pour progresser à votre rythme.</p>
+                    <p> Bienvenue chez Nino Web Success, une plateforme de tutoriels dédiée à l&apos;apprentissage du développement web. Retrouvez ici des ressources pédagogiques pour progresser à votre rythme.</p>
                 </div>
                 
                 <div className="flex flex-col gap-4 md:gap-2">
@@ -19,7 +19,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-around p-4 gap-8 md:flex-row bg-bleu-fonce md:gap-0">
+            <div className="flex flex-col items-center justify-around gap-8 p-4 md:flex-row bg-bleu-fonce md:gap-0">
                 <p>Réalisé par <a href="https://nino-rameau.fr" target="_blank" className="underline">Nino Rameau</a></p>
                 
                 <p>Copyright © {new Date().getFullYear()} nws.nino-rameau.fr</p>
