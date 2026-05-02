@@ -119,7 +119,7 @@ const FormTuto = ({ categories, initialData = null }) => {
             {isEditMode ? <input type="hidden" name="id" value={initialData.id} /> : null}
             {isEditMode ? <input type="hidden" name="currentImage" value={initialData.image || ''} /> : null}
 
-            <div className="gap-8 py-1 md:py-8 bg-bleu-clair/30">
+            <div className="py-1 gap-8 md:py-8 bg-bleu-clair/30">
                 <h2 className='px-8 pb-4'>Contenu du tutoriel :</h2>
                 <div className='flex flex-col p-1 border-t md:flex-row md:p-8 md:gap-8'>
                     <div className="flex flex-col flex-1 gap-4">
@@ -159,7 +159,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                             </div>
 
                             {afficherFormNouvelleCategorie && (
-                                <div className="flex flex-col gap-1 mt-2">
+                                <div className="flex flex-col mt-2 gap-1">
                                     <div className="flex gap-2">
                                         <input
                                             type="text"
@@ -245,7 +245,7 @@ const FormTuto = ({ categories, initialData = null }) => {
 
             <div className='py-8 bg-bleu-clair/30'>
                 <h2 className='px-8 pb-4'>Balise meta pour le SEO du tutoriel :</h2>
-                <div className='flex flex-col justify-between gap-8 px-8 pt-4 border-t md:flex-row'>
+                <div className='flex flex-col justify-between px-8 pt-4 border-t gap-8 md:flex-row'>
                     <div className="flex flex-col flex-1">
                         <label htmlFor="MetaTitle" className="mb-1 font-semibold">Title :</label>
                         <input type="text" id="MetaTitle" name="MetaTitle" required defaultValue={initialData?.MetaTitle || ''} className="p-2 border border-gray-400 rounded" />

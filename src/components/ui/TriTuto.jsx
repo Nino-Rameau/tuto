@@ -10,16 +10,16 @@ const TriTuto = ({ page }) => {
 
     const gererChangement = (e) => {
         const valeur = e.target.value;
-        
         const params = new URLSearchParams(parametresRecherche.toString());
-        
+
         if (valeur) {
             params.set("tri", valeur);
         } else {
             params.delete("tri");
         }
-        
-        routeur.push(`/${page}?${params.toString()}`);
+
+        const query = params.toString();
+        routeur.push(`/${page}${query ? `?${query}` : ""}`);
     };
 
     return (

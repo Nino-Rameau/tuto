@@ -17,7 +17,7 @@ const Header = ({session}) => {
             
             <Link href="/" className="flex flex-col items-center w-32 h-auto md:w-48">
                 <Image src="/img/logo.svg" alt="Logo" width={300} height={100} className="w-full h-auto" priority/>
-                <p className="text-xl text-transparent font-titre text-nowrap bg-clip-text bg-linear-to-r from-bleu-clair via-bleu to-bleu-fonce">Nino Web Succes</p>
+                <p className="text-xl text-transparent font-titre text-nowrap bg-clip-text bg-linear-to-r from-bleu-clair via-bleu to-bleu-fonce">Nino Web Succès</p>
             </Link>
 
             <div>
