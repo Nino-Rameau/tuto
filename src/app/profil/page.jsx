@@ -57,49 +57,50 @@ const profil = async ({ searchParams }) => {
                 </div>
 
                 <div className="flex flex-col w-full mx-10 mt-5 gap-15">
-                                                <h2 id="tutoriels" className="scroll-mt-40 text-bleu-clair">Mes tutoriels</h2>
 
-
-                    <div className="flex flex-row gap-10">
-                        
-                        <Link href="/profil" className="flex flex-col gap-2 p-4 border-2 rounded-md border-bleu-fonce hover:border-bleu-clair">
-                            Tous mes tutoriels : {progressions.length}
-                        </Link>
-                        <Link href="?tri=en_cours" className="flex flex-col gap-2 p-4 border-2 rounded-md border-bleu-fonce hover:border-bleu-clair">
-                            Tutoriel terminé : {progressions.filter(p => p.etat === "termine").length}
-                        </Link>
-                        <Link href="?tri=termine" className="flex flex-col gap-2 p-4 border-2 rounded-md border-bleu-fonce hover:border-bleu-clair">
-                            Tutoriel en cours : {progressions.filter(p => p.etat === "en_cours").length}
-                        </Link>
-                    </div>
-
-                    <div>
-                        <div className="flex flex-row justify-end">
-                            {progressions.length > 0 && <TriTutoriels page="profil" />}
+                    <div className="flex flex-col gap-10">
+                        <h2 id="tutoriels" className="scroll-mt-40 text-bleu-clair">Mes tutoriels</h2>
+                        <div className="flex flex-row gap-10">
+                            
+                            <Link href="/profil" className="flex flex-col gap-2 p-4 border-2 rounded-md border-bleu-fonce hover:border-bleu-clair">
+                                Tous mes tutoriels : {progressions.length}
+                            </Link>
+                            <Link href="?tri=en_cours" className="flex flex-col gap-2 p-4 border-2 rounded-md border-bleu-fonce hover:border-bleu-clair">
+                                Tutoriel terminé : {progressions.filter(p => p.etat === "termine").length}
+                            </Link>
+                            <Link href="?tri=termine" className="flex flex-col gap-2 p-4 border-2 rounded-md border-bleu-fonce hover:border-bleu-clair">
+                                Tutoriel en cours : {progressions.filter(p => p.etat === "en_cours").length}
+                            </Link>
                         </div>
 
-                        {progressionsAffichees.length > 0 ? (
-                            <div className="flex flex-col gap-5 my-5">
-                                {progressionsAffichees.map((progression) => (
-                                    <div key={progression.id} className="flex flex-row justify-between p-3 border-2 rounded border-bleu-fonce">
-                                        <div className="flex flex-col gap-4">
-                                            <h2>{progression.tuto.titre}</h2>
-                                            <p>{progression.tuto.chapo}</p>
-                                        </div>
-                                        <div className="flex flex-col items-end justify-between gap-3">
-                                            <p className="px-2 py-1 border-2 rounded text-[12px] border-bleu-fonce">
-                                                {progression.etat === "en_cours" ? "En cours" : "Terminé"}
-                                            </p>
-                                            <Link href={`/tutoriel/${progression.tuto.slug}`} className="px-3 py-1 border-2 rounded border-bleu-fonce hover:border-bleu-clair">
-                                                Voir le tutoriel
-                                            </Link>
-                                        </div>
-                                    </div>
-                                ))}
+                        <div>
+                            <div className="flex flex-row justify-end">
+                                {progressions.length > 0 && <TriTutoriels page="profil" />}
                             </div>
-                        ) : (
-                            <p>Aucun tutoriel en cours ou terminé pour le moment.</p>
-                        )}
+
+                            {progressionsAffichees.length > 0 ? (
+                                <div className="flex flex-col gap-5 my-5">
+                                    {progressionsAffichees.map((progression) => (
+                                        <div key={progression.id} className="flex flex-row justify-between p-3 border-2 rounded border-bleu-fonce">
+                                            <div className="flex flex-col gap-4">
+                                                <h2>{progression.tuto.titre}</h2>
+                                                <p>{progression.tuto.chapo}</p>
+                                            </div>
+                                            <div className="flex flex-col items-end justify-between gap-3">
+                                                <p className="px-2 py-1 border-2 rounded text-[12px] border-bleu-fonce">
+                                                    {progression.etat === "en_cours" ? "En cours" : "Terminé"}
+                                                </p>
+                                                <Link href={`/tutoriel/${progression.tuto.slug}`} className="px-3 py-1 border-2 rounded border-bleu-fonce hover:border-bleu-clair">
+                                                    Voir le tutoriel
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p>Aucun tutoriel en cours ou terminé pour le moment.</p>
+                            )}
+                        </div>
                     </div>
 
                     <div className="flex flex-col gap-10">
