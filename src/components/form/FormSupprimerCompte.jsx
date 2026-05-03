@@ -24,7 +24,7 @@ const FormSupprimerCompte = () => {
                 <p className="text-sm text-red-600">{etat.erreur}</p>
             )}
 
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-300">
                 Cette action est irréversible. Toutes vos progressions seront supprimées.
             </p>
 
@@ -39,7 +39,7 @@ const FormSupprimerCompte = () => {
             <button
                 type="submit"
                 disabled={enCours}
-                className="px-4 py-2 text-white bg-red-600 rounded cursor-pointer hover:bg-red-700 disabled:opacity-50"
+                className="px-4 py-2 text-white bg-red-800 w-[50%] m-auto rounded cursor-pointer hover:bg-red-900 disabled:opacity-50"
             >
                 {enCours ? "Suppression..." : "Supprimer mon compte"}
             </button>

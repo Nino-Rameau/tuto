@@ -39,10 +39,10 @@ const Ckeditor = ({ onChange, value }) => {
         <div className="prose-editor-container">
             <style jsx global>
                 {`
-                .ck-editor__editable_inline, 
-                .ck-source-editing-area textarea { min-height: 500px !important; max-height: 800px !important; color: black !important; }
-                
-                .ck.ck-editor__main > .ck-editor__editable { background: white !important; }
+                .ck-editor__editable_inline,
+                .ck-source-editing-area textarea { min-height: 500px !important; max-height: 800px !important; color: white !important; }
+
+                .ck.ck-editor__main > .ck-editor__editable { background: #000716 !important; }
                 
                 .ck-content ul { list-style-type: disc !important; margin-left: 1.5rem !important; }
                 .ck-content ol { list-style-type: decimal !important; margin-left: 1.5rem !important; }

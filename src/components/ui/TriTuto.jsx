@@ -22,21 +22,37 @@ const TriTuto = ({ page }) => {
         routeur.push(`/${page}${query ? `?${query}` : ""}`);
     };
 
-    return (
-        <select
-            value={triActuel}
-            onChange={gererChangement}
-            className="border border-gray-300 rounded-md p-1 w-[80%] md:w-full max-w-40"
-        >
-            <option value="">Trier par</option>
-            <option value="en_cours">Tutoriel en cours</option>
-            <option value="termine">Tutoriel terminé</option>
-            <option value="titre_az">Titre (A-Z)</option>
-            <option value="titre_za">Titre (Z-A)</option>
-            <option value="date_recent">Date (plus récent)</option>
-            <option value="date_ancien">Date (plus ancien)</option>
-        </select>
-    );
+        if (page === "tutoriel") {
+            return (
+                <select
+                    value={triActuel}
+                    onChange={gererChangement}
+                    className="border border-gray-300 rounded-md p-1 w-[80%] md:w-full max-w-40"
+                >
+                <option value="">Trier par</option>
+                <option value="en_cours">Tutoriel en cours</option>
+                <option value="termine">Tutoriel terminé</option>
+                <option value="titre_az">Titre (A-Z)</option>
+                <option value="titre_za">Titre (Z-A)</option>
+                <option value="date_recent">Date (plus récent)</option>
+                <option value="date_ancien">Date (plus ancien)</option>
+            </select>
+        );
+    } else if (page === "profil") {
+        return (
+                <select
+                    value={triActuel}
+                    onChange={gererChangement}
+                    className="border border-gray-300 rounded-md p-1 w-[80%] md:w-full max-w-40"
+                >
+                <option value="">Trier par</option>
+                <option value="en_cours">Tutoriel en cours</option>
+                <option value="termine">Tutoriel terminé</option>
+                <option value="titre_az">Titre (A-Z)</option>
+                <option value="titre_za">Titre (Z-A)</option>
+            </select>
+        );
+    }
 };
 
 export default TriTuto;

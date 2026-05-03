@@ -35,7 +35,7 @@ const FormChangerNom = () => {
             <button
                 type="submit"
                 disabled={enCours}
-                className="px-4 py-2 text-white rounded cursor-pointer bg-bleu-fonce hover:bg-bleu-fonce2 disabled:opacity-50"
+                className="px-4 py-2 text-white w-[50%] m-auto rounded cursor-pointer bg-bleu hover:bg-bleu-fonce disabled:opacity-50"
             >
                 {enCours ? "Enregistrement..." : "Valider"}
             </button>

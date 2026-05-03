@@ -18,12 +18,12 @@ const Header = ({session}) => {
         <header className="sticky top-0 z-50 flex flex-row items-center justify-around px-4 py-4 shadow-bottom-lg bg-bleu-fonce2">
             
             <Link href="/" className="flex flex-col items-center w-32 h-auto md:w-48">
-                <Image src="/img/logo.svg" alt="Logo" width={300} height={100} className="w-full h-auto" priority/>
+                <Image src="/img/logo.svg" alt="Logo du site" width={300} height={100} className="w-full h-auto" priority/>
                 <p className="text-xl text-transparent font-titre text-nowrap bg-clip-text bg-linear-to-r from-bleu-clair via-bleu to-bleu-fonce">Nino Web Success</p>
             </Link>
 
             <div>
-                <button onClick={() => setMenuBurger(!MenuBruger)}>
+                <button onClick={() => setMenuBurger(!MenuBruger)} title="Ouvrir / fermer le menu burger">
                     {MenuBruger ? 
                         <CgClose className="w-12 h-auto text-white md:hidden"/>
                     : 

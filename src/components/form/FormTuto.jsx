@@ -119,7 +119,7 @@ const FormTuto = ({ categories, initialData = null }) => {
             {isEditMode ? <input type="hidden" name="id" value={initialData.id} /> : null}
             {isEditMode ? <input type="hidden" name="currentImage" value={initialData.image || ''} /> : null}
 
-            <div className="py-1 gap-8 md:py-8 bg-bleu-clair/30">
+            <div className="gap-8 py-1 rounded-md md:py-8 bg-bleu-fonce">
                 <h2 className='px-8 pb-4'>Contenu du tutoriel :</h2>
                 <div className='flex flex-col p-1 border-t md:flex-row md:p-8 md:gap-8'>
                     <div className="flex flex-col flex-1 gap-4">
@@ -159,7 +159,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                             </div>
 
                             {afficherFormNouvelleCategorie && (
-                                <div className="flex flex-col mt-2 gap-1">
+                                <div className="flex flex-col gap-1 mt-2">
                                     <div className="flex gap-2">
                                         <input
                                             type="text"
@@ -227,7 +227,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                                 defaultValue={initialData?.pre_requis || ''}
                                 className="p-2 border border-gray-400 rounded"
                             />
-                            <p className="mt-1 text-xs text-gray-600">Saisis un prerequis par ligne, sans point ou tiret, il seront ajooutés automatiquement.</p>
+                            <p className="mt-1 text-xs text-gray-400">Saisis un prerequis par ligne, sans point ou tiret, il seront ajooutés automatiquement.</p>
                         </div>
 
                         <div className="flex flex-col">
@@ -243,9 +243,9 @@ const FormTuto = ({ categories, initialData = null }) => {
                 </div>
             </div>
 
-            <div className='py-8 bg-bleu-clair/30'>
+            <div className='py-8 rounded-md bg-bleu-fonce'>
                 <h2 className='px-8 pb-4'>Balise meta pour le SEO du tutoriel :</h2>
-                <div className='flex flex-col justify-between px-8 pt-4 border-t gap-8 md:flex-row'>
+                <div className='flex flex-col justify-between gap-8 px-8 pt-4 border-t md:flex-row'>
                     <div className="flex flex-col flex-1">
                         <label htmlFor="MetaTitle" className="mb-1 font-semibold">Title :</label>
                         <input type="text" id="MetaTitle" name="MetaTitle" required defaultValue={initialData?.MetaTitle || ''} className="p-2 border border-gray-400 rounded" />
@@ -265,26 +265,26 @@ const FormTuto = ({ categories, initialData = null }) => {
             
             <div className="flex flex-col max-w-75">
                 <label htmlFor="statut" className="mb-1 font-semibold">Statut :</label>
-                <select id="statut" name="statut" defaultValue={initialData?.statut || 'brouillon'} className="p-2 bg-white border border-gray-400 rounded">
+                <select id="statut" name="statut" defaultValue={initialData?.statut || 'brouillon'} className="p-2 border border-gray-400 rounded bg-bleu-fonce2">
                     <option value="brouillon">Brouillon</option>
                     <option value="en_ligne">En ligne</option>
                 </select>
             </div>
 
             <div className='flex flex-col gap-12 md:flex-row'>
-                <button type="submit" disabled={FormEnCours} className='p-2 text-center text-black rounded-md bg-bleu-clair/30 hover:bg-bleu-fonce hover:text-white'>
+                <button type="submit" disabled={FormEnCours} className='p-2 text-center rounded-md bg-bleu-fonce hover:bg-bleu'>
                     {FormEnCours && (isEditMode ? 'Mise à jour en cours...' : 'Création en cours...')}
                     
                     {!FormEnCours && (isEditMode ? 'Mettre à jour le tutoriel' : 'Créer le tutoriel')}
                 </button>
 
                 {isEditMode && initialData?.slug ? (
-                    <Link href={`/tutoriel/${initialData.slug}`} target='__blank' className='p-2 text-center text-black rounded-md bg-bleu-clair/30 hover:bg-bleu-fonce hover:text-white'>
+                    <Link href={`/tutoriel/${initialData.slug}`} target='__blank' className='p-2 text-center rounded-md bg-bleu-fonce hover:bg-bleu'>
                         Voir le tutoriel
                     </Link>
                 ) : null}
 
-                <Link href="/admin" className='p-2 text-center text-black rounded-md bg-bleu-clair/30 hover:bg-bleu-fonce hover:text-white'>
+                <Link href="/admin" className='p-2 text-center rounded-md bg-bleu-fonce hover:bg-bleu'>
                     Aller à la page liste
                 </Link>
             </div>

@@ -119,11 +119,11 @@ export default async function TutorielDetailPage({ params }) {
             <div className="flex flex-col justify-between gap-4 md:flex-row">
                 <div className="md:max-w-[70%] flex flex-col gap-4">
                     <h1>{tuto.titre}</h1>
-                    <p className="italic text-gray-700">{tuto.chapo}</p>
+                    <p className="italic text-gray-400">{tuto.chapo}</p>
                     
                     <ul className="flex flex-wrap gap-2">
                         {tuto.tuto_categories.map((item) => (
-                            <li key={item.categorie_id} className="px-3 py-1 bg-gray-100 border border-gray-300 rounded-full">
+                            <li key={item.categorie_id} className="px-3 py-1 font-bold rounded-full text-bleu-fonce bg-bleu-clair">
                             {item.categorie.nom}
                         </li>
                         ))}
@@ -131,8 +131,8 @@ export default async function TutorielDetailPage({ params }) {
                 </div>
 
                 {preRequis.length > 0 ? (
-                    <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                        <p className="mb-2">Prerequis :</p>
+                    <div className="p-4 rounded-lg text-bleu-fonce bg-bleu-clair">
+                        <p className="mb-2 font-bold">Prérequis :</p>
                         <ul className="pl-5 list-disc">
                             {preRequis.map((item, index) => (
                                 <li key={`${item}-${index}`}>{item}</li>
@@ -140,14 +140,14 @@ export default async function TutorielDetailPage({ params }) {
                         </ul>
                     </div>
                 ) : (
-                    <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                        <p className="mb-2">Prerequis :</p>
+                    <div className="p-4 rounded-lg text-bleu-fonce bg-bleu-clair">
+                        <p className="mb-2 font-bold">Prérequis :</p>
                         <p>Aucun prérequis nécessaire pour ce tutoriel.</p>
                     </div>
                 )}
             </div>
 
-            <div className="p-4 my-6 border-l-4 border-blue-500 rounded-lg bg-blue-50">
+            <div className="p-4 my-6 border-l-4 rounded-lg border-bleu-clair bg-bleu">
                 <p>Introduction :</p>
                 <p>{tuto.intro}</p>
             </div>

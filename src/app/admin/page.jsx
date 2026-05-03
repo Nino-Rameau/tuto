@@ -29,7 +29,7 @@ const administration = async () => {
 
     return (
         <>
-            <h1 className="my-5 text-2xl font-bold text-center">Gestion des tutoriels :</h1>
+            <h1 className="my-10 text-center">Gestion des tutoriels :</h1>
             
             <Link href="/admin/nouveau" className="px-4 py-2 font-bold text-white rounded bg-bleu hover:bg-bleu-fonce">
                 Nouveau tutoriel
