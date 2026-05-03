@@ -15,9 +15,9 @@ export default async function RootLayout({ children }) {
   const session = await auth();
   return (
     <html lang="fr">
-      <body className={`flex flex-col min-h-screen ${poppins.className}`}>
+      <body className={`flex flex-col min-h-screen bg-bleu-fonce2 text-white ${poppins.className}`}>
           <Header session={session}/>
-          <main className="w-full mx-auto grow"> {children} </main>
+          <main className="w-full mx-auto max-w-400 grow"> {children} </main>
           <Footer />
       </body>
     </html>

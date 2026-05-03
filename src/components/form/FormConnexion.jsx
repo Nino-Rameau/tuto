@@ -8,10 +8,10 @@ const FormConnexion = () => {
   const [etatConnexion, actionConnexion, enAttenteConnexion] = useActionState(connecterUtilisateur, null);
 
   return (
-    <div>
+    <div className="text-black">
       <h1>Connexion</h1>
 
-      <form action={actionConnexion} className="flex flex-col items-start p-10 border border-gray-500 gap-6">
+      <form action={actionConnexion} className="flex flex-col items-start gap-6 p-10 border border-gray-500">
         <h2>Formulaire de connexion :</h2>
         
         {etatConnexion?.erreur && <p className="p-2 font-bold text-red-600 bg-red-100">{etatConnexion.erreur}</p>}
@@ -32,7 +32,7 @@ const FormConnexion = () => {
       </form>
 
 
-      <form action={actionInscription} className="flex flex-col items-start p-10 mt-10 border border-gray-500 gap-6">
+      <form action={actionInscription} className="flex flex-col items-start gap-6 p-10 mt-10 border border-gray-500">
         <h2>Formulaire d&apos;inscription :</h2>
 
         {etatInscription?.erreur && <p className="p-2 font-bold text-red-600 bg-red-100">{etatInscription.erreur}</p>}
@@ -57,7 +57,7 @@ const FormConnexion = () => {
           <input type="password" name="confirmationMotDePasse" defaultValue={etatInscription?.donnees?.confirmationMotDePasse || ""} className="p-1 bg-gray-300" />
         </label>
         
-        <label className="flex flex-row items-center cursor-pointer gap-2">
+        <label className="flex flex-row items-center gap-2 cursor-pointer">
           <input type="checkbox" name="conditions" className="w-5 h-5 bg-gray-300"/>
           J&apos;accepte les RGPD
         </label>
@@ -86,7 +86,7 @@ const BtnFormConnexion = () => {
 
   return (
     <>
-      <button type="button" onClick={() => setEstOuvert(true)} className="p-4 text-white cursor-pointer bg-bleu-fonce2 rounded-xl">
+      <button type="button" onClick={() => setEstOuvert(true)} className="py-4 text-white cursor-pointer bg-bleu-fonce2 rounded-xl link-animated">
         Connexion
       </button>
 

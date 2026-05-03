@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const Footer = () => {
     return (
-        <footer className="text-white">
-            <div className="flex flex-col items-center justify-center gap-5 p-4 md:flex-row md:gap-30 bg-bleu-fonce2">
+        <footer className="mt-10 md:mt-20 shadow-top-lg">
+            <div className="flex flex-col items-center justify-center gap-5 p-4 md:flex-row md:gap-30">
                 
                 <div className="md:max-w-[40%]">
                     <Image src="/img/logo.svg" alt="Logo du site" width={200} height={50} className="mb-4" />
@@ -12,14 +12,14 @@ const Footer = () => {
                 </div>
                 
                 <div className="flex flex-col gap-4 md:gap-2">
-                    <Link href="/" className="flex items-center gap-2">Accueil</Link>
-                    <Link href="/tutoriel" className="flex items-center gap-2">Tutoriels</Link>
-                    <Link href="/support-de-communication" className="flex items-center gap-2">Support de communication</Link>
-                    <Link href="/mentions-legales" className="flex items-center gap-2">Mentions légales</Link>
+                    <Link href="/" className="items-center gap-2 link-animated max-w-max">Accueil</Link>
+                    <Link href="/tutoriel" className="items-center gap-2 link-animated max-w-max">Tutoriels</Link>
+                    <Link href="/support-de-communication" className="items-center gap-2 link-animated max-w-max">Support de communication</Link>
+                    <Link href="/mentions-legales" className="items-center gap-2 link-animated max-w-max">Mentions légales</Link>
                 </div>
             </div>
 
-            <div className="flex flex-col items-center justify-around gap-8 p-4 md:flex-row bg-bleu-fonce md:gap-0">
+            <div className="flex flex-col justify-around gap-8 p-4 md:items-center md:flex-row md:gap-0 bg-bleu-fonce2">
                 <p>Réalisé par <a href="https://nino-rameau.fr" target="_blank" className="underline">Nino Rameau</a></p>
                 
                 <p>Copyright © {new Date().getFullYear()} nws.nino-rameau.fr</p>
