@@ -3,7 +3,6 @@
 import prisma from "@/lib/prisma";
 import { signIn, signOut, auth } from "@/auth";
 import { AuthError } from "next-auth";
-import { isRedirectError } from "next/navigation";
 import bcrypt from "bcrypt";
 import { z } from "zod";
 import { verifierRateLimit, obtenirIp } from "@/lib/rate-limit";
@@ -76,7 +75,7 @@ export async function inscrireUtilisateur(etatPrecedent, formData) {
         });
 
     } catch (erreur) {
-        if (isRedirectError(erreur)) {
+        if (erreur?.digest?.startsWith("NEXT_REDIRECT")) {
             throw erreur;
         }
         

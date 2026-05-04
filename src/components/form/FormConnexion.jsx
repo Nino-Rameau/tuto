@@ -2,112 +2,148 @@
 
 import { useActionState, useState } from "react";
 import { inscrireUtilisateur, connecterUtilisateur } from "@/actions/auth.actions";
+import { CgClose } from "react-icons/cg";
 
-const FormConnexion = () => {
-  const [etatInscription, actionInscription, enAttenteInscription] = useActionState(inscrireUtilisateur, null);
-  const [etatConnexion, actionConnexion, enAttenteConnexion] = useActionState(connecterUtilisateur, null);
+const inputClass = "w-full px-3 py-2 rounded-md bg-bleu-fonce border border-bleu text-white placeholder-gray-400 focus:outline-none focus:border-bleu-clair transition-colors duration-200";
+const labelClass = "flex flex-col gap-2 text-bleu-clair";
+const erreurClass = "px-3 py-2 text-red-400 rounded-md bg-red-900/50";
+const btnValiderClass = "w-full py-2 font-bold rounded-md bg-bleu-clair text-bleu-fonce2 hover:bg-bleu hover:text-white transition-all duration-200 disabled:opacity-50 cursor-pointer";
+const btnChangementFormClass = "text-bleu-clair underline decoration-bleu-clair/40 underline-offset-2 hover:decoration-bleu-clair transition-colors duration-200";
+
+const FormConnexion = ({ onSwitch }) => {
+  const [etat, action, enAttente] = useActionState(connecterUtilisateur, null);
+  
+  return (
+    <form action={action} className="flex flex-col h-full gap-5">
+      <h2 className="text-center text-bleu-clair">Connexion</h2>
+      
+      {etat?.erreur && <p className={erreurClass}>{etat.erreur}</p>}
+      
+      <label className={labelClass}>
+        Email
+        <input type="email" name="email" required className={inputClass} placeholder="votre@email.fr" />
+      </label>
+      
+      <label className={labelClass}>
+        Mot de passe
+        <input type="password" name="motDePasse" required className={inputClass} placeholder="••••••••" />
+      </label>
+      
+      <button type="submit" disabled={enAttente} className={btnValiderClass}>
+        {enAttente ? "Connexion..." : "Se connecter"}
+      </button>
+      
+      <p className="pt-4 mt-auto text-sm text-center text-white/50">
+        {"Pas encore de compte ? "}
+        <button type="button" onClick={onSwitch} className={btnChangementFormClass}>S&apos;inscrire</button>
+      </p>
+    </form>
+  );
+};
+
+const FormInscription = ({ onSwitch }) => {
+  const [etat, action, enAttente] = useActionState(inscrireUtilisateur, null);
 
   return (
-    <div className="text-black">
-      <h1>Connexion</h1>
-
-      <form action={actionConnexion} className="flex flex-col items-start gap-6 p-10 border border-gray-500">
-        <h2>Formulaire de connexion :</h2>
-        
-        {etatConnexion?.erreur && <p className="p-2 font-bold text-red-600 bg-red-100">{etatConnexion.erreur}</p>}
-
-        <label className="flex flex-col w-full gap-1">
-          Email
-          <input type="email" name="email" className="p-1 bg-gray-300" />
-        </label>
-
-        <label className="flex flex-col w-full gap-1">
-          Mot de passe
-          <input type="password" name="motDePasse" className="p-1 bg-gray-300"/>
-        </label>
-
-        <button type="submit" disabled={enAttenteConnexion} className="px-4 py-2 mt-4 text-white bg-blue-600">
-          {enAttenteConnexion ? "Connexion en cours..." : "Se connecter"}
-        </button>
-      </form>
-
-
-      <form action={actionInscription} className="flex flex-col items-start gap-6 p-10 mt-10 border border-gray-500">
-        <h2>Formulaire d&apos;inscription :</h2>
-
-        {etatInscription?.erreur && <p className="p-2 font-bold text-red-600 bg-red-100">{etatInscription.erreur}</p>}
-        
-        <label className="flex flex-col w-full gap-1">
-          Nom ou pseudo
-          <input type="text" name="nom" defaultValue={etatInscription?.donnees?.nom || ""} className="p-1 bg-gray-300" />
-        </label>
-
-        <label className="flex flex-col w-full gap-1">
-          Email
-          <input type="email" name="email" defaultValue={etatInscription?.donnees?.email || ""} className="p-1 bg-gray-300" />
-        </label>
-
-        <label className="flex flex-col w-full gap-1">
-          Mot de passe
-          <input type="password" name="motDePasse" defaultValue={etatInscription?.donnees?.motDePasse || ""} className="p-1 bg-gray-300" />
-        </label>
-        
-        <label className="flex flex-col w-full gap-1">
-          Confirmer le mot de passe
-          <input type="password" name="confirmationMotDePasse" defaultValue={etatInscription?.donnees?.confirmationMotDePasse || ""} className="p-1 bg-gray-300" />
-        </label>
-        
-        <label className="flex flex-row items-center gap-2 cursor-pointer">
-          <input type="checkbox" name="conditions" className="w-5 h-5 bg-gray-300"/>
-          J&apos;accepte les RGPD
-        </label>
-
-        <button type="submit" disabled={enAttenteInscription} className="px-4 py-2 mt-4 text-white bg-blue-600">
-          {enAttenteInscription ? "Création en cours..." : "S'inscrire"}
-        </button>
-      </form>
-
-      <div>
-        <p>acces utilisateur :</p>
-        <p>test2@test.fr</p>
-        <p>test1234</p>
-      </div>
-      <div>
-        <p>acces admin :</p>
-        <p>test@test.fr</p>
-        <p>test1234</p>
-      </div>
-    </div>
+    <form action={action} className="flex flex-col h-full gap-4">
+      
+      <h2 className="text-center text-bleu-clair">Créer un compte</h2>
+      
+      {etat?.erreur && <p className={erreurClass}>{etat.erreur}</p>}
+      
+      <label className={labelClass}>
+        Nom ou pseudo
+        <input type="text" name="nom" required defaultValue={etat?.donnees?.nom || ""} className={inputClass} placeholder="Votre Nom ou pseudo" />
+      </label>
+      
+      <label className={labelClass}>
+        Email
+        <input type="email" name="email" required defaultValue={etat?.donnees?.email || ""} className={inputClass} placeholder="votre@email.fr" />
+      </label>
+      
+      <label className={labelClass}>
+        Mot de passe
+        <input type="password" name="motDePasse" required defaultValue={etat?.donnees?.motDePasse || ""} className={inputClass} placeholder="••••••••" />
+      </label>
+      
+      <label className={labelClass}>
+        Confirmer le mot de passe
+        <input type="password" name="confirmationMotDePasse" required defaultValue={etat?.donnees?.confirmationMotDePasse || ""} className={inputClass} placeholder="••••••••" />
+      </label>
+      
+      <label className="flex items-center gap-2 text-sm cursor-pointer text-white/70">
+        <input type="checkbox" name="conditions" className="w-4 h-4 accent-bleu-clair" />
+        J&apos;accepte les conditions RGPD
+      </label>
+      
+      <button type="submit" disabled={enAttente} className={btnValiderClass}>
+        {enAttente ? "Création..." : "S'inscrire"}
+      </button>
+      
+      <p className="mt-auto text-sm text-center text-white/50">
+        {"Déjà un compte ? "}
+        <button type="button" onClick={onSwitch} className={btnChangementFormClass}>Se connecter</button>
+      </p>
+    
+    </form>
   );
 };
 
 const BtnFormConnexion = () => {
   const [estOuvert, setEstOuvert] = useState(false);
+  const [estRetourne, setEstRetourne] = useState(false);
+
+  const fermer = () => {
+    setEstOuvert(false);
+    setEstRetourne(false);
+  };
 
   return (
     <>
-      <button type="button" onClick={() => setEstOuvert(true)} className="py-4 text-white cursor-pointer bg-bleu-fonce2 rounded-xl link-animated">
-        Connexion
+      <button type="button" onClick={() => setEstOuvert(true)} className="py-4 text-white link-animated md:py-0">
+          Connexion
       </button>
 
       {estOuvert && (
-        <div
-          className="fixed inset-0 flex items-center justify-center px-4 z-60 bg-black/60"
-          onClick={() => setEstOuvert(false)}
-        >
-          <div
-            className="relative bg-white max-h-[90vh] overflow-y-auto w-full max-w-3xl rounded-md p-6"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setEstOuvert(false)}
-              className="absolute text-gray-700 top-3 right-3 hover:text-black"
-            >
-              X
-            </button>
+        <div className="fixed inset-0 flex items-center justify-center px-4 z-60 bg-black/70 backdrop-blur-sm" onClick={fermer}>
+          <div className="relative w-full max-w-md" onClick={(e) => e.stopPropagation()}>
 
-            <FormConnexion />
+            <div style={{ perspective: "1200px" }}>
+              <div style={{
+                position: "relative",
+                height: "680px",
+                transition: "transform 0.65s ease",
+                transformStyle: "preserve-3d",
+                transform: estRetourne ? "rotateY(180deg)" : "rotateY(0deg)",
+              }}>
+                
+                {/* recto — connexion */}
+                <div
+                  style={{ backfaceVisibility: "hidden" }}
+                  className="absolute inset-0 p-8 overflow-y-auto border rounded-xl bg-bleu-fonce2 border-bleu"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-1 rounded-t-xl bg-linear-to-r from-bleu via-bleu-clair to-bleu" />
+                  <button type="button" onClick={fermer} className="absolute transition-colors top-4 right-4 text-bleu-clair/60 hover:text-bleu-clair">
+                    <CgClose className="w-5 h-5" />
+                  </button>
+                  <FormConnexion onSwitch={() => setEstRetourne(true)} />
+                </div>
+
+                {/* verso — inscription */}
+                <div
+                  style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                  className="absolute inset-0 p-8 overflow-y-auto border rounded-xl bg-bleu-fonce2 border-bleu"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-1 rounded-t-xl bg-linear-to-r from-bleu via-bleu-clair to-bleu" />
+                  <button type="button" onClick={fermer} className="absolute transition-colors top-4 right-4 text-bleu-clair/60 hover:text-bleu-clair">
+                    <CgClose className="w-5 h-5" />
+                  </button>
+                  <FormInscription onSwitch={() => setEstRetourne(false)} />
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </div>
       )}
