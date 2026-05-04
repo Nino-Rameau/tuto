@@ -74,12 +74,13 @@ const tutoriel = async ({ searchParams }) => {
         <div className="flex flex-col items-center md:p-5">
 
             <div className="flex flex-col items-center justify-center my-5 mt-5 md:flex-row">
-                <div className="md:max-w-[50%] flex flex-col gap-5">
+                <div className="md:max-w-[40%] flex flex-col gap-5">
                     <h1 className="font-bold text-center">Tous les <span className="text-[2rem] font-titre font-black text-bleu">tutoriels</span> :</h1>
-                    <p>Veniam irure in sint laboris sit. Do commodo ad est reprehenderit ea elit amet deserunt qui proident id reprehenderit veniam. Voluptate laboris nostrud proident quis eiusmod sunt enim mollit qui exercitation occaecat.</p>
+                    <p>Apprends à référencer et déployer tes projets web efficacement.</p>
+                    <p>Découvre des tutoriels concrets sur le SEO et le déploiement sur VPS, pensés pour passer rapidement de la théorie à la mise en ligne.</p>
                 </div>
                 <div className="md:max-w-[50%]">
-                    <Image src="/img/placeholder-img.png" alt="Image d'illustration pour la page des tutoriels" width={400} height={300} />
+                    <Image src="/img/divers-site/test.png" alt="Image d'illustration pour la page des tutoriels" width={600} height={500} />
                 </div>
 
             </div>
@@ -87,7 +88,7 @@ const tutoriel = async ({ searchParams }) => {
             <FiltreCategories categories={categories}/>
             
             {(tri === "en_cours" || tri === "termine") && !session?.user && (
-                <p className="mt-5 text-gray-500">Connectez-vous pour filtrer par progression.</p>
+                <p className="mt-5 text-bleu-clair">Connectez-vous pour filtrer par progression.</p>
             )}
 
             <div className="flex flex-wrap justify-center gap-4 mt-5">
@@ -111,8 +112,8 @@ const tutoriel = async ({ searchParams }) => {
                 ))}
             </div>
 
-            {tutos.length === 0 && session?.user && (
-                <p className="mt-10 text-gray-500">Aucun tutoriel trouvé dans cette catégorie.</p>
+            {tutos.length === 0 && (
+                <p className="mt-10 text-bleu-clair">Aucun tutoriel trouvé dans cette catégorie.</p>
             )}
 
         </div>

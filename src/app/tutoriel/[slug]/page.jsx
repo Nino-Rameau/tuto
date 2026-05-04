@@ -119,7 +119,7 @@ export default async function TutorielDetailPage({ params }) {
             <div className="flex flex-col justify-between gap-4 md:flex-row">
                 <div className="md:max-w-[70%] flex flex-col gap-4">
                     <h1>{tuto.titre}</h1>
-                    <p className="italic text-gray-400">{tuto.chapo}</p>
+                    <p className="italic text-bleu-clair">{tuto.chapo}</p>
                     
                     <ul className="flex flex-wrap gap-2">
                         {tuto.tuto_categories.map((item) => (

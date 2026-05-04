@@ -24,7 +24,7 @@ const FormSupprimerCompte = () => {
                 <p className="text-sm text-red-600">{etat.erreur}</p>
             )}
 
-            <p className="text-sm text-gray-300">
+            <p className="text-sm">
                 Cette action est irréversible. Toutes vos progressions seront supprimées.
             </p>
 
@@ -32,7 +32,7 @@ const FormSupprimerCompte = () => {
                 <label htmlFor="motDePasse">Mot de passe</label>
                 <input
                     id="motDePasse" name="motDePasse" type="password" required placeholder="Confirmez avec votre mot de passe"
-                    className="px-3 py-2 border border-gray-300 rounded"
+                    className="px-3 py-2 border border-bleu-clair rounded"
                 />
             </div>
 

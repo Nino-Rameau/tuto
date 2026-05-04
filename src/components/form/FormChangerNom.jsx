@@ -20,7 +20,7 @@ const FormChangerNom = () => {
                 <label htmlFor="nouveauNom">Nouveau nom</label>
                 <input
                     id="nouveauNom" name="nouveauNom" type="text" required placeholder="Votre nouveau nom"
-                    className="px-3 py-2 border border-gray-300 rounded"
+                    className="px-3 py-2 border border-bleu-clair rounded"
                 />
             </div>
 
@@ -28,7 +28,7 @@ const FormChangerNom = () => {
                 <label htmlFor="motDePasse">Mot de passe</label>
                 <input 
                     id="motDePasse" name="motDePasse" type="password" required placeholder="Confirmez avec votre mot de passe"
-                    className="px-3 py-2 border border-gray-300 rounded"
+                    className="px-3 py-2 border border-bleu-clair rounded"
                 />
             </div>
             

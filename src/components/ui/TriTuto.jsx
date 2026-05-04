@@ -27,7 +27,7 @@ const TriTuto = ({ page }) => {
                 <select
                     value={triActuel}
                     onChange={gererChangement}
-                    className="border border-gray-300 rounded-md p-1 w-[80%] md:w-full max-w-40"
+                    className="border border-bleu-clair rounded-md p-1 w-[80%] md:w-full max-w-40"
                 >
                 <option value="">Trier par</option>
                 <option value="en_cours">Tutoriel en cours</option>
@@ -43,7 +43,7 @@ const TriTuto = ({ page }) => {
                 <select
                     value={triActuel}
                     onChange={gererChangement}
-                    className="border border-gray-300 rounded-md p-1 w-[80%] md:w-full max-w-40"
+                    className="border border-bleu-clair rounded-md p-1 w-[80%] md:w-full max-w-40"
                 >
                 <option value="">Trier par</option>
                 <option value="en_cours">Tutoriel en cours</option>

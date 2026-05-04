@@ -59,9 +59,9 @@ const Ckeditor = ({ onChange, value }) => {
                     }
                 }
                 
-                .ck-content .bg-blue-50 { background-color: #eff6ff !important; border-left: 4px solid #3b82f6 !important; padding: 1.5rem !important; color: #1d4ed8 !important; margin: 1.5rem 0 !important; }
-                .ck-content .bg-orange-50 { background-color: #fff7ed !important; border-left: 4px solid #f97316 !important; padding: 1.5rem !important; color: #c2410c !important; margin: 1.5rem 0 !important; }
-                .ck-content .bg-green-50 { background-color: #f0fdf4 !important; border-left: 4px solid #22c55e !important; padding: 1.5rem !important; color: #15803d !important; margin: 1.5rem 0 !important; }
+                .ck-content .bg-blue-50 { background-color: #eff6ff !important; border-left: 4px solid #3b82f6 !important; padding: 1.5rem !important; color: #000000 !important; margin: 1.5rem 0 !important; }
+                .ck-content .bg-orange-50 { background-color: #fff7ed !important; border-left: 4px solid #f97316 !important; padding: 1.5rem !important; color: #000000 !important; margin: 1.5rem 0 !important; }
+                .ck-content .bg-green-50 { background-color: #f0fdf4 !important; border-left: 4px solid #22c55e !important; padding: 1.5rem !important; color: #000000 !important; margin: 1.5rem 0 !important; }
                 `}
             </style>
 
@@ -99,9 +99,9 @@ const Ckeditor = ({ onChange, value }) => {
                     },
                     style: {
                         definitions: [
-                            { name: 'Astuce', element: 'p', classes: ['bg-blue-50'] },
-                            { name: 'Important', element: 'p', classes: ['bg-orange-50'] },
-                            { name: 'Information', element: 'p', classes: ['bg-green-50'] }
+                            { name: 'Astuce', element: 'p', classes: ['bg-blue-50 text-bleu-fonce border-l-4 border-blue-500 py-4 pl-4 rounded m-2'] },
+                            { name: 'Important', element: 'p', classes: ['bg-orange-50 text-bleu-fonce border-l-4 border-orange-500 py-4 pl-4 rounded m-2'] },
+                            { name: 'Information', element: 'p', classes: ['bg-green-50 text-bleu-fonce border-l-4 border-green-500 py-4 pl-4 rounded m-2'] }
                         ]
                     },
                     fontSize: {
