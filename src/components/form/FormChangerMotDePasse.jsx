@@ -20,7 +20,7 @@ const FormChangerMotDePasse = () => {
                 <label htmlFor="motDePasseActuel">Mot de passe actuel</label>
                 <input
                     id="motDePasseActuel" name="motDePasseActuel" type="password" required placeholder="Votre mot de passe actuel"
-                    className="px-3 py-2 border border-bleu-clair rounded"
+                    className="px-3 py-2 border rounded border-bleu-clair"
                 />
             </div>
 
@@ -28,7 +28,7 @@ const FormChangerMotDePasse = () => {
                 <label htmlFor="nouveauMotDePasse">Nouveau mot de passe</label>
                 <input
                     id="nouveauMotDePasse" name="nouveauMotDePasse" type="password" required placeholder="Votre nouveau mot de passe"
-                    className="px-3 py-2 border border-bleu-clair rounded"
+                    className="px-3 py-2 border rounded border-bleu-clair"
                 />
             </div>
 
@@ -36,7 +36,7 @@ const FormChangerMotDePasse = () => {
                 <label htmlFor="confirmationMotDePasse">Confirmer le nouveau mot de passe</label>
                 <input
                     id="confirmationMotDePasse" name="confirmationMotDePasse" type="password" required placeholder="Confirmez votre nouveau mot de passe"
-                    className="px-3 py-2 border border-bleu-clair rounded"
+                    className="px-3 py-2 border rounded border-bleu-clair"
                 />
             </div>
 

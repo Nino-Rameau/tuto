@@ -60,7 +60,7 @@ export async function POST(request) {
 
     const cheminFichier = Date.now() + '-' + fichier.name.replaceAll(' ', '_');
     
-    const dossierCible = path.join(process.cwd(), 'public/img', slug);
+    const dossierCible = path.join(process.cwd(), 'public/img/img-tuto', slug);
 
     try {
         await mkdir(dossierCible, { recursive: true });
@@ -68,8 +68,8 @@ export async function POST(request) {
         const filePath = path.join(dossierCible, cheminFichier);
 
         await writeFile(filePath, buffer);
-        
-        const urlFinale = slug ? `/img/${slug}/${cheminFichier}` : `/img/${cheminFichier}`;
+
+        const urlFinale = slug ? `/img/img-tuto/${slug}/${cheminFichier}` : `/img/img-tuto/${cheminFichier}`;
         
         return NextResponse.json({ url: urlFinale });
         

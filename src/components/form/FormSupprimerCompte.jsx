@@ -32,7 +32,7 @@ const FormSupprimerCompte = () => {
                 <label htmlFor="motDePasse">Mot de passe</label>
                 <input
                     id="motDePasse" name="motDePasse" type="password" required placeholder="Confirmez avec votre mot de passe"
-                    className="px-3 py-2 border border-bleu-clair rounded"
+                    className="px-3 py-2 border rounded border-bleu-clair"
                 />
             </div>
 

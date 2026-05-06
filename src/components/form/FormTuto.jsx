@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { creerTutoriel, mettreAJourTutoriel, creerCategorie } from '@/actions/tuto.actions';
@@ -9,15 +9,34 @@ import { AiOutlineUpload } from "react-icons/ai";
 
 const Ckeditor = dynamic(() => import('@/components/layout/Ckeditor'), { 
     ssr: false,
-    loading: () => <div className="flex items-center justify-center w-full text-bleu-clair border border-bleu-clair rounded-md h-125 animate-pulse">Chargement de l&apos;éditeur...</div>
+    loading: () => <div className="flex items-center justify-center w-full border rounded-md text-bleu-clair border-bleu-clair h-125 animate-pulse">Chargement de l&apos;éditeur...</div>
 });
 
 const FormTuto = ({ categories, initialData = null }) => {
     const isEditMode = Boolean(initialData?.id);
     const [contenu, setContenu] = useState(initialData?.contenu || '');
+    const [slugNom, setslugNom] = useState(initialData?.slug || '');
     const [FormEnCours, setFormEnCours] = useState(false);
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+
+    const [imagePreview, setImagePreview] = useState(null);
+    const [nomFichier, setNomFichier] = useState('');
+    const imagePreviewRef = useRef(null);
+
+    const ChangementImg = (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        if (imagePreviewRef.current) URL.revokeObjectURL(imagePreviewRef.current);
+        const url = URL.createObjectURL(file);
+        imagePreviewRef.current = url;
+        setImagePreview(url);
+        setNomFichier(file.name);
+    };
+
+    useEffect(() => {
+        return () => { if (imagePreviewRef.current) URL.revokeObjectURL(imagePreviewRef.current); };
+    }, []);
 
     const [listeCategories, setlisteCategories] = useState(categories);
     const [categorieId, setCategorieId] = useState(String(initialData?.tuto_categories?.[0]?.categorie_id || ''));
@@ -106,6 +125,8 @@ const FormTuto = ({ categories, initialData = null }) => {
             if (!isEditMode) {
                 formulaire.reset();
                 setContenu('');
+                setImagePreview(null);
+                setNomFichier('');
             }
         } catch (submitError) {
             setError(submitError.message || 'Une erreur est survenue.');
@@ -125,12 +146,12 @@ const FormTuto = ({ categories, initialData = null }) => {
                     <div className="flex flex-col flex-1 gap-4">
                         <div className="flex flex-col">
                             <label htmlFor="titre" className="mb-1 font-semibold">Titre :</label>
-                            <input type="text" id="titre" name="titre" required defaultValue={initialData?.titre || ''} className="p-2 border border-bleu-clair rounded" />
+                            <input type="text" id="titre" name="titre" required defaultValue={initialData?.titre || ''} className="p-2 border rounded border-bleu-clair" />
                         </div>
 
                         <div className="flex flex-col">
                             <label htmlFor="slug" className="mb-1 font-semibold">Slug :</label>
-                            <input type="text" id="slug" name="slug" required defaultValue={initialData?.slug || ''} className="p-2 border border-bleu-clair rounded"/>
+                            <input type="text" id="slug" name="slug" required value={slugNom} onChange={(e) => setslugNom(e.target.value)} className="p-2 border rounded border-bleu-clair"/>
                         </div>
                         
                         <div className="flex flex-col">
@@ -139,7 +160,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                                 
                                 <select id="categorie" name="categorie" required value={categorieId}
                                     onChange={(e) => setCategorieId(e.target.value)}
-                                    className="flex-1 p-2 border border-bleu-clair rounded"
+                                    className="flex-1 p-2 border rounded border-bleu-clair"
                                 >
                                     <option value="">Choisir une catégorie...</option>
                                     {listeCategories.map((cat) => (
@@ -152,7 +173,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                                 <button
                                     type="button"
                                     onClick={() => { setAfficherFormNouvelleCategorie(v => !v); setErreurCategorie(''); setNomNouvelleCategorie(''); }}
-                                    className="px-3 py-1 text-sm border border-bleu-clair rounded hover:bg-bleu-fonce hover:text-white"
+                                    className="px-3 py-1 text-sm border rounded border-bleu-clair hover:bg-bleu/50 hover:text-white"
                                 >
                                     Créer une catégorie
                                 </button>
@@ -166,7 +187,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                                             value={nomNouvelleCategorie}
                                             onChange={(e) => setNomNouvelleCategorie(e.target.value)}
                                             placeholder="Nom de la catégorie"
-                                            className="flex-1 p-2 border border-bleu-clair rounded"
+                                            className="flex-1 p-2 border rounded border-bleu-clair"
                                             autoFocus
                                         />
 
@@ -174,7 +195,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                                             type="button"
                                             onClick={handleCreerCategorie}
                                             disabled={creerCatEnCours}
-                                            className="px-3 py-1 text-sm border border-bleu-clair rounded hover:bg-bleu-fonce hover:text-white disabled:opacity-50"
+                                            className="px-3 py-1 text-sm border rounded border-bleu-clair hover:bg-bleu-fonce hover:text-white disabled:opacity-50"
                                         >
                                             {creerCatEnCours ? 'Création...' : 'Créer'}
                                         </button>
@@ -182,7 +203,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                                         <button
                                             type="button"
                                             onClick={() => { setAfficherFormNouvelleCategorie(false); setNomNouvelleCategorie(''); setErreurCategorie(''); }}
-                                            className="px-3 py-1 text-sm border border-bleu-clair rounded hover:bg-red-500 hover:text-white"
+                                            className="px-3 py-1 text-sm border rounded border-bleu-clair hover:bg-red-500 hover:text-white"
                                         >
                                             Annuler
                                         </button>
@@ -194,24 +215,31 @@ const FormTuto = ({ categories, initialData = null }) => {
                         </div>
 
                         <label htmlFor="image" className="mb-1 font-semibold">Image :</label>
-                        <div className="h-full min-w-min md:w-[50%] rounded-lg border-2 border-bleu-fonce bg-gray-50 justify-center items-center">
-                            <div className="relative flex flex-col items-center justify-center h-full">
-                                {isEditMode && initialData?.image ? (
+                        <div className="h-full min-w-min md:w-[50%] rounded-lg border-2 border-dashed border-bleu-clair bg-gray-50 justify-center items-center">
+                            <div className="relative flex flex-col items-center justify-center h-full gap-2 p-4">
+                                {imagePreview ? (
+                                    <>
+                                        <Image src={imagePreview} alt="Aperçu" width={120} height={120} className="object-cover rounded" />
+                                        <span className="text-sm font-semibold text-center text-green-700 break-all">{nomFichier}</span>
+                                        <span className="text-xs text-bleu-fonce">Cliquer pour changer</span>
+                                    </>
+                                ) : isEditMode && initialData?.image ? (
                                     <>
                                         <AiOutlineUpload className='w-12 h-auto text-bleu-fonce'/>
-                                        <span className="font-semibold text-center text-bleu-fonce">Ajouté ici pour changer l&apos;image</span>
+                                        <span className="font-semibold text-center text-bleu-fonce">Cliquer pour changer l&apos;image</span>
                                         <div className='flex flex-row items-center gap-5'>
                                             <p className="mt-1 text-sm text-bleu-fonce">Image actuelle :</p>
                                             <Image src={initialData.image} alt="Image actuelle du tutoriel" width={75} height={75} className="object-cover mt-2 rounded" />
                                         </div>
                                     </>
                                 ) : (
-                                    <div className="flex flex-col items-center justify-center">
+                                    <div className="flex flex-col items-center justify-center gap-1">
                                         <AiOutlineUpload className='w-12 h-auto text-bleu-fonce'/>
-                                        <span className="font-semibold text-bleu-fonce">Ajouté l&apos;image ici</span>
+                                        <span className="font-semibold text-bleu-fonce">Cliquer pour ajouter une image</span>
+                                        <span className="text-xs text-bleu-fonce">JPG, PNG, WEBP...</span>
                                     </div>
                                 )}
-                                <input type="file" name="image" id="image" accept='image/*' className="absolute w-full h-full opacity-0 cursor-pointer" />
+                                <input type="file" name="image" id="image" accept='image/*' onChange={ChangementImg} className="absolute w-full h-full opacity-0 cursor-pointer" />
                             </div>
                         </div>
                         
@@ -225,19 +253,19 @@ const FormTuto = ({ categories, initialData = null }) => {
                                 name="prerequis"
                                 rows="4"
                                 defaultValue={initialData?.pre_requis || ''}
-                                className="p-2 border border-bleu-clair rounded"
+                                className="p-2 border rounded border-bleu-clair"
                             />
-                            <p className="mt-1 text-xs text-bleu-fonce">Saisis un prerequis par ligne, sans point ou tiret, il seront ajooutés automatiquement.</p>
+                            <p className="mt-1 text-xs text-bleu-clair">Saisis un prerequis par ligne, sans point ou tiret, il seront ajooutés automatiquement.</p>
                         </div>
 
                         <div className="flex flex-col">
                             <label htmlFor="chapo" className="mb-1 font-semibold">Chapo :</label>
-                            <textarea id="chapo" name="chapo" rows="3" required defaultValue={initialData?.chapo || ''} className="p-2 border border-bleu-clair rounded"></textarea>
+                            <textarea id="chapo" name="chapo" rows="3" required defaultValue={initialData?.chapo || ''} className="p-2 border rounded border-bleu-clair"></textarea>
                         </div>
                         
                         <div className="flex flex-col">
                             <label htmlFor="introduction" className="mb-1 font-semibold">Introduction :</label>
-                            <textarea id="introduction" name="introduction" rows="5" required defaultValue={initialData?.intro || ''} className="p-2 border border-bleu-clair rounded"></textarea>
+                            <textarea id="introduction" name="introduction" rows="5" required defaultValue={initialData?.intro || ''} className="p-2 border rounded border-bleu-clair"></textarea>
                         </div>
                     </div>
                 </div>
@@ -248,24 +276,24 @@ const FormTuto = ({ categories, initialData = null }) => {
                 <div className='flex flex-col justify-between gap-8 px-8 pt-4 border-t md:flex-row'>
                     <div className="flex flex-col flex-1">
                         <label htmlFor="MetaTitle" className="mb-1 font-semibold">Title :</label>
-                        <input type="text" id="MetaTitle" name="MetaTitle" required defaultValue={initialData?.MetaTitle || ''} className="p-2 border border-bleu-clair rounded" />
+                        <input type="text" id="MetaTitle" name="MetaTitle" required defaultValue={initialData?.MetaTitle || ''} className="p-2 border rounded border-bleu-clair" />
                     </div>
                     
                     <div className="flex flex-col flex-1">
                         <label htmlFor="MetaDescription" className="mb-1 font-semibold">Meta description :</label>
-                        <textarea id="MetaDescription" name="MetaDescription" rows="2" required defaultValue={initialData?.MetaDescription || ''} className="p-2 border border-bleu-clair rounded"></textarea>
+                        <textarea id="MetaDescription" name="MetaDescription" rows="2" required defaultValue={initialData?.MetaDescription || ''} className="p-2 border rounded border-bleu-clair"></textarea>
                     </div>
                 </div>
             </div>
 
             <div className="flex flex-col mt-4">
                 <label htmlFor="contenu" className="mb-1 font-semibold">Contenu :</label>
-                <Ckeditor value={contenu} onChange={setContenu} />
+                <Ckeditor value={contenu} onChange={setContenu} slug={slugNom} />
             </div>
             
             <div className="flex flex-col max-w-75">
                 <label htmlFor="statut" className="mb-1 font-semibold">Statut :</label>
-                <select id="statut" name="statut" defaultValue={initialData?.statut || 'brouillon'} className="p-2 border border-bleu-clair rounded bg-bleu-fonce2">
+                <select id="statut" name="statut" defaultValue={initialData?.statut || 'brouillon'} className="p-2 border rounded border-bleu-clair bg-bleu-fonce2">
                     <option value="brouillon">Brouillon</option>
                     <option value="en_ligne">En ligne</option>
                 </select>

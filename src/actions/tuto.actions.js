@@ -104,6 +104,13 @@ export async function creerTutoriel(dataTuto) {
 
     } catch (error) {
         console.error("Erreur création tutoriel:", error);
+        if (error?.code === "P2002") {
+            const field = error?.meta?.target?.includes("slug") ? "slug" : "titre";
+            return {
+                success: false,
+                error: `Un tutoriel avec ce ${field} existe déjà.`,
+            };
+        }
         return {
             success: false,
             error: "Erreur serveur lors de la création du tutoriel.",

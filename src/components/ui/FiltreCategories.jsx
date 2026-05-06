@@ -22,10 +22,11 @@ const FiltreCategories = ({ categories }) => {
     const tabInactive = "text-bleu-clair/70 hover:bg-bleu-fonce hover:text-white";
 
     return (
-        <div className="flex flex-col items-center justify-between w-full gap-5 px-4 py-3 my-5 border rounded-md md:gap-0 md:flex-row bg-bleu-fonce2 border-bleu">
+        <div className="flex flex-col items-center justify-between w-full px-4 py-3 my-5 border gap-5 rounded-md md:gap-0 md:flex-row bg-bleu-fonce2 border-bleu">
             <div className="flex flex-wrap items-center gap-2">
                 <Link
                     href={construireUrl("")}
+                    scroll={false}
                     className={`${tabBase} ${categorieActuelle === "" ? tabActive : tabInactive}`}
                 >
                     Tous
@@ -35,6 +36,7 @@ const FiltreCategories = ({ categories }) => {
                     <Link
                         key={cat.id}
                         href={construireUrl(String(cat.id))}
+                        scroll={false}
                         className={`${tabBase} ${categorieActuelle === String(cat.id) ? tabActive : tabInactive}`}
                     >
                         {cat.nom}

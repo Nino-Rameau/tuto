@@ -19,7 +19,7 @@ const TriTuto = ({ page }) => {
         }
 
         const query = params.toString();
-        routeur.push(`/${page}${query ? `?${query}` : ""}`);
+        routeur.push(`/${page}${query ? `?${query}` : ""}`, { scroll: false });
     };
 
         if (page === "tutoriel") {

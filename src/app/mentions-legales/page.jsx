@@ -5,7 +5,7 @@ export const metadata = {
 
 const MentionsLegales = () => {
     return (
-        <div className="flex flex-col w-full gap-8 py-10 mx-auto">
+        <div className="flex flex-col w-full py-10 mx-auto gap-8">
             <h1 className="text-center">Mentions légales</h1>
 
             <div className="flex flex-col gap-3">

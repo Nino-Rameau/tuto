@@ -4,7 +4,7 @@ import BtnSuppTuto from "@/components/ui/BtnSuppTuto";
 
 const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, statut}) => {
     return (
-        <section className="flex flex-col justify-between gap-10 p-5 md:flex-row bg-bleu-fonce rounded-xl">
+        <section className="flex flex-col justify-between p-5 gap-10 md:flex-row bg-bleu-fonce rounded-xl">
             
             <Image src={image || "/img/placeholder-img.png"} alt="Visuel d'un tutoriel" width={200} height={120} className="object-cover w-auto h-40 mx-auto rounded" />
             
@@ -14,7 +14,7 @@ const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, 
 
                 <ul className="flex flex-row gap-5">
                     {tags.map((tag, index) => (
-                        <li key={index} className="px-2 border-2 border-black rounded-xl">
+                        <li key={index} className="px-2 border-2 border-bleu-clair rounded-xl">
                             {tag}
                         </li>
                     ))}
@@ -32,8 +32,8 @@ const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, 
             </div>
 
             <div className="flex flex-col justify-around gap-5">
-                <Link href={`/admin/${id}`} className="px-4 py-2 text-center text-white bg-bleu hover:bg-bleu-fonce2 rounded-xl">Editer</Link>
-                <Link href={`/tutoriel/${slug}`} target="_blank" className="px-4 py-2 text-center text-white bg-green-600 hover:bg-green-800 rounded-xl">Afficher</Link>
+                <Link href={`/admin/${id}`} className="px-4 py-2 text-center text-white bg-bleu hover:bg-bleu/50 rounded-xl">Editer</Link>
+                <Link href={`/tutoriel/${slug}`} target="_blank" className="px-4 py-2 text-center text-white bg-green-600 hover:bg-green-600/50 rounded-xl">Afficher</Link>
                 <BtnSuppTuto id={id} titre={titre} />
             </div>
 

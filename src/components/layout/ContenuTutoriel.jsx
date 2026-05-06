@@ -1,11 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { demarrerTutoriel, validerTutoriel } from '@/actions/progression.action';
 
 export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatInitialTuto }) {
     
     const [etatTuto, setEtatTuto] = useState(etatInitialTuto || null);
+
+    useEffect(() => {
+        const pres = document.querySelectorAll('.tutoriel-contenu pre');
+        pres.forEach((pre) => {
+            if (pre.querySelector('.copy-btn')) return;
+            const btn = document.createElement('button');
+            btn.className = 'copy-btn';
+            btn.textContent = 'Copier';
+            btn.addEventListener('click', async () => {
+                const texte = pre.querySelector('code')?.textContent ?? pre.textContent;
+                await navigator.clipboard.writeText(texte);
+                btn.textContent = 'Copié !';
+                setTimeout(() => { btn.textContent = 'Copier'; }, 2000);
+            });
+            pre.appendChild(btn);
+        });
+    }, [etatTuto]);
     const [erreur, setErreur] = useState('');
     const [enChargement, setEnChargement] = useState(false);
 
@@ -65,7 +82,7 @@ export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatIni
 
 
             {estCommence ? (
-                <section dangerouslySetInnerHTML={{ __html: contenuFormater }} />
+                <section className="tutoriel-contenu" dangerouslySetInnerHTML={{ __html: contenuFormater }} />
             ) : null}
 
 
