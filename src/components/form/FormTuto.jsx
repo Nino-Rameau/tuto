@@ -307,7 +307,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                 </button>
 
                 {isEditMode && initialData?.slug ? (
-                    <Btn lien={`/tutoriel/${initialData.slug}`} target='__blank' variante='secondaire'>
+                    <Btn lien={`/tutoriels/${initialData.slug}`} target='__blank' variante='secondaire'>
                         Voir le tutoriel
                     </Btn>
                 ) : null}

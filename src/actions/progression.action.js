@@ -50,7 +50,7 @@ export async function demarrerTutoriel(idTuto, slug) {
             },
         });
 
-        revalidatePath(`/tutoriel/${slug}`);
+        revalidatePath(`/tutoriels/${slug}`);
 
         return { success: true };
     } catch (error) {
@@ -93,7 +93,7 @@ export async function validerTutoriel(idTuto, slug) {
             },
         });
 
-        revalidatePath(`/tutoriel/${slug}`);
+        revalidatePath(`/tutoriels/${slug}`);
 
         return { success: true };
     } catch (error) {

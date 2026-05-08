@@ -91,11 +91,11 @@ const tutoriel = async ({ searchParams }) => {
                 <p className="mt-5 text-bleu-clair">Connectez-vous pour filtrer par progression.</p>
             )}
 
-            <div className="flex flex-wrap justify-center mt-5 gap-4">
+            <div className="flex flex-wrap justify-center gap-4 mt-5">
                 {tutos.map((item) => (
                     <Link
                         key={item.id}
-                        href={`/tutoriel/${item.slug}`}
+                        href={`/tutoriels/${item.slug}`}
                         className="w-[90%] relative md:w-full max-w-md flex flex-col items-center gap-4 pt-2 rounded-md bg-bleu hover:bg-bleu-fonce hover:text-bleu-clair! transform transition duration-300"
                     >
                         <h2 className="h-20 text-center line-clamp-2 text-bleu-fonce2">{item.titre}</h2>

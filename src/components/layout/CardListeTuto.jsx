@@ -35,7 +35,7 @@ const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, 
                 <Btn lien={`/admin/${id}`} variante='bleu2' className="rounded-xl">
                     Editer
                 </Btn>
-                <Btn lien={`/tutoriel/${slug}`} variante='vert' className="rounded-xl" target="_blank">
+                <Btn lien={`/tutoriels/${slug}`} variante='vert' className="rounded-xl" target="_blank">
                     Afficher
                 </Btn>
 

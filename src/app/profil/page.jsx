@@ -91,7 +91,7 @@ const profil = async ({ searchParams }) => {
                                                 <p className="px-2 py-1 border-2 rounded text-[12px] border-bleu-fonce">
                                                     {progression.etat === "en_cours" ? "En cours" : "Terminé"}
                                                 </p>
-                                                <Btn lien={`/tutoriel/${progression.tuto.slug}`} variante="contour">
+                                                <Btn lien={`/tutoriels/${progression.tuto.slug}`} variante="contour">
                                                     Voir le tutoriel
                                                 </Btn>
                                             </div>
@@ -99,7 +99,11 @@ const profil = async ({ searchParams }) => {
                                     ))}
                                 </div>
                             ) : (
-                                <p>Aucun tutoriel en cours ou terminé pour le moment.</p>
+                                <p>
+                                    {tri === "en_cours" ? "Aucun tutoriel en cours."
+                                    : tri === "termine" ? "Aucun tutoriel terminé."
+                                    : "Aucun tutoriel trouvé."}
+                                </p>
                             )}
                         </div>
                     </div>
