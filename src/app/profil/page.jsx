@@ -47,7 +47,7 @@ const profil = async ({ searchParams }) => {
 
             <div className="flex flex-col md:flex-row">
                 <div className="w-full bg-linear-to-l from-bleu-clair via-bleu to-bleu-fonce md:w-100">
-                    <div className="sticky flex flex-col py-5 pl-10 gap-5 top-40">
+                    <div className="sticky flex flex-col py-5 pl-5 gap-5 top-40">
                         <a href="#tutoriels" className="cursor-pointer hover:text-bleu-clair hover:font-semibold">Mes Tutoriels</a>
                         <a href="#securite" className="cursor-pointer hover:text-bleu-clair hover:font-semibold">Sécurité</a>
                         <a href="#changer-pseudo" className="ml-2 cursor-pointer hover:text-bleu-clair hover:font-semibold">Changer de pseudo</a>
@@ -82,7 +82,7 @@ const profil = async ({ searchParams }) => {
                                 <div className="flex flex-col my-5 gap-5">
                                     {progressionsAffichees.map((progression) => (
                                         <div key={progression.id} className="flex flex-row justify-between p-3 border-2 rounded border-bleu-fonce">
-                                            <div className="flex flex-col gap-4 max-w-[80%]">
+                                            <div className="flex flex-col gap-4 max-w-[70%] md:max-w-[80%]">
                                                 <h2>{progression.tuto.titre}</h2>
                                                 <p>{progression.tuto.chapo}</p>
                                             </div>
@@ -90,7 +90,7 @@ const profil = async ({ searchParams }) => {
                                                 <p className="px-2 py-1 border-2 rounded text-[12px] border-bleu-fonce">
                                                     {progression.etat === "en_cours" ? "En cours" : "Terminé"}
                                                 </p>
-                                                <Link href={`/tutoriel/${progression.tuto.slug}`} className="px-3 py-1 border-2 rounded border-bleu-fonce hover:border-bleu-clair">
+                                                <Link href={`/tutoriel/${progression.tuto.slug}`} className="px-3 py-1 border-2 rounded text-nowrap border-bleu-fonce hover:border-bleu-clair">
                                                     Voir le tutoriel
                                                 </Link>
                                             </div>

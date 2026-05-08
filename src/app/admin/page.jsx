@@ -1,13 +1,22 @@
 import Link from "next/link";
 import TutoListe from "@/components/layout/CardListeTuto";
 import prisma from "@/lib/prisma";
+import TriTutoriels from "@/components/ui/TriTuto";
 
 export const metadata = {
     title: "Administration | tuto",
     description: "",
 };
 
-const administration = async () => {
+const administration = async ({ searchParams }) => {
+    const { tri } = await searchParams;
+
+    let orderBy = { created_at: "desc" };
+    if (tri === "titre_az") orderBy = { titre: "asc" };
+    else if (tri === "titre_za") orderBy = { titre: "desc" };
+    else if (tri === "date_ancien") orderBy = { created_at: "asc" };
+    else if (tri === "date_recent") orderBy = { created_at: "desc" };
+
     const tutos = await prisma.tuto.findMany({
         select: {
             id: true,
@@ -24,7 +33,7 @@ const administration = async () => {
                 },
             },
         },
-        orderBy: { created_at: "desc" },
+        orderBy,
     });
 
     return (
@@ -34,6 +43,10 @@ const administration = async () => {
             <Link href="/admin/nouveau" className="px-4 py-2 font-bold text-white rounded bg-bleu hover:bg-bleu-fonce">
                 Nouveau tutoriel
             </Link>
+
+            <div className="flex justify-end">
+                <TriTutoriels page="admin"/>
+            </div>
             
             <div className="my-5 space-y-5">
                 {tutos.map((tuto) => (

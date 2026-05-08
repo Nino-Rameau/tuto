@@ -52,6 +52,20 @@ const TriTuto = ({ page }) => {
                 <option value="titre_za">Titre (Z-A)</option>
             </select>
         );
+    } else if (page === "admin") {
+        return (
+                <select
+                    value={triActuel}
+                    onChange={gererChangement}
+                    className="border border-bleu-clair rounded-md p-1 w-[80%] md:w-full max-w-40"
+                >
+                <option value="">Trier par</option>
+                <option value="titre_az">Titre (A-Z)</option>
+                <option value="titre_za">Titre (Z-A)</option>
+                <option value="date_recent">Date (plus récent)</option>
+                <option value="date_ancien">Date (plus ancien)</option>
+            </select>
+        );
     }
 };
 

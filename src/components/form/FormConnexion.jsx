@@ -21,12 +21,12 @@ const FormConnexion = ({ onSwitch }) => {
       
       <label className={labelClass}>
         Email
-        <input type="email" name="email" required className={inputClass} placeholder="votre@email.fr" />
+        <input type="email" name="email" required className={inputClass}  />
       </label>
       
       <label className={labelClass}>
         Mot de passe
-        <input type="password" name="motDePasse" required className={inputClass} placeholder="••••••••" />
+        <input type="password" name="motDePasse" required className={inputClass} />
       </label>
       
       <button type="submit" disabled={enAttente} className={btnValiderClass}>
@@ -53,22 +53,22 @@ const FormInscription = ({ onSwitch }) => {
       
       <label className={labelClass}>
         Nom ou pseudo
-        <input type="text" name="nom" required defaultValue={etat?.donnees?.nom || ""} className={inputClass} placeholder="Votre Nom ou pseudo" />
+        <input type="text" name="nom" required defaultValue={etat?.donnees?.nom || ""} className={inputClass} />
       </label>
       
       <label className={labelClass}>
         Email
-        <input type="email" name="email" required defaultValue={etat?.donnees?.email || ""} className={inputClass} placeholder="votre@email.fr" />
+        <input type="email" name="email" required defaultValue={etat?.donnees?.email || ""} className={inputClass} />
       </label>
       
       <label className={labelClass}>
         Mot de passe
-        <input type="password" name="motDePasse" required defaultValue={etat?.donnees?.motDePasse || ""} className={inputClass} placeholder="••••••••" />
+        <input type="password" name="motDePasse" required defaultValue={etat?.donnees?.motDePasse || ""} className={inputClass} />
       </label>
       
       <label className={labelClass}>
         Confirmer le mot de passe
-        <input type="password" name="confirmationMotDePasse" required defaultValue={etat?.donnees?.confirmationMotDePasse || ""} className={inputClass} placeholder="••••••••" />
+        <input type="password" name="confirmationMotDePasse" required defaultValue={etat?.donnees?.confirmationMotDePasse || ""} className={inputClass} />
       </label>
       
       <label className="flex items-center text-sm cursor-pointer gap-2 text-white/70">
@@ -100,7 +100,7 @@ const BtnFormConnexion = () => {
 
   return (
     <>
-      <button type="button" onClick={() => setEstOuvert(true)} className="py-4 text-white link-animated md:py-0">
+      <button type="button" onClick={() => setEstOuvert(true)} className="py-4 text-white ">
           Connexion
       </button>
 
