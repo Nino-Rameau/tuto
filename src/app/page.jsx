@@ -1,3 +1,5 @@
+import { TbCurrencyEuroOff, TbBook } from "react-icons/tb"; 
+import { FaArrowUpRightDots, FaCode } from "react-icons/fa6";
 import prisma from '@/lib/prisma';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -66,13 +68,13 @@ const accueil = async () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <h2 className="text-center text-bleu">Pourquoi suivre nos tutoriels ?</h2>
+      <div className="flex flex-col gap-8 p-8 rounded-xl bg-linear-to-l from-bleu-clair via-bleu to-bleu-fonce">
+        <h2 className="text-center text-bleu-clair">Pourquoi suivre nos tutoriels ?</h2>
         <div className="flex flex-col items-center gap-6 md:flex-row">
-          <Avantage titre="Gratuit" texte="Des tutoriels gratuits pour apprendre sans effort." />
-          <Avantage titre="Pensé pour les débutants" texte="Des explications claires et accessibles pour tous les niveaux." />
-          <Avantage titre="Tutoriels concrets" texte="Des tutoriels pratiques et à jour pour progresser rapidement." />
-          <Avantage titre="Nouveaux tutoriels" texte="De nouveaux contenus ajoutés régulièrement pour rester à jour." />
+          <Avantage icone={<TbCurrencyEuroOff className="w-16 h-auto"/>} titre="Gratuit" texte="Accédez gratuitement à tous les tutoriels du site." />
+          <Avantage icone={<TbBook className="w-16 h-auto"/>} titre="Accessible aux débutants" texte="Apprenez facilement grâce à des explications simples et claires." />
+          <Avantage icone={<FaCode className="w-16 h-auto"/>} titre="Des projets concrets" texte="Progressez avec des tutoriels pratiques et applicables rapidement." />
+          <Avantage icone={<FaArrowUpRightDots className="w-16 h-auto"/>} titre="Du nouveau régulièrement" texte="Découvrez de nouveaux tutoriels ajoutés chaque semaine." />
         </div>
       </div>
       
@@ -84,7 +86,7 @@ const accueil = async () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-12 text-center">
           <h2 className="text-xl sm:text-3xl md:text-5xl">Prêt à commencer ?</h2>
           <p className='text-xl'>Rejoignez notre communauté et commencez votre parcours d&apos;apprentissage dès aujourd&apos;hui !</p>
-          <Btn lien="/tutoriels" taille="lg" arrondi='rounded-2xl' className='self-center'>
+          <Btn lien="/tutoriels" taille="lg" arrondi='rounded-2xl'>
             Découvrez tous nos tutoriels
           </Btn>
         </div>
