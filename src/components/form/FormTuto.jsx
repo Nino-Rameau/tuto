@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { creerTutoriel, mettreAJourTutoriel, creerCategorie } from '@/actions/tuto.actions';
 import Image from 'next/image';
 import { AiOutlineUpload } from "react-icons/ai"; 
+import Btn from '../ui/Btn';
 
 const Ckeditor = dynamic(() => import('@/components/layout/Ckeditor'), { 
     ssr: false,
@@ -307,14 +307,14 @@ const FormTuto = ({ categories, initialData = null }) => {
                 </button>
 
                 {isEditMode && initialData?.slug ? (
-                    <Link href={`/tutoriel/${initialData.slug}`} target='__blank' className='p-2 text-center rounded-md bg-bleu-fonce hover:bg-bleu'>
+                    <Btn lien={`/tutoriel/${initialData.slug}`} target='__blank' variante='secondaire'>
                         Voir le tutoriel
-                    </Link>
+                    </Btn>
                 ) : null}
 
-                <Link href="/admin" className='p-2 text-center rounded-md bg-bleu-fonce hover:bg-bleu'>
-                    Aller à la page liste
-                </Link>
+                <Btn lien="/admin" variante='secondaire'>
+                    Retour à la liste
+                </Btn>
             </div>
 
             {error ? <p className="font-medium text-red-600">{error}</p> : null}

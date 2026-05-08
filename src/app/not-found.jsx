@@ -1,12 +1,12 @@
-import Link from "next/link";
+import Btn from "@/components/ui/Btn";
 
 export default function erreur() {
     return (
         <div className="flex flex-col h-[50vh] items-center justify-center gap-10">
             <h1>Erreur 404 - Page non trouvée</h1>
-            <Link href="/" className="px-4 py-2 text-black rounded-full transition duration-300 bg-bleu-clair hover:bg-bleu-fonce hover:text-white hover:scale-110">
+            <Btn lien="/" variante="secondaire" taille="lg" arrondi="rounded-2xl">
                 Retour à l&apos;accueil
-            </Link>
+            </Btn>
         </div>
     );
 }

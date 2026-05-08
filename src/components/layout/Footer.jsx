@@ -13,7 +13,7 @@ const Footer = () => {
                 
                 <div className="flex flex-col gap-4 md:gap-2">
                     <Link href="/" className="items-center gap-2 link-animated max-w-max">Accueil</Link>
-                    <Link href="/tutoriel" className="items-center gap-2 link-animated max-w-max">Tutoriels</Link>
+                    <Link href="/tutoriels" className="items-center gap-2 link-animated max-w-max">Tutoriels</Link>
                     <Link href="/support-de-communication" className="items-center gap-2 link-animated max-w-max">Support de communication</Link>
                     <Link href="/mentions-legales" className="items-center gap-2 link-animated max-w-max">Mentions légales</Link>
                 </div>

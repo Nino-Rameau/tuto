@@ -1,10 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
 import BtnSuppTuto from "@/components/ui/BtnSuppTuto";
+import Btn from "../ui/Btn";
 
 const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, statut}) => {
     return (
-        <section className="flex flex-col justify-between p-5 gap-10 mx-10 md:mx-0 md:flex-row bg-bleu-fonce rounded-xl">
+        <section className="flex flex-col justify-between gap-10 p-5 mx-10 md:mx-0 md:flex-row bg-bleu-fonce rounded-xl">
             
             <Image src={image || "/img/placeholder-img.png"} alt="Visuel d'un tutoriel" width={200} height={120} className="object-cover w-auto h-40 mx-auto rounded" />
             
@@ -32,8 +32,13 @@ const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, 
             </div>
 
             <div className="flex flex-col justify-around gap-5">
-                <Link href={`/admin/${id}`} className="px-4 py-2 text-center text-white bg-bleu hover:bg-bleu/50 rounded-xl">Editer</Link>
-                <Link href={`/tutoriel/${slug}`} target="_blank" className="px-4 py-2 text-center text-white bg-green-600 hover:bg-green-600/50 rounded-xl">Afficher</Link>
+                <Btn lien={`/admin/${id}`} variante='bleu2' className="rounded-xl">
+                    Editer
+                </Btn>
+                <Btn lien={`/tutoriel/${slug}`} variante='vert' className="rounded-xl" target="_blank">
+                    Afficher
+                </Btn>
+
                 <BtnSuppTuto id={id} titre={titre} />
             </div>
 

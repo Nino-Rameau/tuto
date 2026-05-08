@@ -97,7 +97,7 @@ export async function creerTutoriel(dataTuto) {
         });
 
         revalidatePath("/admin");
-        revalidatePath("/tutoriel");
+        revalidatePath("/tutoriels");
         revalidatePath("/");
 
         return { success: true };
@@ -186,7 +186,7 @@ export async function mettreAJourTutoriel(donneesRecues) {
         });
 
         revalidatePath("/admin");
-        revalidatePath("/tutoriel");
+        revalidatePath("/tutoriels");
         revalidatePath("/");
         
         return { success: true };
@@ -254,7 +254,7 @@ export async function supprimerTutoriel(id) {
         });
 
         revalidatePath("/admin");
-        revalidatePath("/tutoriel");
+        revalidatePath("/tutoriels");
         revalidatePath("/");
 
         return { success: true };

@@ -38,7 +38,7 @@ const Header = ({session}) => {
                     bg-bleu-fonce2 w-full md:w-auto h-auto items-center md:shadow-none!
                     ${MenuBruger ? 'flex shadow-bottom-lg' : 'hidden'}`
                 }>
-                <Link href="/tutoriel" className={`py-4 text-white md:py-0 ${pathname.startsWith("/tutoriel") ? "nav-active" : "link-animated"}`} onClick={() => setMenuBurger(!MenuBruger)}> Nos tutoriels </Link>
+                <Link href="/tutoriels" className={`py-4 text-white md:py-0 ${pathname.startsWith("/tutoriels") ? "nav-active" : "link-animated"}`} onClick={() => setMenuBurger(!MenuBruger)}> Nos tutoriels </Link>
 
                 {!session && (
                     <FormConnexion />

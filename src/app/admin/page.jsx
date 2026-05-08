@@ -1,7 +1,7 @@
-import Link from "next/link";
 import TutoListe from "@/components/layout/CardListeTuto";
 import prisma from "@/lib/prisma";
 import TriTutoriels from "@/components/ui/TriTuto";
+import Btn from "@/components/ui/Btn";
 
 export const metadata = {
     title: "Administration | tuto",
@@ -40,9 +40,9 @@ const administration = async ({ searchParams }) => {
         <>
             <h1 className="my-10 text-center">Gestion des tutoriels :</h1>
             
-            <Link href="/admin/nouveau" className="px-4 py-2 font-bold text-white rounded bg-bleu hover:bg-bleu-fonce">
+            <Btn lien="/admin/nouveau" className="ml-4" variante="primaire">
                 Nouveau tutoriel
-            </Link>
+            </Btn>
 
             <div className="flex justify-end">
                 <TriTutoriels page="admin"/>
