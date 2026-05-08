@@ -12,7 +12,16 @@
   --font-texte: "Poppins", sans-serif;
 }
 
+@keyframes border-glow {
+  0%, 100% { box-shadow: 0 0 0 2px var(--color-bleu-clair); }
+  50%       { box-shadow: 0 0 8px 2px var(--color-bleu); }
+}
+
 @layer utilities {
+
+  .border-animee {
+    animation: border-glow 2s ease-in-out infinite;
+  }
   
   .shadow-bottom-lg {
     box-shadow: 0 10px 15px -3px var(--color-bleu-clair);

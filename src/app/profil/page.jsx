@@ -5,6 +5,7 @@ import FormChangerNom from "@/components/form/FormChangerNom";
 import FormChangerMotDePasse from "@/components/form/FormChangerMotDePasse";
 import FormSupprimerCompte from "@/components/form/FormSupprimerCompte";
 import Btn from "@/components/ui/Btn";
+import BtnHaut from "@/components/ui/BtnHautPage";
 
 export const metadata = {
     title: "Profil | tuto",
@@ -41,6 +42,8 @@ const profil = async ({ searchParams }) => {
 
     return (
         <>
+            <BtnHaut />
+
             <div className="w-full py-8">
                 <h1 className="text-center text-bleu-clair">Bienvenue sur votre profil, {session?.user?.nom || "utilisateur"} !</h1>
             </div>

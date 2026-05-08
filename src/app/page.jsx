@@ -44,13 +44,13 @@ const accueil = async () => {
       </div>
       
       <div className="flex flex-col gap-4">
-        <h2 className="text-center text-bleu">Nos derniers tutoriels :</h2>
+        <h2 className="text-center text-bleu-clair">Nos derniers tutoriels :</h2>
         <div className="flex flex-col justify-center gap-6 md:flex-row">
           {derniersTutos.map((tuto) => (
             <Link
               key={tuto.slug}
               href={`/tutoriels/${tuto.slug}`}
-              className="flex flex-col gap-3 overflow-hidden transition-colors duration-200 rounded-xl bg-bleu-fonce hover:bg-bleu md:w-1/3"
+              className="flex flex-col gap-3 overflow-hidden transition-colors duration-200 rounded-xl bg-bleu-fonce hover:bg-bleu border-animee md:w-1/3"
             >
               <Image
                 src={tuto.image || "/img/placeholder-img.png"}
@@ -68,7 +68,7 @@ const accueil = async () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-8 p-8 rounded-xl bg-linear-to-l from-bleu-clair via-bleu to-bleu-fonce">
+      <div className="flex flex-col gap-8 p-8 transition-transform duration-200 rounded-xl bg-radial border-animee from-bleu-clair via-bleu to-bleu-fonce">
         <h2 className="text-center text-bleu-clair">Pourquoi suivre nos tutoriels ?</h2>
         <div className="flex flex-col items-center gap-6 md:flex-row">
           <Avantage icone={<TbCurrencyEuroOff className="w-16 h-auto"/>} titre="Gratuit" texte="Accédez gratuitement à tous les tutoriels du site." />

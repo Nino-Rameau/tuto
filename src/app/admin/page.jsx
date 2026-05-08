@@ -2,6 +2,7 @@ import TutoListe from "@/components/layout/CardListeTuto";
 import prisma from "@/lib/prisma";
 import TriTutoriels from "@/components/ui/TriTuto";
 import Btn from "@/components/ui/Btn";
+import BtnHaut from "@/components/ui/BtnHautPage";
 
 export const metadata = {
     title: "Administration | tuto",
@@ -38,6 +39,8 @@ const administration = async ({ searchParams }) => {
 
     return (
         <>
+            <BtnHaut />
+
             <h1 className="my-10 text-center">Gestion des tutoriels :</h1>
             
             <Btn lien="/admin/nouveau" className="ml-4" variante="primaire">

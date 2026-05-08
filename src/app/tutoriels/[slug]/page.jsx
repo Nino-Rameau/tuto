@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import { auth} from "@/auth";
 import FormConnexion from "@/components/form/FormConnexion";
 import ContenuTutoriel from "@/components/layout/ContenuTutoriel";
+import BtnHaut from "@/components/ui/BtnHautPage";
 
 function extraireIdYoutube(urlVideo) {
     try {
@@ -115,61 +116,66 @@ export default async function TutorielDetailPage({ params }) {
     const preRequis = extrairePreRequis(tuto.pre_requis);
 
     return (
-        <article className="p-5 mx-auto space-y-4 max-w-7xl">
-            <div className="flex flex-col justify-between gap-4 md:flex-row">
-                <div className="md:max-w-[70%] flex flex-col gap-4">
-                    <h1>{tuto.titre}</h1>
-                    <p className="italic text-bleu-clair">{tuto.chapo}</p>
-                    
-                    <ul className="flex flex-wrap gap-2">
-                        {tuto.tuto_categories.map((item) => (
-                            <li key={item.categorie_id} className="px-3 py-1 font-bold rounded-full text-bleu-fonce bg-bleu-clair">
-                            {item.categorie.nom}
-                        </li>
-                        ))}
-                    </ul>
-                </div>
-
-                {preRequis.length > 0 ? (
-                    <div className="p-4 rounded-lg text-bleu-fonce bg-bleu-clair">
-                        <p className="mb-2 font-bold">Prérequis :</p>
-                        <ul className="pl-5 list-disc">
-                            {preRequis.map((item, index) => (
-                                <li key={`${item}-${index}`}>{item}</li>
+        <>
+            <BtnHaut />
+            
+            <article className="p-5 mx-auto space-y-4 max-w-7xl">
+                <div className="flex flex-col justify-between gap-4 md:flex-row">
+                    <div className="md:max-w-[70%] flex flex-col gap-4">
+                        <h1>{tuto.titre}</h1>
+                        <p className="italic text-bleu-clair">{tuto.chapo}</p>
+                        
+                        <ul className="flex flex-wrap gap-2">
+                            {tuto.tuto_categories.map((item) => (
+                                <li key={item.categorie_id} className="px-3 py-1 font-bold rounded-full text-bleu-fonce bg-bleu-clair">
+                                {item.categorie.nom}
+                            </li>
                             ))}
                         </ul>
                     </div>
+
+                    {preRequis.length > 0 ? (
+                        <div className="p-4 rounded-lg text-bleu-fonce bg-bleu-clair">
+                            <p className="mb-2 font-bold">Prérequis :</p>
+                            <ul className="pl-5 list-disc">
+                                {preRequis.map((item, index) => (
+                                    <li key={`${item}-${index}`}>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : (
+                        <div className="p-4 rounded-lg text-bleu-fonce bg-bleu-clair">
+                            <p className="mb-2 font-bold">Prérequis :</p>
+                            <p>Aucun prérequis nécessaire pour ce tutoriel.</p>
+                        </div>
+                    )}
+                </div>
+
+                <div className="p-4 my-6 border-l-4 rounded-lg border-bleu-clair bg-bleu">
+                    <p>Introduction :</p>
+                    <p>{tuto.intro}</p>
+                </div>
+
+                {session ? (
+                    <>
+                        <ContenuTutoriel
+                            tutoId={tuto.id}
+                            slug={tuto.slug}
+                            contenuFormater={contenuFormater}
+                            etatInitialTuto={etatInitialTuto}
+                        />
+                    </>
                 ) : (
-                    <div className="p-4 rounded-lg text-bleu-fonce bg-bleu-clair">
-                        <p className="mb-2 font-bold">Prérequis :</p>
-                        <p>Aucun prérequis nécessaire pour ce tutoriel.</p>
+                    <div className="flex flex-col gap-4">
+                        <h2>Vous devez être connecté pour accéder au contenu du tutoriel.</h2>
+                        <div>
+                            <FormConnexion />
+                        </div>
                     </div>
                 )}
-            </div>
 
-            <div className="p-4 my-6 border-l-4 rounded-lg border-bleu-clair bg-bleu">
-                <p>Introduction :</p>
-                <p>{tuto.intro}</p>
-            </div>
+            </article>
+        </>
 
-            {session ? (
-                <>
-                    <ContenuTutoriel
-                        tutoId={tuto.id}
-                        slug={tuto.slug}
-                        contenuFormater={contenuFormater}
-                        etatInitialTuto={etatInitialTuto}
-                    />
-                </>
-            ) : (
-                <div className="flex flex-col gap-4">
-                    <h2>Vous devez être connecté pour accéder au contenu du tutoriel.</h2>
-                    <div>
-                        <FormConnexion />
-                    </div>
-                </div>
-            )}
-
-        </article>
     );
 }
