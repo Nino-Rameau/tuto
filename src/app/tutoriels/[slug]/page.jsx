@@ -119,7 +119,7 @@ export default async function TutorielDetailPage({ params }) {
         <>
             <BtnHaut />
             
-            <article className="p-5 mx-auto space-y-4 max-w-7xl">
+            <article className="p-5 mx-auto mt-10 space-y-4 max-w-7xl">
                 <div className="flex flex-col justify-between gap-4 md:flex-row">
                     <div className="md:max-w-[70%] flex flex-col gap-4">
                         <h1>{tuto.titre}</h1>
@@ -135,7 +135,7 @@ export default async function TutorielDetailPage({ params }) {
                     </div>
 
                     {preRequis.length > 0 ? (
-                        <div className="p-4 rounded-lg text-bleu-fonce bg-bleu-clair">
+                        <div className="flex flex-col justify-center p-4 rounded-lg text-bleu-fonce bg-bleu-clair">
                             <p className="mb-2 font-bold">Prérequis :</p>
                             <ul className="pl-5 list-disc">
                                 {preRequis.map((item, index) => (

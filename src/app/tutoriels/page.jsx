@@ -102,7 +102,7 @@ const tutoriel = async ({ searchParams }) => {
                         <p className="px-2 line-clamp-3 h-19">{item.chapo}</p>
                         <div className="absolute flex flex-wrap justify-center gap-1 left-5 top-52">
                             {item.tuto_categories.map((tag, i) => (
-                                <span key={i} className="px-2 py-0.5 text-xs border border-bleu-fonce rounded-full text-bleu-fonce">
+                                <span key={i} className="px-2 py-0.5 text-xs border border-bleu-clair rounded-full text-bleu-clair">
                                     {tag.categorie.nom}
                                 </span>
                             ))}

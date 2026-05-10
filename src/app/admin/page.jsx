@@ -41,7 +41,7 @@ const administration = async ({ searchParams }) => {
         <>
             <BtnHaut />
 
-            <h1 className="my-10 text-center">Gestion des tutoriels :</h1>
+            <h1 className="my-10 text-center">Gestion des <span className="text-[2rem] font-titre font-black text-bleu">tutoriels</span>  :</h1>
             
             <Btn lien="/admin/nouveau" className="ml-4" variante="primaire">
                 Nouveau tutoriel

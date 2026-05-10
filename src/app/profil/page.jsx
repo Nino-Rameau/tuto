@@ -45,7 +45,7 @@ const profil = async ({ searchParams }) => {
             <BtnHaut />
 
             <div className="w-full py-8">
-                <h1 className="text-center text-bleu-clair">Bienvenue sur votre profil, {session?.user?.nom || "utilisateur"} !</h1>
+                <h1 className="text-center text-bleu-clair">Bienvenue sur votre profil, <span className="text-[2rem] font-titre font-black text-bleu">{session?.user?.nom || "utilisateur"}</span> !</h1>
             </div>
 
             <div className="flex flex-col md:flex-row">

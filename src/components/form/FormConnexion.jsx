@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { inscrireUtilisateur, connecterUtilisateur } from "@/actions/auth.actions";
 import { CgClose } from "react-icons/cg";
+import Btn from "@/components/ui/Btn";
 
 const inputClass = "w-full px-3 py-2 rounded-md bg-bleu-fonce border border-bleu text-white placeholder-gray-400 focus:outline-none focus:border-bleu-clair transition-colors duration-200";
 const labelClass = "flex flex-col gap-2 text-bleu-clair";
@@ -71,7 +72,7 @@ const FormInscription = ({ onSwitch }) => {
         <input type="password" name="confirmationMotDePasse" required defaultValue={etat?.donnees?.confirmationMotDePasse || ""} className={inputClass} />
       </label>
       
-      <label className="flex items-center text-sm cursor-pointer gap-2 text-white/70">
+      <label className="flex items-center gap-2 text-sm cursor-pointer text-white/70">
         <input type="checkbox" name="conditions" className="w-4 h-4 accent-bleu-clair" />
         J&apos;accepte les conditions RGPD
       </label>
@@ -100,9 +101,9 @@ const BtnFormConnexion = () => {
 
   return (
     <>
-      <button type="button" onClick={() => setEstOuvert(true)} className="py-4 text-white ">
-          Connexion
-      </button>
+      <Btn onClick={() => setEstOuvert(true)}>
+        Connexion
+      </Btn>
 
       {estOuvert && (
         <div className="fixed inset-0 flex items-center justify-center px-4 z-60 bg-black/70 backdrop-blur-sm" onClick={fermer}>

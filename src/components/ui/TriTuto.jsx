@@ -22,7 +22,7 @@ const TriTuto = ({ page }) => {
         routeur.push(`/${page}${query ? `?${query}` : ""}`, { scroll: false });
     };
 
-        if (page === "tutoriel") {
+        if (page === "tutoriels") {
             return (
                 <select
                     value={triActuel}

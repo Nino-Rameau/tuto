@@ -43,7 +43,7 @@ const FiltreCategories = ({ categories }) => {
                     </Link>
                 ))}
             </div>
-            <TriTuto page="tutoriel" />
+            <TriTuto page="tutoriels" />
         </div>
     );
 };

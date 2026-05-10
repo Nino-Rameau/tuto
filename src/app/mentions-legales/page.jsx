@@ -5,7 +5,7 @@ export const metadata = {
 
 const MentionsLegales = () => {
     return (
-        <div className="flex flex-col w-full py-10 mx-auto gap-8">
+        <div className="flex flex-col w-full gap-8 py-10 mx-auto">
             <h1 className="text-center">Mentions légales</h1>
 
             <div className="flex flex-col gap-3">
@@ -14,7 +14,7 @@ const MentionsLegales = () => {
                     Le site <strong>Nino Web Success</strong> (nws.nino-rameau.fr) est édité par <strong>Nino Rameau</strong>.
                 </p>
                 <p>
-                    Contact : <a href="mailto:nrameau@normandiewebschool.fr" className="underline text-bleu-clair">nrameau@normandiewebschool.fr</a>
+                    Contact : <span className="underline text-bleu-clair">nrameau@normandiewebschool.fr</span>
                 </p>
                 <p>
                     Ce site est un travail pédagogique sans objectifs commerciaux.
@@ -47,7 +47,7 @@ const MentionsLegales = () => {
                     Lors de la création d&apos;un compte, les données suivantes sont collectées : nom d&apos;utilisateur, adresse e-mail et mot de passe (chiffré). Ces données sont utilisées uniquement pour le fonctionnement du site (authentification, suivi de progression).
                 </p>
                 <p className="text-wrap">
-                    Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez : <a href="mailto:nrameau@normandiewebschool.fr" className="underline text-bleu-clair">nrameau@normandiewebschool.fr</a>
+                    Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez : <span className="underline text-bleu-clair">nrameau@normandiewebschool.fr</span>
                 </p>
                 <p>
                     Aucune donnée personnelle n&apos;est transmise à des tiers.

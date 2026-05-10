@@ -215,7 +215,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                         </div>
 
                         <label htmlFor="image" className="mb-1 font-semibold">Image :</label>
-                        <div className="h-full min-w-min md:w-[50%] rounded-lg border-2 border-dashed border-bleu-clair bg-gray-50 justify-center items-center">
+                        <div className="h-full min-w-min md:w-[50%] rounded-lg bg-gray-50 justify-center items-center">
                             <div className="relative flex flex-col items-center justify-center h-full gap-2 p-4">
                                 {imagePreview ? (
                                     <>
