@@ -68,11 +68,10 @@ export async function inscrireUtilisateur(etatPrecedent, formData) {
             }
         });
 
-        await signIn("credentials", {
-            email,
-            motDePasse,
-            redirectTo: "/" 
-        });
+        const retour = formData.get("redirectTo");
+        const redirectTo = retour?.startsWith("/") && !retour.startsWith("//") ? retour : "/tutoriels";
+
+        await signIn("credentials", { email, motDePasse, redirectTo });
 
     } catch (erreur) {
         if (erreur?.digest?.startsWith("NEXT_REDIRECT")) {
@@ -207,13 +206,11 @@ export async function connecterUtilisateur(etatPrecedent, formData) {
 
     const email = formData.get("email");
     const motDePasse = formData.get("motDePasse");
+    const retour = formData.get("redirectTo");
+    const redirectTo = retour?.startsWith("/") && !retour.startsWith("//") ? retour : "/tutoriels";
 
     try {
-        await signIn("credentials", {
-        email,
-        motDePasse,
-        redirectTo: "/" 
-        });
+        await signIn("credentials", { email, motDePasse, redirectTo });
     } catch (erreur) {
         if (erreur instanceof AuthError) {
         switch (erreur.type) {

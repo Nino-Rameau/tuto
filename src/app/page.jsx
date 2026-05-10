@@ -21,7 +21,7 @@ const accueil = async () => {
   });
 
   return (
-    <div className='flex flex-col gap-32'>
+    <div className='flex flex-col gap-32 overflow-x-hidden'>
       
       <div className="relative w-screen ml-[calc(50%-50vw)] h-[80vh] overflow-hidden shadow-bottom-lg">
         <Image src="/img/divers-site/accueil.png" alt="Image d'accueil" fill className="object-cover" />
@@ -43,21 +43,21 @@ const accueil = async () => {
         </div>
       </div>
       
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-8">
         <h2 className="text-center text-bleu-clair">Nos derniers tutoriels :</h2>
         <div className="flex flex-col justify-center gap-6 md:flex-row">
           {derniersTutos.map((tuto) => (
             <Link
               key={tuto.slug}
               href={`/tutoriels/${tuto.slug}`}
-              className="flex flex-col gap-3 overflow-hidden transition-colors duration-200 rounded-xl bg-bleu-fonce hover:bg-bleu border-animee md:w-1/3"
+              className="flex flex-col items-center gap-3 overflow-hidden transition-colors duration-200 rounded-xl bg-bleu-fonce hover:bg-bleu border-animee md:w-1/3"
             >
               <Image
                 src={tuto.image || "/img/placeholder-img.png"}
                 alt={tuto.titre}
                 width={500}
                 height={200}
-                className="object-cover w-full h-44"
+                className="rounded-xl"
               />
               <div className="flex flex-col gap-2 p-4">
                 <h3 className="text-lg font-bold line-clamp-2">{tuto.titre}</h3>

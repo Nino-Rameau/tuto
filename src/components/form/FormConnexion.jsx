@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import { usePathname } from "next/navigation";
 import { inscrireUtilisateur, connecterUtilisateur } from "@/actions/auth.actions";
 import { CgClose } from "react-icons/cg";
 import Btn from "@/components/ui/Btn";
@@ -11,11 +12,13 @@ const erreurClass = "px-3 py-2 text-red-400 rounded-md bg-red-900/50";
 const btnValiderClass = "w-full py-2 font-bold rounded-md bg-bleu-clair text-bleu-fonce2 hover:bg-bleu hover:text-white transition-all duration-200 disabled:opacity-50 cursor-pointer";
 const btnChangementFormClass = "text-bleu-clair underline decoration-bleu-clair/40 underline-offset-2 hover:decoration-bleu-clair transition-colors duration-200";
 
-const FormConnexion = ({ onSwitch }) => {
+const FormConnexion = ({ onSwitch, redirectTo }) => {
   const [etat, action, enAttente] = useActionState(connecterUtilisateur, null);
-  
+
   return (
     <form action={action} className="flex flex-col h-full gap-5">
+      <input type="hidden" name="redirectTo" value={redirectTo} />
+      
       <h2 className="text-center text-bleu-clair">Connexion</h2>
       
       {etat?.erreur && <p className={erreurClass}>{etat.erreur}</p>}
@@ -42,11 +45,12 @@ const FormConnexion = ({ onSwitch }) => {
   );
 };
 
-const FormInscription = ({ onSwitch }) => {
+const FormInscription = ({ onSwitch, redirectTo }) => {
   const [etat, action, enAttente] = useActionState(inscrireUtilisateur, null);
 
   return (
     <form action={action} className="flex flex-col h-full gap-4">
+      <input type="hidden" name="redirectTo" value={redirectTo} />
       
       <h2 className="text-center text-bleu-clair">Créer un compte</h2>
       
@@ -93,6 +97,7 @@ const FormInscription = ({ onSwitch }) => {
 const BtnFormConnexion = () => {
   const [estOuvert, setEstOuvert] = useState(false);
   const [estRetourne, setEstRetourne] = useState(false);
+  const pathname = usePathname();
 
   const fermer = () => {
     setEstOuvert(false);
@@ -127,7 +132,7 @@ const BtnFormConnexion = () => {
                   <button type="button" onClick={fermer} className="absolute transition-colors top-4 right-4 text-bleu-clair/60 hover:text-bleu-clair">
                     <CgClose className="w-5 h-5" />
                   </button>
-                  <FormConnexion onSwitch={() => setEstRetourne(true)} />
+                  <FormConnexion onSwitch={() => setEstRetourne(true)} redirectTo={pathname} />
                 </div>
 
                 {/* verso — inscription */}
@@ -139,7 +144,7 @@ const BtnFormConnexion = () => {
                   <button type="button" onClick={fermer} className="absolute transition-colors top-4 right-4 text-bleu-clair/60 hover:text-bleu-clair">
                     <CgClose className="w-5 h-5" />
                   </button>
-                  <FormInscription onSwitch={() => setEstRetourne(false)} />
+                  <FormInscription onSwitch={() => setEstRetourne(false)} redirectTo={pathname} />
                 </div>
 
               </div>
