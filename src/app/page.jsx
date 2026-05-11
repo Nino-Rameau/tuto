@@ -21,7 +21,7 @@ const accueil = async () => {
   });
 
   return (
-    <div className='flex flex-col gap-32 overflow-x-hidden'>
+    <div className='flex flex-col gap-32'>
       
       <div className="relative w-screen ml-[calc(50%-50vw)] h-[80vh] overflow-hidden shadow-bottom-lg">
         <Image src="/img/divers-site/accueil.png" alt="Image d'accueil" fill className="object-cover" />
