@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import TriTutoriels from "@/components/ui/TriTuto";
@@ -15,6 +16,7 @@ export const metadata = {
 const profil = async ({ searchParams }) => {
     const { tri } = await searchParams;
     const session = await auth();
+    if (!session) redirect("/");
 
     const orderBy =
         tri === "titre_az" ? { tuto: { titre: "asc" } }
