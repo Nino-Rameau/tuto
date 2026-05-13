@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import BtnConfettis from "@/components/ui/BtnConfettis";
 
 const varianteBtn = {
     primaire:   "bg-bleu hover:bg-bleu-fonce text-white",
@@ -9,6 +10,7 @@ const varianteBtn = {
     clair:      "bg-bleu-clair text-bleu-fonce2 hover:bg-bleu hover:text-white",
     vert:       "bg-green-800 hover:bg-green-900 text-white",
     bleu2:      "bg-bleu text-white hover:bg-bleu/50",
+    confettis:      "bg-bleu hover:bg-bleu-fonce text-white",
 };
 
 const tailleBtn = {
@@ -17,20 +19,24 @@ const tailleBtn = {
     lg: "px-6 py-3 text-lg",
 };
 
-const Btn = ({ children, lien, variante = "primaire", taille = "md", arrondi = "rounded-md", onClick, target, className = "" }) => {
-    const classes = [
-        varianteBtn[variante],
-        tailleBtn[taille],
-        arrondi,
-        "text-center transition-colors duration-200 cursor-pointer",
-        className,
-    ].filter(Boolean).join(" ");
+
+const Btn = ({ children, lien, variante = "primaire", taille = "md", arrondi = "rounded-md", onClick, target, className = "", burstIcon = "/img/ampoule.svg" }) => {
+    
+    const classes = [varianteBtn[variante], tailleBtn[taille], arrondi, 
+                    "text-center transition-colors duration-200 cursor-pointer", className]
+                    .filter(Boolean).join(" ");
 
     if (lien) {
+        return <Link href={lien} target={target} className={classes}>{children}</Link>;
+    }
+
+    if (variante === "confettis") {
         return (
-            <Link href={lien} target={target} className={classes}>
-                {children}
-            </Link>
+            <BtnConfettis burstIcon={burstIcon} onClick={onClick}>
+                <button type="button" className={classes}>
+                    {children}
+                </button>
+            </BtnConfettis>
         );
     }
 

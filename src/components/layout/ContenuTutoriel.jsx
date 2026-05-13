@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { demarrerTutoriel, validerTutoriel } from '@/actions/progression.action';
+import Btn from '@/components/ui/Btn';
 
 export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatInitialTuto }) {
     
@@ -57,12 +58,15 @@ export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatIni
 
             if (!result?.success) {
                 setErreur(result?.error || 'Une erreur est survenue.');
+                setEnChargement(false);
             } else {
-                setEtatTuto('termine');
+                setTimeout(() => {
+                    setEtatTuto('termine');
+                    setEnChargement(false);
+                }, 2000);
             }
         } catch (err) {
             setErreur('Erreur inattendue.');
-        } finally {
             setEnChargement(false);
         }
     };
@@ -85,23 +89,19 @@ export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatIni
                 <section className="tutoriel-contenu" dangerouslySetInnerHTML={{ __html: contenuFormater }} />
             ) : null}
 
+            <div className='mt-20'>
+                {estCommence && !estTermine ? (
+                    <Btn onClick={TerminerTuto} disabled={enChargement} variante="confettis" burstIcon="/img/ampoule.svg">
+                        {enChargement ? 'Validation en cours...' : 'Terminer le tutoriel'}
+                    </Btn>
+                ) : null}
 
-            {estCommence && !estTermine ? (
-                <button
-                    type="button"
-                    onClick={TerminerTuto}
-                    disabled={enChargement}
-                    className="p-3 text-white rounded-full cursor-pointer bg-bleu hover:bg-bleu-fonce"
-                >
-                    {enChargement ? 'Validation en cours...' : 'Terminer le tutoriel'}
-                </button>
-            ) : null}
+                {estTermine ? (
+                    <p className="font-semibold text-bleu-clair">Tutoriel terminé.</p>
+                ) : null}
 
-            {estTermine ? (
-                <p className="font-semibold text-bleu-fonce">Tutoriel terminé.</p>
-            ) : null}
-
-            {erreur ? <p className="font-medium text-red-600">{erreur}</p> : null}
+                {erreur ? <p className="font-medium text-red-600">{erreur}</p> : null}
+            </div>
         </>
     );
 }
