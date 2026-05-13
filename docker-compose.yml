@@ -37,6 +37,7 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_URL: mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:3306/${DATABASE_NAME}
       AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_URL: https://${DOMAIN}
       AUTH_TRUST_HOST: "true"
     volumes:
       - uploads:/app/public/img/img-tuto
