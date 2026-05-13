@@ -51,13 +51,7 @@ function extrairePreRequis(texte) {
     return texte.split("\n").filter(Boolean);
 }
 
-export async function generateStaticParams() {
-    const tutos = await prisma.tuto.findMany({
-        select: { slug: true },
-        where: { statut: "en_ligne" },
-    });
-    return tutos.map((tuto) => ({ slug: tuto.slug }));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
