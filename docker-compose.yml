@@ -1,0 +1,60 @@
+services:
+  db:
+    image: mariadb:11
+    container_name: tuto_db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DATABASE_NAME}
+      MARIADB_USER: ${DATABASE_USER}
+      MARIADB_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 15s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tuto_app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_URL: mysql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:3306/${DATABASE_NAME}
+      AUTH_SECRET: ${AUTH_SECRET}
+    volumes:
+      - uploads:/app/public/img/img-tuto
+    networks:
+      - traefik
+      - internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tuto.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.tuto.entrypoints=websecure"
+      - "traefik.http.routers.tuto.tls.certresolver=letsencrypt"
+      - "traefik.http.services.tuto.loadbalancer.server.port=3000"
+
+volumes:
+  db_data:
+  uploads:
+
+networks:
+  traefik:
+    external: true
+  internal:
+    driver: bridge
