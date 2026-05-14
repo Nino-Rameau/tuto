@@ -7,7 +7,9 @@ const adapter = new PrismaMariaDb({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
-  connectionLimit: 10,
+  connectionLimit: 5,
+  minimumIdle: 0,
+  idleTimeout: 21600000, // 6h — aligné sur la durée des sessions NextAuth
 });
 
 const prisma = global.prisma || new PrismaClient({ adapter });
