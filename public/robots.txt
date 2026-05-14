@@ -1,5 +1,8 @@
 User-agent: *
+
 Disallow: /admin
 Disallow: /profil
 Disallow: /api/
+Disallow: /*?*
+
 Allow: /

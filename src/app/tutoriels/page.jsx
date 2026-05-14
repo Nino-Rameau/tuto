@@ -73,7 +73,7 @@ const tutoriel = async ({ searchParams }) => {
     return (
         <div className="flex flex-col items-center md:p-5">
 
-            <div className="flex flex-col items-center justify-center my-5 mt-5 md:flex-row">
+            <div className="flex flex-col items-center justify-center gap-10 my-5 mt-5 md:flex-row">
                 <div className="md:max-w-[40%] flex flex-col gap-5">
                     <h1 className="font-bold text-center">Tous les <span className="text-[2rem] font-titre font-black text-bleu">tutoriels</span> :</h1>
                     <p>Apprends à référencer et déployer tes projets web efficacement.</p>
@@ -91,14 +91,14 @@ const tutoriel = async ({ searchParams }) => {
                 <p className="mt-5 text-bleu-clair">Connectez-vous pour filtrer par progression.</p>
             )}
 
-            <div className="flex flex-wrap justify-center gap-4 mt-5">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-4 mt-5">
                 {tutos.map((item) => (
                     <Link
                         key={item.id}
                         href={`/tutoriels/${item.slug}`}
                         className="w-[90%] relative md:w-full max-w-md flex flex-col items-center gap-4 pt-2 rounded-md bg-bleu hover:bg-bleu-fonce hover:text-bleu-clair! transform transition duration-300"
                     >
-                        <h2 className="h-20 text-center line-clamp-2 text-bleu-fonce2">{item.titre}</h2>
+                        <h2 className="h-20 text-center line-clamp-2 text-bleu-clair">{item.titre}</h2>
                         <p className="px-2 line-clamp-3 h-19">{item.chapo}</p>
                         <div className="absolute flex flex-wrap justify-center gap-1 left-5 top-52">
                             {item.tuto_categories.map((tag, i) => (

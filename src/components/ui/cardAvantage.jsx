@@ -1,7 +1,7 @@
 
 const Avantage = ({ titre, texte, icone }) => {
     return (
-        <div className="flex flex-col gap-2 p-4 text-center transition-colors duration-200 w-3xl bg-bleu-fonce2 rounded-xl hover:scale-110">
+        <div className="flex flex-col gap-2 p-4 text-center transition-colors duration-200 w-full bg-bleu-fonce2 rounded-xl hover:scale-110">
             <div className="flex items-center justify-center mx-auto text-bleu">
                 {icone}
             </div>
