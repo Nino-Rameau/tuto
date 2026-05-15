@@ -84,7 +84,7 @@ const profil = async ({ searchParams }) => {
                         </div>
 
                         <div>
-                            <div className="flex flex-row justify-end">
+                            <div className="flex flex-row justify-center md:justify-end">
                                 {progressions.length > 0 && <TriTutoriels page="profil" />}
                             </div>
 

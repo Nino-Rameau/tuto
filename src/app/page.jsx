@@ -70,7 +70,7 @@ const accueil = async () => {
 
       <div className="flex flex-col gap-8 p-8 m-4 transition-transform duration-200 md:m-0 rounded-xl bg-radial border-animee from-bleu-clair via-bleu to-bleu-fonce">
         <h2 className="text-center text-bleu-clair">Pourquoi suivre nos tutoriels ?</h2>
-        <div className="flex flex-col items-center gap-6 md:flex-row">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
           <Avantage icone={<TbCurrencyEuroOff className="w-16 h-auto"/>} titre="Gratuit" texte="Accédez gratuitement à tous les tutoriels du site." />
           <Avantage icone={<TbBook className="w-16 h-auto"/>} titre="Accessible aux débutants" texte="Apprenez facilement grâce à des explications simples et claires." />
           <Avantage icone={<FaCode className="w-16 h-auto"/>} titre="Des projets concrets" texte="Progressez avec des tutoriels pratiques et applicables rapidement." />
