@@ -140,7 +140,7 @@ const FormTuto = ({ categories, initialData = null }) => {
             {isEditMode ? <input type="hidden" name="id" value={initialData.id} /> : null}
             {isEditMode ? <input type="hidden" name="currentImage" value={initialData.image || ''} /> : null}
 
-            <div className="gap-8 py-1 rounded-md md:py-8 bg-bleu-fonce">
+            <div className="py-1 gap-8 max-w-[95%] items-center rounded-md md:py-8 bg-bleu-fonce">
                 <h2 className='px-8 pb-4'>Contenu du tutoriel :</h2>
                 <div className='flex flex-col p-1 border-t md:flex-row md:p-8 md:gap-8'>
                     <div className="flex flex-col flex-1 gap-4">
@@ -271,7 +271,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                 </div>
             </div>
 
-            <div className='py-8 rounded-md bg-bleu-fonce'>
+            <div className='py-8 max-w-[95%] rounded-md bg-bleu-fonce'>
                 <h2 className='px-8 pb-4'>Balise meta pour le SEO du tutoriel :</h2>
                 <div className='flex flex-col justify-between gap-8 px-8 pt-4 border-t md:flex-row'>
                     <div className="flex flex-col flex-1">
@@ -286,7 +286,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                 </div>
             </div>
 
-            <div className="flex flex-col mt-4">
+            <div className="flex max-w-[95%] flex-col mt-4">
                 <label htmlFor="contenu" className="mb-1 font-semibold">Contenu :</label>
                 <Ckeditor value={contenu} onChange={setContenu} slug={slugNom} />
             </div>

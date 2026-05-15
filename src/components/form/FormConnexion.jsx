@@ -76,7 +76,7 @@ const FormInscription = ({ onSwitch, redirectTo }) => {
         <input type="password" name="confirmationMotDePasse" required defaultValue={etat?.donnees?.confirmationMotDePasse || ""} className={inputClass} />
       </label>
       
-      <label className="flex items-center gap-2 text-sm cursor-pointer text-white/70">
+      <label className="flex items-center text-sm cursor-pointer gap-2 text-white/70">
         <input type="checkbox" name="conditions" className="w-4 h-4 accent-bleu-clair" />
         J&apos;accepte les conditions RGPD
       </label>
@@ -106,7 +106,7 @@ const BtnFormConnexion = () => {
 
   return (
     <>
-      <Btn onClick={() => setEstOuvert(true)}>
+      <Btn onClick={() => setEstOuvert(true)} className="my-4 md:my-0">
         Connexion
       </Btn>
 

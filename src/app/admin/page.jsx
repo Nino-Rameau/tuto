@@ -47,11 +47,11 @@ const administration = async ({ searchParams }) => {
 
             <h1 className="my-10 text-center">Gestion des <span className="text-[2rem] font-titre font-black text-bleu">tutoriels</span>  :</h1>
             
-            <Btn lien="/admin/nouveau" className="ml-4" variante="primaire">
-                Nouveau tutoriel
-            </Btn>
+            <div className="flex flex-row justify-between gap-8 max-w-[90%]">
+                <Btn lien="/admin/nouveau" className="ml-4" variante="primaire">
+                    Nouveau tutoriel
+                </Btn>
 
-            <div className="flex justify-end">
                 <TriTutoriels page="admin"/>
             </div>
             

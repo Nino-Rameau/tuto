@@ -11,7 +11,7 @@ export const metadata = {
 
 const SupportDeCommunication = () => {
     return (
-        <div className="mx-auto flex flex-col gap-10 mt-10">
+        <div className="flex flex-col mx-auto mt-10 gap-10">
 
             <h1 className="text-center"> Support de communication </h1>
 

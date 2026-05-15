@@ -65,11 +65,11 @@ const profil = async ({ searchParams }) => {
                     </div>
                 </div>
 
-                <div className="flex flex-col w-full mx-10 mt-5 gap-15">
+                <div className="flex flex-col w-full mx-3 mt-5 md:mx-10 gap-15">
 
                     <div className="flex flex-col gap-10">
                         <h2 id="tutoriels" className="scroll-mt-40 text-bleu-clair">Mes tutoriels</h2>
-                        <div className="flex flex-row gap-10">
+                        <div className="flex flex-row flex-wrap items-center justify-center gap-4">
                             <Btn lien="/profil" variante="contour">
                                 Tous mes tutoriels : {progressions.length}
                             </Btn>
@@ -89,14 +89,14 @@ const profil = async ({ searchParams }) => {
                             </div>
 
                             {progressionsAffichees.length > 0 ? (
-                                <div className="flex flex-col gap-5 my-5">
+                                <div className="flex flex-col justify-center gap-5 my-5">
                                     {progressionsAffichees.map((progression) => (
-                                        <div key={progression.id} className="flex flex-row justify-between p-3 border-2 rounded border-bleu-fonce">
-                                            <div className="flex flex-col gap-4 max-w-[70%] md:max-w-[80%]">
+                                        <div key={progression.id} className="flex flex-col justify-center gap-6 p-3 border-2 rounded md:gap-0 md:justify-between md:flex-row border-bleu-fonce max-w-[90%]">
+                                            <div className="flex flex-col gap-4 md:max-w-[80%]">
                                                 <h2>{progression.tuto.titre}</h2>
                                                 <p>{progression.tuto.chapo}</p>
                                             </div>
-                                            <div className="flex flex-col items-end justify-between gap-3">
+                                            <div className="flex flex-col items-start justify-between gap-3 md:items-end">
                                                 <p className="px-2 py-1 border-2 rounded text-[12px] border-bleu-fonce">
                                                     {progression.etat === "en_cours" ? "En cours" : "Terminé"}
                                                 </p>

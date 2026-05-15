@@ -4,7 +4,7 @@ import Btn from "../ui/Btn";
 
 const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, statut}) => {
     return (
-        <section className="flex flex-col justify-between gap-10 p-5 mx-10 md:mx-0 md:flex-row bg-bleu-fonce rounded-xl">
+        <section className="flex flex-col justify-between gap-10 p-5 mx-5 md:mx-0 md:flex-row bg-bleu-fonce rounded-xl">
             
             <Image src={image || "/img/placeholder-img.png"} alt="Visuel d'un tutoriel" width={200} height={120} className="object-cover w-auto h-40 mx-auto rounded" />
             

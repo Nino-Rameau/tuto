@@ -73,7 +73,7 @@ const tutoriel = async ({ searchParams }) => {
     return (
         <div className="flex flex-col items-center md:p-5">
 
-            <div className="flex flex-col items-center justify-center gap-10 my-5 mt-5 md:flex-row">
+            <div className="flex flex-col items-center justify-center gap-10 mx-5 my-5 mt-5 md:mx-0 md:flex-row">
                 <div className="md:max-w-[40%] flex flex-col gap-5">
                     <h1 className="font-bold text-center">Tous les <span className="text-[2rem] font-titre font-black text-bleu">tutoriels</span> :</h1>
                     <p>Apprends à référencer et déployer tes projets web efficacement.</p>
@@ -82,7 +82,6 @@ const tutoriel = async ({ searchParams }) => {
                 <div className="md:max-w-[50%]">
                     <Image src="/img/divers-site/img-dashboard-page-liste.png" alt="Image d'illustration pour la page des tutoriels" width={600} height={500} />
                 </div>
-
             </div>
 
             <FiltreCategories categories={categories}/>
@@ -91,7 +90,7 @@ const tutoriel = async ({ searchParams }) => {
                 <p className="mt-5 text-bleu-clair">Connectez-vous pour filtrer par progression.</p>
             )}
 
-            <div className="flex flex-wrap justify-center gap-8 md:gap-4 mt-5">
+            <div className="flex flex-wrap justify-center gap-8 mt-5 md:gap-4">
                 {tutos.map((item) => (
                     <Link
                         key={item.id}
