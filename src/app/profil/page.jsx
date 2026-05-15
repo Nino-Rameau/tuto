@@ -120,17 +120,17 @@ const profil = async ({ searchParams }) => {
                     <div className="flex flex-col gap-10">
                         <h2 id="securite" className="scroll-mt-40 text-bleu-clair">Sécurité</h2>
 
-                        <div className="flex flex-col gap-4 p-4 border-2 rounded-md border-bleu-fonce">
+                        <div className="flex flex-col gap-4 p-2 border-2 max-w-[90%] rounded-md md:p-4 border-bleu-fonce">
                             <h3 id="changer-pseudo" className="scroll-mt-40 text-bleu-clair">Changer de pseudo :</h3>
                             <FormChangerNom />
                         </div>
 
-                        <div className="flex flex-col gap-4 p-4 border-2 rounded-md border-bleu-fonce">
+                        <div className="flex flex-col gap-4 p-2 border-2 max-w-[90%] rounded-md md:p-4 border-bleu-fonce">
                             <h3 id="changer-mdp" className="scroll-mt-40 text-bleu-clair">Changer de mot de passe :</h3>
                             <FormChangerMotDePasse />
                         </div>
                         
-                        <div className="flex flex-col gap-4 p-4 border-2 rounded-md border-bleu-fonce">  
+                        <div className="flex flex-col gap-4 p-2 border-2 max-w-[90%] rounded-md md:p-4 border-bleu-fonce">  
                             <h3 id="supprimer-compte" className="scroll-mt-40 text-bleu-clair">Supprimer le compte :</h3>
                             <FormSupprimerCompte />
                         </div>
