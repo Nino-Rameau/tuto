@@ -9,6 +9,9 @@ import Avantage from '@/components/ui/cardAvantage';
 export const metadata = {
   title: "Accueil | tuto",
   description: "meta description de la page d'accueil",
+  alternates: {
+        canonical: "https://nws.nino-rameau.fr",
+    },
 };
 
 const accueil = async () => {

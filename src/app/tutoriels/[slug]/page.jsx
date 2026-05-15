@@ -68,6 +68,9 @@ export async function generateMetadata({ params }) {
     return {
         title: tuto.MetaTitle || `${tuto.titre} | tuto`,
         description: tuto.MetaDescription || tuto.chapo,
+        alternates: {
+            canonical: "https://nws.nino-rameau.fr/tutoriels/" + slug,
+        },
     };
 }
 

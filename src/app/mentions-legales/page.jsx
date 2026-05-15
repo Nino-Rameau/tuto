@@ -1,6 +1,9 @@
 export const metadata = {
     title: "Mentions légales | Nino Web Success",
     description: "Mentions légales du site Nino Web Success.",
+    alternates: {
+        canonical: "https://nws.nino-rameau.fr/mentions-legales",
+    },
 };
 
 const MentionsLegales = () => {

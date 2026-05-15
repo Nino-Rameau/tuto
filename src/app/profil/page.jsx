@@ -15,6 +15,9 @@ export const metadata = {
         index: false,
         follow: false,
     },
+    alternates: {
+        canonical: "https://nws.nino-rameau.fr/profil",
+    },
 };
 
 const profil = async ({ searchParams }) => {

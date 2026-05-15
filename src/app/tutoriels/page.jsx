@@ -7,6 +7,9 @@ import FiltreCategories from "@/components/ui/FiltreCategories";
 export const metadata = {
     title: "Tutoriels | tuto",
     description: "",
+    alternates: {
+        canonical: "https://nws.nino-rameau.fr/tutoriels",
+    },
 };
 
 const tutoSelect = {

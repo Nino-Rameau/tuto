@@ -7,11 +7,14 @@ export const metadata = {
         index: false,
         follow: false,
     },
+    alternates: {
+        canonical: "https://nws.nino-rameau.fr/support-de-communication",
+    },
 };
 
 const SupportDeCommunication = () => {
     return (
-        <div className="flex flex-col mx-auto mt-10 gap-10">
+        <div className="flex flex-col gap-10 mx-auto mt-10">
 
             <h1 className="text-center"> Support de communication </h1>
 
@@ -32,7 +35,7 @@ const SupportDeCommunication = () => {
 
                 <p> Retrouvez ci-dessous les deux documents qui structurent notre stratégie éditoriale sur Instagram : </p>
 
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col gap-4 sm:flex-row">
                     <Btn lien="/document/charte-editoriale.pdf">
                         Télécharger la charte éditoriale
                     </Btn>
