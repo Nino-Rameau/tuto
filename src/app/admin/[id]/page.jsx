@@ -7,6 +7,10 @@ export async function generateMetadata({ params }) {
     return {
         title: `Edition | ${id}`,
         description: "Edition d'un tutoriel",
+        robots: {
+            index: false,
+            follow: false,
+        },
     };
 }
 

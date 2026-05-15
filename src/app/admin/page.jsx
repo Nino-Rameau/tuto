@@ -7,6 +7,10 @@ import BtnHaut from "@/components/ui/BtnHautPage";
 export const metadata = {
     title: "Administration | tuto",
     description: "",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 const administration = async ({ searchParams }) => {

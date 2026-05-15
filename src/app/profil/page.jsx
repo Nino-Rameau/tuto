@@ -11,6 +11,10 @@ import BtnHaut from "@/components/ui/BtnHautPage";
 export const metadata = {
     title: "Profil | tuto",
     description: "",
+    robots: {
+        index: false,
+        follow: false,
+    },
 };
 
 const profil = async ({ searchParams }) => {
