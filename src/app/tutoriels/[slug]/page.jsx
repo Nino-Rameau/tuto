@@ -116,7 +116,7 @@ export default async function TutorielDetailPage({ params }) {
         <>
             <BtnHaut />
             
-            <article className="p-5 mx-auto mt-10 space-y-4 max-w-7xl">
+            <article className="p-5 mx-auto mt-10 space-y-4">
                 <div className="flex flex-col justify-between gap-4 md:flex-row">
                     <div className="md:max-w-[70%] flex flex-col gap-4">
                         <h1>{tuto.titre}</h1>
