@@ -81,6 +81,29 @@
   font-family: inherit !important;
 }
 
+/* style des blocs astuce / important / info */
+.tutoriel-contenu .bloc-astuce {
+  background-color: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  padding: 1.5rem;
+  color: #000000;
+  margin: 1.5rem 0;
+}
+.tutoriel-contenu .bloc-important {
+  background-color: #fff7ed;
+  border-left: 4px solid #f97316;
+  padding: 1.5rem;
+  color: #000000;
+  margin: 1.5rem 0;
+}
+.tutoriel-contenu .bloc-info {
+  background-color: #f0fdf4;
+  border-left: 4px solid #22c55e;
+  padding: 1.5rem;
+  color: #000000;
+  margin: 1.5rem 0;
+}
+
 /* style des blocs de code */
 .tutoriel-contenu pre {
   position: relative;

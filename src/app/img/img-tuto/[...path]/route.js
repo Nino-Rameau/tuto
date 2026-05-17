@@ -16,7 +16,8 @@ const MIME = {
 };
 
 export async function GET(_, { params }) {
-    const chemin = dossier + '/' + (await params.path).join('/');
+    const { path } = await params;
+    const chemin = dossier + '/' + path.join('/');
 
     if (!chemin.startsWith(dossier)) return new NextResponse(null, { status: 403 });
 

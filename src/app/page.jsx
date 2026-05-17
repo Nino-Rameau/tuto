@@ -36,7 +36,7 @@ const accueil = async () => {
             Apprenez, créez, progressez
           </h1>
           
-          <p className="text-xl sm:text-2xl md:text-4xl">
+          <p className="font-semibold text-xl sm:text-2xl md:text-4xl">
             Des tutoriels concrets sur le développement web.
           </p>
 

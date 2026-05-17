@@ -105,26 +105,26 @@ const Ckeditor = ({ onChange, value, slug = '' }) => {
                 }
                 
                 /* styles pour les blocs d'astuces, important, info */
-                .ck-content .bg-blue-50 { 
-                    background-color: #eff6ff !important; 
-                    border-left: 4px solid #3b82f6 !important; 
-                    padding: 1.5rem !important; 
-                    color: #000000 !important; 
-                    margin: 1.5rem 0 !important; 
+                .ck-content .bloc-astuce {
+                    background-color: #eff6ff !important;
+                    border-left: 4px solid #3b82f6 !important;
+                    padding: 1.5rem !important;
+                    color: #000000 !important;
+                    margin: 1.5rem 0 !important;
                 }
-                .ck-content .bg-orange-50 { 
-                    background-color: #fff7ed !important; 
-                    border-left: 4px solid #f97316 !important; 
-                    padding: 1.5rem !important; 
-                    color: #000000 !important; 
-                    margin: 1.5rem 0 !important; 
+                .ck-content .bloc-important {
+                    background-color: #fff7ed !important;
+                    border-left: 4px solid #f97316 !important;
+                    padding: 1.5rem !important;
+                    color: #000000 !important;
+                    margin: 1.5rem 0 !important;
                 }
-                .ck-content .bg-green-50 { 
-                    background-color: #f0fdf4 !important; 
-                    border-left: 4px solid #22c55e !important; 
-                    padding: 1.5rem !important; 
-                    color: #000000 !important; 
-                    margin: 1.5rem 0 !important; 
+                .ck-content .bloc-info {
+                    background-color: #f0fdf4 !important;
+                    border-left: 4px solid #22c55e !important;
+                    padding: 1.5rem !important;
+                    color: #000000 !important;
+                    margin: 1.5rem 0 !important;
                 }
 
                 /* styles pour les blocs de code */
@@ -189,9 +189,9 @@ const Ckeditor = ({ onChange, value, slug = '' }) => {
                     },
                     style: {
                         definitions: [
-                            { name: 'Astuce', element: 'p', classes: ['bg-blue-50 text-bleu-fonce border-l-4 border-blue-500 p-4 rounded m-2'] },
-                            { name: 'Important', element: 'p', classes: ['bg-orange-50 text-bleu-fonce border-l-4 border-orange-500 p-4 rounded m-2'] },
-                            { name: 'Information', element: 'p', classes: ['bg-green-50 text-bleu-fonce border-l-4 border-green-500 p-4 rounded m-2'] }
+                            { name: 'Astuce', element: 'p', classes: ['bloc-astuce'] },
+                            { name: 'Important', element: 'p', classes: ['bloc-important'] },
+                            { name: 'Information', element: 'p', classes: ['bloc-info'] }
                         ]
                     },
                     fontSize: {
