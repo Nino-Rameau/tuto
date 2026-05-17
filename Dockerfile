@@ -25,7 +25,7 @@ COPY docker/entrypoint.sh ./entrypoint.sh
 RUN useradd -r -u 1001 nextjs && \
     chmod +x ./entrypoint.sh && \
     mkdir -p ./public/img/img-tuto && \
-    chown -R nextjs:nextjs .
+    chown -R nextjs:nextjs .next public entrypoint.sh package.json
 
 USER nextjs
 EXPOSE 3000

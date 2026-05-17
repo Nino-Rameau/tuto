@@ -72,7 +72,7 @@ const profil = async ({ searchParams }) => {
 
                     <div className="flex flex-col gap-10">
                         <h2 id="tutoriels" className="scroll-mt-40 text-bleu-clair">Mes tutoriels</h2>
-                        <div className="flex flex-row flex-wrap items-center justify-center gap-4">
+                        <div className="flex flex-row flex-wrap items-center justify-center md:justify-start gap-4">
                             <Btn lien="/profil" variante="contour">
                                 Tous mes tutoriels : {progressions.length}
                             </Btn>
