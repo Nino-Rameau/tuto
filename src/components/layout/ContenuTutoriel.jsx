@@ -1,16 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { demarrerTutoriel, validerTutoriel } from '@/actions/progression.action';
 import Btn from '@/components/ui/Btn';
 
 export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatInitialTuto }) {
-    
+
     const [etatTuto, setEtatTuto] = useState(etatInitialTuto || null);
 
-    useEffect(() => {
-        const pres = document.querySelectorAll('.tutoriel-contenu pre');
-        pres.forEach((pre) => {
+    const sectionRef = useCallback((node) => {
+        if (!node) return;
+        node.querySelectorAll('pre').forEach((pre) => {
             if (pre.querySelector('.copy-btn')) return;
             const btn = document.createElement('button');
             btn.className = 'copy-btn';
@@ -23,7 +23,8 @@ export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatIni
             });
             pre.appendChild(btn);
         });
-    }, [etatTuto]);
+    }, []);
+
     const [erreur, setErreur] = useState('');
     const [enChargement, setEnChargement] = useState(false);
 
@@ -86,7 +87,7 @@ export default function ContenuTutoriel({ tutoId, slug, contenuFormater, etatIni
 
 
             {estCommence ? (
-                <section className="tutoriel-contenu" dangerouslySetInnerHTML={{ __html: contenuFormater }} />
+                <section ref={sectionRef} className="tutoriel-contenu" dangerouslySetInnerHTML={{ __html: contenuFormater }} />
             ) : null}
 
             <div className='mt-20'>
