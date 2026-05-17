@@ -1,6 +1,6 @@
-# Tuto — Site de tutoriels Nino Web Success (NWS)
+# Nino Web Success (NWS) : Site de tutoriels sur le développement web
 
-Site de tutoriels dédiée au développement web. Les utilisateurs peuvent consulter des tutoriels, suivre leur progression, et les administrateurs peuvent créer et gérer le contenu via un back-office intégré.
+Ce projet est un site de tutoriels dédiée au développement web. Les utilisateurs peuvent consulter des tutoriels, suivre leur progression, et les administrateurs peuvent créer et gérer le contenu via une interface dédiée.
 
 Le projet est conteneurisé avec Docker et est déployé sur un VPS.
 
@@ -29,20 +29,18 @@ Le projet est conteneurisé avec Docker et est déployé sur un VPS.
 | `/admin/nouveau` | Créer un tutoriel (admin) |
 | `/admin/[id]` | Modifier un tutoriel (admin) |
 
-![Page d'accueil](public/img/accueil.png)
-
 ---
 
 ## Technologies utilisées
 
-- **[Next.js 16](https://nextjs.org/)** — App Router, React Server Components, Server Actions
-- **[React 19](https://react.dev/)** — UI
+- **[Next.js 16](https://nextjs.org/)** — Framework React full-stack
+- **[React 19](https://react.dev/)** — UI du site web
 - **[Prisma 7](https://www.prisma.io/)** — ORM avec adaptateur MariaDB
-- **[MariaDB](https://mariadb.org/)** — Base de données relationnelle
-- **[NextAuth 5 beta](https://authjs.dev/)** — Authentification JWT (credentials)
-- **[Tailwind CSS 4](https://tailwindcss.com/)** — Styles utilitaires
-- **[CKEditor 5](https://ckeditor.com/)** — Éditeur WYSIWYG pour le contenu des tutoriels
-- **[Zod](https://zod.dev/)** — Validation des formulaires côté serveur
+- **[MariaDB](https://mariadb.org/)** — SGBDR
+- **[NextAuth 5 beta](https://authjs.dev/)** — Authentification JWT
+- **[Tailwind CSS 4](https://tailwindcss.com/)** — Styles et responsive
+- **[CKEditor 5](https://ckeditor.com/)** — Éditeur pour le contenu des tutoriels
+- **[Zod](https://zod.dev/)** — Vérification des formulaires
 - **[bcrypt](https://github.com/kelektiv/node.bcrypt.js)** — Hachage des mots de passe
 
 ---
@@ -53,13 +51,13 @@ Le projet est conteneurisé avec Docker et est déployé sur un VPS.
 
 5 modèles Prisma :
 
-| Modèle | Rôle |
+| Table | Rôle |
 |--------|------|
-| `Utilisateur` | Compte utilisateur (`profil`: `user` \| `admin`) |
-| `Tuto` | Tutoriel (`statut`: `brouillon` \| `en_ligne`) |
-| `Categorie` | Catégorie de tutoriel |
-| `TutoCategorie` | Table de jonction tutoriel ↔ catégorie |
-| `Progression` | Suivi par utilisateur (`en_cours` \| `terminé`) |
+| `Utilisateur` | Compte des utilisateur |
+| `Tuto` | contenu des tutoriels |
+| `Categorie` | Catégorie des tutoriels |
+| `TutoCategorie` | Table de jonction tutoriel - catégorie |
+| `Progression` | Suivi de la progression des utilisateur sur les tutoriels |
 
 ### Server Actions
 
@@ -68,8 +66,8 @@ Toutes les mutations passent par des Server Actions (pas de routes API) :
 | Fichier | Responsabilité |
 |---------|---------------|
 | `src/actions/tuto.actions.js` | CRUD tutoriels |
-| `src/actions/auth.actions.js` | Inscription & connexion |
-| `src/actions/progression.action.js` | Démarrer & valider un tutoriel |
+| `src/actions/auth.actions.js` | Inscription et connexion |
+| `src/actions/progression.action.js` | Commencer et terminer un tutoriel |
 
 ---
 
@@ -111,17 +109,6 @@ npm run dev
 ```
 
 L'application est accessible sur : http://localhost:3000
-
-### Commandes utiles
-
-```bash
-npm run dev      # Serveur de développement (localhost:3000)
-npm run build    # Build de production
-npm run start    # Serveur de production
-npm run lint     # Linter ESLint
-npx prisma studio          # Interface visuelle de la base de données
-npx prisma migrate dev     # Créer et appliquer une migration
-```
 
 ---
 
