@@ -5,8 +5,8 @@ import { auth } from "@/auth";
 import FiltreCategories from "@/components/ui/FiltreCategories";
 
 export const metadata = {
-    title: "Tutoriels | tuto",
-    description: "",
+    title: "Parcourez nos tutoriels gratuits en développement web | NWS",
+    description: "Parcourez tous les tutoriels NWS sur le SEO et le déploiement web sur VPS. Des guides pratiques pour apprendre à référencer et mettre en ligne vos projets.",
     alternates: {
         canonical: "https://nws.nino-rameau.fr/tutoriels",
     },

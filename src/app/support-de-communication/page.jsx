@@ -1,7 +1,7 @@
 import Btn from "@/components/ui/Btn";
 
 export const metadata = {
-    title: "Support de communication | tuto",
+    title: "Support de communication | NWS",
     description: "Découvrez pourquoi Instagram est notre principal canal de communication et téléchargez nos documents éditoriaux.",
     robots: {
         index: false,

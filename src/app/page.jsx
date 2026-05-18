@@ -7,11 +7,11 @@ import Btn from '@/components/ui/Btn';
 import Avantage from '@/components/ui/cardAvantage';
 
 export const metadata = {
-  title: "Accueil | tuto",
-  description: "meta description de la page d'accueil",
+  title: "Nino Web Success – Tutoriels gratuits de développement web",
+  description: "Progressez en développement web avec des tutoriels gratuits, concrets et accessibles à tous. Créez, déployez et optimisez vos projets grâce à Nino Web Success.",
   alternates: {
-        canonical: "https://nws.nino-rameau.fr",
-    },
+    canonical: "https://nws.nino-rameau.fr",
+  },
 };
 
 const accueil = async () => {

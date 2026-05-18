@@ -1,5 +1,13 @@
 import Btn from "@/components/ui/Btn";
 
+export const metadata = {
+    title: "Page introuvable | NWS",
+    robots: { 
+        index: false, 
+        follow: false,
+    },
+};
+
 export default function erreur() {
     return (
         <div className="flex flex-col h-[50vh] items-center justify-center gap-10">
