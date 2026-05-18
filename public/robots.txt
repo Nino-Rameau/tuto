@@ -6,3 +6,5 @@ Disallow: /api/
 Disallow: /*?*
 
 Allow: /
+
+Sitemap: https://nws.nino-rameau.fr/sitemap.xml

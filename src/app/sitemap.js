@@ -1,5 +1,7 @@
 import prisma from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap() {
     const tutos = await prisma.tuto.findMany({
         where: { statut: "en_ligne" },
