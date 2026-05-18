@@ -121,8 +121,7 @@
   padding: 0.2rem 0.6rem;
   font-size: 0.75rem;
   font-family: var(--font-texte);
-  color: #acddf6;
-  background: transparent;
+  color: var(--color-bleu-clair);
   border: 1px solid #30363d;
   border-radius: 4px;
   cursor: pointer;
@@ -134,14 +133,10 @@
   opacity: 1;
 }
 
-.tutoriel-contenu pre .copy-btn:hover {
-  background: #1c2333;
-}
-
 .tutoriel-contenu pre code {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 0.875rem;
-  color: #e6edf3;
+  font-size: 1rem;
+  color: var(--color-white);
 }
 
 
