@@ -4,7 +4,7 @@ import prisma from '@/lib/prisma';
 import Image from 'next/image';
 import Link from 'next/link';
 import Btn from '@/components/ui/Btn';
-import Avantage from '@/components/ui/cardAvantage';
+import Avantage from '@/components/ui/CardAvantage';
 
 export const metadata = {
   title: "Nino Web Success – Tutoriels gratuits de développement web",
