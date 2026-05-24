@@ -12,7 +12,8 @@ export const metadata = {
 export default function erreur() {
     return (
         <div className="flex flex-col items-center justify-center mt-10 gap-10">
-            <h1>Erreur 404 - Page non trouvée</h1>
+            <p className="text-3xl font-bold text-bleu-clair">Erreur 404 </p>
+            <p className="text-3xl font-bold text-bleu-clair">Page non trouvée</p>
             <Image
                 src="/img/ampoule-404.svg"
                 alt="Page non trouvée"
