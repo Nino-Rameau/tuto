@@ -1,10 +1,8 @@
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { AiFillTikTok } from "react-icons/ai";
 import { FaYoutube, FaLinkedin } from "react-icons/fa";
-
-
 import Btn from "@/components/ui/Btn";
-import CardAvantage from "@/components/ui/CardAvantage";
+import BlocIconeTexte from "@/components/ui/BlocIconeTexte";
 
 export const metadata = {
     title: "Support de communication | NWS",
@@ -38,25 +36,25 @@ const SupportDeCommunication = () => {
                 <h2 className="text-bleu-clair"> Pourquoi pas un autre réseau social ?</h2>
 
                 <div className="flex flex-col gap-4 sm:flex-row">
-                    <CardAvantage
+                    <BlocIconeTexte
                         titre="Twitter/X"
                         texte="Les publications sont souvent trop courtes pour expliquer clairement un tutoriel ou détailler plusieurs étapes."
                         icone={<FaSquareXTwitter className="text-4xl text-white" />}
                     />
                     
-                    <CardAvantage
+                    <BlocIconeTexte
                         titre="TikTok"
                         texte="Le contenu vidéo demande plus de temps de production et le format est moins adapté à des explications détaillées."
                         icone={<AiFillTikTok className="text-4xl text-white" />}
                     />
                     
-                    <CardAvantage
+                    <BlocIconeTexte
                         titre="LinkedIn"
                         texte="Le réseau est davantage orienté vers le monde professionnel et correspond moins aux habitudes des étudiants et des débutants."
                         icone={<FaLinkedin className="text-4xl text-white" />}
                     />
                     
-                    <CardAvantage
+                    <BlocIconeTexte
                         titre="Youtube"
                         texte="La plateforme est adaptée aux tutoriels vidéo longs, mais demande une production plus importante pour publier régulièrement."
                         icone={<FaYoutube className="text-4xl text-white" />}

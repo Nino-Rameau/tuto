@@ -1,5 +1,5 @@
 
-const Avantage = ({ titre, texte, icone }) => {
+const BlocIconeTexte = ({ titre, texte, icone }) => {
     return (
         <div className="flex flex-col w-full gap-2 p-4 text-center transition-colors duration-200 bg-bleu-fonce2 rounded-xl hover:scale-110">
             <div className="flex items-center justify-center mx-auto text-bleu">
@@ -11,4 +11,4 @@ const Avantage = ({ titre, texte, icone }) => {
     );
 };
 
-export default Avantage;
+export default BlocIconeTexte;
