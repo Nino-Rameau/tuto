@@ -3,6 +3,10 @@ User-agent: *
 Disallow: /admin
 Disallow: /profil
 Disallow: /api/
+Disallow: /document/
+Allow: /img/logo.svg
+Allow: /img/ampoule.svg
+Disallow: /img/
 Disallow: /*?*
 
 Allow: /
