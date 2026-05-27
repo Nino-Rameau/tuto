@@ -8,7 +8,7 @@ import Avantage from '@/components/ui/BlocIconeTexte';
 
 export const metadata = {
   title: "Nino Web Success – Tutoriels gratuits de développement web",
-  description: "Progressez en développement web avec des tutoriels gratuits, concrets et accessibles à tous. Créez, déployez et optimisez vos projets grâce à Nino Web Success.",
+  description: "Progressez en développement web avec des tutoriels gratuits et accessibles à tous. Créez, déployez et optimisez vos projets grâce à Nino Web Success.",
   alternates: {
     canonical: "https://nws.nino-rameau.fr",
   },
@@ -27,7 +27,7 @@ const accueil = async () => {
     <div className='flex flex-col gap-32'>
       
       <div className="relative w-screen ml-[calc(50%-50vw)] h-[80vh] overflow-hidden shadow-bottom-lg">
-        <Image src="/img/divers-site/accueil.png" alt="Image d'accueil" fill className="object-cover" />
+        <Image src="/img/divers-site/accueil.webp" alt="Image d'accueil" fill className="object-cover" />
         
         <div className="absolute inset-0 bg-bleu/60" />
         

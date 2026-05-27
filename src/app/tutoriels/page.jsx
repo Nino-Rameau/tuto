@@ -6,7 +6,7 @@ import FiltreCategories from "@/components/ui/FiltreCategories";
 
 export const metadata = {
     title: "Parcourez nos tutoriels gratuits en développement web | NWS",
-    description: "Parcourez tous les tutoriels NWS sur le SEO et le déploiement web sur VPS. Des guides pratiques pour apprendre à référencer et mettre en ligne vos projets.",
+    description: "Parcourez tous les tutoriels sur le SEO et le déploiement web. Des guides pratiques pour apprendre à référencer et mettre en ligne vos projets.",
     alternates: {
         canonical: "https://nws.nino-rameau.fr/tutoriels",
     },
@@ -83,7 +83,7 @@ const tutoriel = async ({ searchParams }) => {
                     <p>Découvre des tutoriels concrets sur le SEO et le déploiement sur VPS, pensés pour passer rapidement de la théorie à la mise en ligne.</p>
                 </div>
                 <div className="md:max-w-[50%]">
-                    <Image src="/img/divers-site/img-dashboard-page-liste.png" alt="Image d'illustration pour la page des tutoriels" width={600} height={500} />
+                    <Image src="/img/divers-site/img-dashboard-page-liste.webp" alt="Image d'illustration pour la page des tutoriels" width={600} height={500} />
                 </div>
             </div>
 
