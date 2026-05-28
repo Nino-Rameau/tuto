@@ -12,7 +12,7 @@ export const metadata = {
         follow: false,
     },
     alternates: {
-        canonical: "https://nws.nino-rameau.fr/support-de-communication",
+        canonical: "https://nws.nino-rameau.fr/livrables/support-de-communication",
     },
 };
 
@@ -68,11 +68,11 @@ const SupportDeCommunication = () => {
                 <p> Retrouvez ci-dessous les deux documents qui structurent notre stratégie éditoriale sur Instagram : </p>
 
                 <div className="flex flex-col gap-4 sm:flex-row">
-                    <Btn lien="/document/charte-editoriale.pdf" target="_blank">
+                    <Btn lien="/documents/charte-editoriale.pdf" target="_blank">
                         Télécharger la charte éditoriale
                     </Btn>
 
-                    <Btn lien="/document/calendrier-editorial.pdf" target="_blank">
+                    <Btn lien="/documents/calendrier-editorial.pdf" target="_blank">
                         Télécharger le calendrier éditorial
                     </Btn>
                 </div>

@@ -2,8 +2,9 @@ User-agent: *
 
 Disallow: /admin
 Disallow: /profil
+Disallow: /livrables
 Disallow: /api/
-Disallow: /document/
+Disallow: /documents/
 Allow: /img/logo.svg
 Allow: /img/ampoule.svg
 Disallow: /img/
