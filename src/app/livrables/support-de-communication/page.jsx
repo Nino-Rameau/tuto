@@ -88,7 +88,9 @@ const SupportDeCommunication = () => {
                         <Image src="/documents/posts/publication-longue/post.png" alt="Visuel d'une publication longue." width={500} height={500} />
                         <div className="flex flex-col gap-4 max-w-2xl">
                             <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
-                            <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <p>
+                                Le format image unique avec description longue est adapté à ce sujet : le tableau visuel pose les bases, la description développe. Les concepts sont expliqués mais le mode opératoire reste sur le site pour générer du trafic. Le vouvoiement, le ton semi-formel et le CTA en fin de caption respectent la charte éditoriale.
+                            </p>
                         </div>
                     </div>
                     
@@ -97,7 +99,7 @@ const SupportDeCommunication = () => {
                         <Image src="/documents/posts/publication-courte/post.png" alt="Visuel d'une publication courte." width={500} height={500} />
                         <div className="flex flex-col gap-4 max-w-2xl">
                             <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
-                            <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <p>Le format image unique avec caption courte est adapté à ce sujet simple et ciblé : le visuel illustre concrètement la balise en contexte Google, la caption va à l&apos;essentiel sans développer. L&apos;accroche visuelle simulation de résultat Google parle immédiatement à la cible. Le CTA renvoie vers le site pour approfondir, conformément à l&apos;objectif de trafic de la charte NWS.</p>
                         </div>
                     </div>
                         
@@ -111,7 +113,7 @@ const SupportDeCommunication = () => {
                         </div>
                         <div className="flex flex-col gap-4 max-w-2xl">
                             <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
-                            <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <p>Le format carrousel est adapté à ce sujet qui suit une progression logique en étapes. Chaque slide présente une idée distincte sans tout dévoiler, conformément à l&apos;objectif de renvoi vers le site. L&apos;accroche part d&apos;un problème concret vécu par la cible. Le vouvoiement, le ton semi-formel et le CTA en dernière slide respectent la charte éditoriale NWS.</p>
                         </div>
                     </div>
                     
@@ -127,7 +129,7 @@ const SupportDeCommunication = () => {
                                 <p>#seo #devweb #html #responsive #nws</p>
 
                             <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
-                            <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <p>Le format Reel est adapté à un contenu court et dynamique qui capte l&apos;attention rapidement. Le motion design permet de transmettre un message clair sans prise de vue, cohérent avec la ligne éditoriale NWS. Le sujet est volontairement survolé pour donner envie d&apos;aller consulter le tutoriel complet sur le site.</p>
                         </div>
                     </div>
                 </div>
