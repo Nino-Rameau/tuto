@@ -82,7 +82,7 @@ const accueil = async () => {
       </div>
       
       <div className="relative w-screen ml-[calc(50%-50vw)] h-[35vh] overflow-hidden -mb-7 md:-mb-17 shadow-top-lg">
-        <Image src="/img/divers-site/accueil.png" alt="Image d'accueil" fill className="object-cover" />
+        <Image src="/img/divers-site/accueil.webp" alt="Image d'accueil" fill className="object-cover" />
         
         <div className="absolute inset-0 bg-bleu-fonce/80" />
         
