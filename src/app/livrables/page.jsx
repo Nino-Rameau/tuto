@@ -20,7 +20,7 @@ const Livrables = () => {
             <div className="flex flex-col gap-4 text-center">
                 <h1>Livrables</h1>
                 <p className="text-white mx-auto">
-                    Retrouvez ici l&apos;ensemble des documents et pages produits dans le cadre du projet de semestre 2.
+                    Retrouvez ici l&apos;ensemble des documents et pages dans le cadre du projet de semestre 2.
                 </p>
             </div>
 
@@ -71,7 +71,7 @@ const Livrables = () => {
 
                 <CarteLivrable
                     titre="Étude de cas site concurrent"
-                    description="Analyse comparative de sites concurrents : points forts, points faibles..."
+                    description="Analyse comparative d'un site concurrent : points forts, points faibles..."
                     icone={<FaChartBar className="text-3xl text-bleu-clair" />}
                     lien="/documents/etude-de-cas-concurent.pdf"
                     externe

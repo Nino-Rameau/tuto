@@ -82,9 +82,8 @@ const SupportDeCommunication = () => {
             <div>
                 <h2 className="text-bleu-clair">Visuel des publications</h2>
 
-                <div className="flex flex-col justify-around gap-5 md:flex-row flex-wrap my-10">
-
-                    <div className="flex flex-col gap-4 min-w-4/5:">
+                <div className="flex flex-col gap-20">
+                    <div className="flex flex-col gap-4 min-w-4/5: items-center">
                         <h3 className="text-bleu-clair text-center">Publication longue : </h3>
                         <Image src="/documents/posts/publication-longue/post.png" alt="Visuel d'une publication longue." width={500} height={500} />
                         <div className="flex flex-col gap-4 max-w-2xl">
@@ -93,46 +92,45 @@ const SupportDeCommunication = () => {
                         </div>
                     </div>
                     
-                    <div className="flex flex-col gap-4 min-w-4/5:">
+                    <div className="flex flex-col gap-4 min-w-4/5: items-center">
                         <h3 className="text-bleu-clair text-center">Publication courte : </h3>
-                        <Image src="/documents/posts/publication-courte/post.png" alt="Visuel d'une publication courte." width={500} height={500} className="w-full h-auto" />
+                        <Image src="/documents/posts/publication-courte/post.png" alt="Visuel d'une publication courte." width={500} height={500} />
                         <div className="flex flex-col gap-4 max-w-2xl">
                             <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
                             <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
                     </div>
-                </div>
+                        
+                    <div className="flex flex-col gap-4 min-w-4/5: items-center">
+                        <h3 className="text-bleu-clair text-center">Publication visuelle : </h3>
+                        <div className="flex flex-col gap-4 md:flex-row">
+                            <Image src="/documents/posts/publication-visuelle/1-4.png" alt="Visuel d'une publication visuelle." className="w-full h-auto md:w-1/4" width={350} height={500} />
+                            <Image src="/documents/posts/publication-visuelle/2-4.png" alt="Visuel d'une publication visuelle." className="w-full h-auto md:w-1/4" width={350} height={500} />
+                            <Image src="/documents/posts/publication-visuelle/3-4.png" alt="Visuel d'une publication visuelle." className="w-full h-auto md:w-1/4" width={350} height={500} />
+                            <Image src="/documents/posts/publication-visuelle/4-4.png" alt="Visuel d'une publication visuelle." className="w-full h-auto md:w-1/4" width={350} height={500} />
+                        </div>
+                        <div className="flex flex-col gap-4 max-w-2xl">
+                            <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
+                            <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
                     
-                <div className="flex flex-col gap-4 min-w-4/5:">
-                    <h3 className="text-bleu-clair text-center">Publication visuelle : </h3>
-                    <div className="flex flex-col gap-4 md:flex-row">
-                        <Image src="/documents/posts/publication-visuelle/1-4.png" alt="Visuel d'une publication visuelle." className="w-full h-auto md:w-1/4" width={350} height={500} />
-                        <Image src="/documents/posts/publication-visuelle/2-4.png" alt="Visuel d'une publication visuelle." className="w-full h-auto md:w-1/4" width={350} height={500} />
-                        <Image src="/documents/posts/publication-visuelle/3-4.png" alt="Visuel d'une publication visuelle." className="w-full h-auto md:w-1/4" width={350} height={500} />
-                        <Image src="/documents/posts/publication-visuelle/4-4.png" alt="Visuel d'une publication visuelle." className="w-full h-auto md:w-1/4" width={350} height={500} />
-                    </div>
-                    <div className="flex flex-col gap-4 max-w-2xl">
-                        <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
-                        <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <div className="flex flex-col items-center gap-4 min-w-4/5:">
+                        <h3 className="text-bleu-clair text-center">Publication vidéo : </h3>
+                        <video src="/documents/posts/publication-video/video.mp4" alt="Visuel d'une publication vidéo." className="w-full h-auto md:w-1/4" controls />
+                        
+                        <div className="flex flex-col gap-4 max-w-2xl">
+                            <p className="text-bleu-clair">Description de la publication vidéo : </p>
+                            <p>
+                                Votre site est en ligne mais Google ne le trouve pas ? On vous explique comment poser les bases d&apos;un bon référencement naturel : les balises HTML essentielles, la hiérarchie des titres, l&apos;optimisation des images et l&apos;importance du responsive. Le tutoriel complet est gratuit sur le site - lien en bio.
+                            </p>
+                                <p>#seo #devweb #html #responsive #nws</p>
+
+                            <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
+                            <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div className="flex flex-col items-center gap-4 min-w-4/5:">
-                    <h3 className="text-bleu-clair text-center">Publication vidéo : </h3>
-                    <video src="/documents/posts/publication-video/video.mp4" alt="Visuel d'une publication vidéo." className="w-full h-auto md:w-1/4" controls />
-                    
-                    <div className="flex flex-col gap-4 max-w-2xl">
-                        <p className="text-bleu-clair">Description de la publication vidéo : </p>
-                        <p>
-                            Votre site est en ligne mais Google ne le trouve pas ? On vous explique comment poser les bases d&apos;un bon référencement naturel : les balises HTML essentielles, la hiérarchie des titres, l&apos;optimisation des images et l&apos;importance du responsive. Le tutoriel complet est gratuit sur le site - lien en bio.
-                        </p>
-                            <p>#seo #devweb #html #responsive #nws</p>
-
-                        <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
-                        <p>lore ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     );
