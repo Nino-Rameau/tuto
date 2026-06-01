@@ -27,7 +27,7 @@ const accueil = async () => {
     <div className='flex flex-col gap-32'>
       
       <div className="relative w-screen ml-[calc(50%-50vw)] h-[80vh] overflow-hidden shadow-bottom-lg">
-        <Image src="/img/divers-site/accueil.webp" alt="Image d'accueil" fill className="object-cover" />
+        <Image src="/img/divers-site/accueil.webp" alt="Image d'accueil" fill priority className="object-cover" />
         
         <div className="absolute inset-0 bg-bleu/60" />
         
