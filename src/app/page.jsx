@@ -60,7 +60,7 @@ const accueil = async () => {
                 alt={tuto.titre}
                 width={500}
                 height={200}
-                className="rounded-xl"
+                className="rounded-xl w-full h-48 object-cover"
               />
               <div className="flex flex-col gap-2 p-4">
                 <h3 className="text-lg font-bold line-clamp-2">{tuto.titre}</h3>

@@ -74,12 +74,12 @@ const ZoningEtWireframe = () => {
                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                             <div className="flex flex-col gap-3">
                                 <p className="uppercase text-white">Zoning</p>
-                                <Image src={page.zoning} alt={`Zoning – ${page.nom}`} width={500} height={300} />
+                                <Image src={page.zoning} alt={`Zoning – ${page.nom}`} width={500} height={300} className="w-full h-auto" />
                             </div>
 
                             <div className="flex flex-col gap-3">
                                 <p className="uppercase text-white">Wireframe</p>
-                                <Image src={page.wireframe} alt={`Wireframe – ${page.nom}`} width={500} height={300} />
+                                <Image src={page.wireframe} alt={`Wireframe – ${page.nom}`} width={500} height={300} className="w-full h-auto" />
                             </div>
                         </div>
                     </section>

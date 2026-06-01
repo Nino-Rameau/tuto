@@ -8,7 +8,7 @@ const Footer = () => {
                 
                 <div className="md:max-w-[40%]">
                     <Link href="/">
-                        <Image src="/img/logo.svg" alt="Logo du site" width={200} height={50} className="mb-4" />
+                        <Image src="/img/logo.svg" alt="Logo du site" width={200} height={74} className="mb-4" />
                     </Link>
                     <p> Bienvenue chez Nino Web Success, une plateforme de tutoriels dédiée à l&apos;apprentissage du développement web. Retrouvez ici des ressources pédagogiques pour progresser à votre rythme.</p>
                 </div>

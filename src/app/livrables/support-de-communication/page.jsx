@@ -85,7 +85,7 @@ const SupportDeCommunication = () => {
                 <div className="flex flex-col gap-20">
                     <div className="flex flex-col gap-4 min-w-4/5: items-center">
                         <h3 className="text-bleu-clair text-center">Publication longue : </h3>
-                        <Image src="/documents/posts/publication-longue/post.png" alt="Visuel d'une publication longue." width={500} height={500} />
+                        <Image src="/documents/posts/publication-longue/post.png" alt="Visuel d'une publication longue." width={500} height={500} priority className="w-full h-auto max-w-sm" />
                         <div className="flex flex-col gap-4 max-w-2xl">
                             <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
                             <p>
@@ -96,7 +96,7 @@ const SupportDeCommunication = () => {
                     
                     <div className="flex flex-col gap-4 min-w-4/5: items-center">
                         <h3 className="text-bleu-clair text-center">Publication courte : </h3>
-                        <Image src="/documents/posts/publication-courte/post.png" alt="Visuel d'une publication courte." width={500} height={500} />
+                        <Image src="/documents/posts/publication-courte/post.png" alt="Visuel d'une publication courte." width={500} height={500} className="w-full h-auto max-w-sm" />
                         <div className="flex flex-col gap-4 max-w-2xl">
                             <p className="text-bleu-clair">Justification avec la ligne éditoriale : </p>
                             <p>Le format image unique avec caption courte est adapté à ce sujet simple et ciblé : le visuel illustre concrètement la balise en contexte Google, la caption va à l&apos;essentiel sans développer. L&apos;accroche visuelle simulation de résultat Google parle immédiatement à la cible. Le CTA renvoie vers le site pour approfondir, conformément à l&apos;objectif de trafic de la charte NWS.</p>

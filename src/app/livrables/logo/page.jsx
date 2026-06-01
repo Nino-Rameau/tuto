@@ -57,14 +57,14 @@ const Logo = () => {
                     <div className="flex flex-col gap-2 items-center">
                         <p className="text-white">sur fond sombre</p>
                         <div className="flex items-center justify-center p-10 rounded-xl bg-bleu-fonce2 border border-bleu">
-                            <Image src="/img/ampoule.svg" alt="Icône ampoule sur fond sombre" width={120} height={130} className="h-32 w-auto" />
+                            <Image src="/img/ampoule.svg" alt="Icône ampoule sur fond sombre" width={120} height={128} className="h-32 w-auto" />
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-2 items-center">
                         <p className="text-white">Sur fond clair</p>
                         <div className="flex items-center justify-center p-10 rounded-xl bg-white">
-                            <Image src="/img/ampoule.svg" alt="Icône ampoule sur fond clair" width={120} height={130} className="h-32 w-auto" />
+                            <Image src="/img/ampoule.svg" alt="Icône ampoule sur fond clair" width={120} height={128} className="h-32 w-auto" />
                         </div>
                     </div>
 

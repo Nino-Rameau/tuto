@@ -83,7 +83,7 @@ const tutoriel = async ({ searchParams }) => {
                     <p>Découvre des tutoriels concrets sur le SEO et le déploiement sur VPS, pensés pour passer rapidement de la théorie à la mise en ligne.</p>
                 </div>
                 <div className="md:max-w-[50%]">
-                    <Image src="/img/divers-site/img-dashboard-page-liste.webp" alt="Image d'illustration pour la page des tutoriels" width={600} height={500} />
+                    <Image src="/img/divers-site/img-dashboard-page-liste.webp" alt="Image d'illustration pour la page des tutoriels" width={600} height={500} className="w-full h-auto" />
                 </div>
             </div>
 
@@ -109,7 +109,7 @@ const tutoriel = async ({ searchParams }) => {
                                 </span>
                             ))}
                         </div>
-                        <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} width={448} height={200} sizes="(max-width: 768px) 90vw, 448px" className="rounded-md"/>
+                        <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} width={448} height={200} sizes="(max-width: 768px) 90vw, 448px" className="rounded-md w-full h-48 object-cover"/>
                     </Link>
                 ))}
             </div>
