@@ -42,6 +42,7 @@ Le projet est conteneurisé avec Docker et est déployé sur un VPS.
 - **[CKEditor 5](https://ckeditor.com/)** — Éditeur pour le contenu des tutoriels
 - **[Zod](https://zod.dev/)** — Vérification des formulaires
 - **[bcrypt](https://github.com/kelektiv/node.bcrypt.js)** — Hachage des mots de passe
+- **[sharp](https://github.com/lovell/sharp)** — Optimisation des images
 
 ---
 

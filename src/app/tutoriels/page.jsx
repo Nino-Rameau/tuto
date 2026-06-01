@@ -109,7 +109,7 @@ const tutoriel = async ({ searchParams }) => {
                                 </span>
                             ))}
                         </div>
-                        <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} width={500} height={200} className="rounded-md"/>
+                        <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} width={448} height={200} sizes="(max-width: 768px) 90vw, 448px" className="rounded-md"/>
                     </Link>
                 ))}
             </div>
