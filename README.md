@@ -28,6 +28,8 @@ Le projet est conteneurisé avec Docker et est déployé sur un VPS.
 | `/admin` | Back-office — liste & gestion des tutoriels (admin) |
 | `/admin/nouveau` | Créer un tutoriel (admin) |
 | `/admin/[id]` | Modifier un tutoriel (admin) |
+| `/livrables` | Liste des livrables |
+| `/livrables/[slug]` | Détail d'un livrable |
 
 ---
 
@@ -62,7 +64,7 @@ Le projet est conteneurisé avec Docker et est déployé sur un VPS.
 
 ### Server Actions
 
-Toutes les mutations passent par des Server Actions (pas de routes API) :
+Toutes les modifications passent par des Server Actions (pas de routes API) :
 
 | Fichier | Responsabilité |
 |---------|---------------|
