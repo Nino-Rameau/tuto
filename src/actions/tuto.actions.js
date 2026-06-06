@@ -105,10 +105,12 @@ export async function creerTutoriel(dataTuto) {
     } catch (error) {
         console.error("Erreur création tutoriel:", error);
         if (error?.code === "P2002") {
-            const field = error?.meta?.target?.includes("slug") ? "slug" : "titre";
+            const originalMessage = error?.meta?.driverAdapterError?.cause?.originalMessage || "";
+            const isSlug = error?.meta?.target?.includes?.("slug") || originalMessage.includes("slug");
+            const champ = isSlug ? "slug" : "titre";
             return {
                 success: false,
-                error: `Un tutoriel avec ce ${field} existe déjà.`,
+                error: `Un tutoriel avec ce ${champ} existe déjà.`,
             };
         }
         return {
