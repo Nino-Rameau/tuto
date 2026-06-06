@@ -55,13 +55,15 @@ const accueil = async () => {
               href={`/tutoriels/${tuto.slug}`}
               className="flex flex-col items-center gap-3 overflow-hidden transition-colors duration-200 rounded-xl bg-bleu-fonce hover:bg-bleu border-animee md:w-1/3"
             >
-              <Image
-                src={tuto.image || "/img/placeholder-img.png"}
-                alt={tuto.titre}
-                width={500}
-                height={200}
-                className="rounded-xl w-full h-48 object-cover"
-              />
+              <div className="relative w-full aspect-[3/2]">
+                <Image
+                  src={tuto.image || "/img/placeholder-img.png"}
+                  alt={tuto.titre}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-contain"
+                />
+              </div>
               <div className="flex flex-col gap-2 p-4">
                 <h3 className="text-lg font-bold line-clamp-2">{tuto.titre}</h3>
                 <p className="text-sm text-white/70 line-clamp-3">{tuto.chapo}</p>

@@ -46,7 +46,7 @@ const Livrables = () => {
 
                 <CarteLivrable
                     titre="Zoning et Wireframe"
-                    description="Maquettes du site"
+                    description="Représentation visuelle de la structure du site"
                     icone={<FaObjectGroup className="text-3xl text-bleu-clair" />}
                     lien="/livrables/zoning-et-wireframe"
                     TexteBtn="Voir les zoning et wireframe"
@@ -96,7 +96,7 @@ const Livrables = () => {
                 />
 
                 <CarteLivrable
-                    titre="Rapport de test"
+                    titre="Rapport de tests"
                     description="Scénarios testés, bugs identifiés et corrections apportées."
                     icone={<FaFileLines className="text-3xl text-bleu-clair" />}
                     lien="/documents/rapport-de-test.pdf"

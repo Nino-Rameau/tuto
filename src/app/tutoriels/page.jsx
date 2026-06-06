@@ -82,8 +82,8 @@ const tutoriel = async ({ searchParams }) => {
                     <p>Apprends à référencer et déployer tes projets web efficacement.</p>
                     <p>Découvre des tutoriels concrets sur le SEO et le déploiement sur VPS, pensés pour passer rapidement de la théorie à la mise en ligne.</p>
                 </div>
-                <div className="md:max-w-[50%]">
-                    <Image src="/img/divers-site/img-dashboard-page-liste.webp" alt="Image d'illustration pour la page des tutoriels" width={600} height={500} className="w-full h-auto" />
+                <div className="relative md:max-w-[50%] w-full aspect-6/5">
+                    <Image src="/img/divers-site/img-dashboard-page-liste.webp" alt="Image d'illustration pour la page des tutoriels" fill sizes="(max-width: 768px) 90vw, 50vw" className="object-contain" priority />
                 </div>
             </div>
 
@@ -109,7 +109,9 @@ const tutoriel = async ({ searchParams }) => {
                                 </span>
                             ))}
                         </div>
-                        <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} width={448} height={200} sizes="(max-width: 768px) 90vw, 448px" className="rounded-md w-full h-48 object-cover"/>
+                        <div className="relative w-full aspect-3/2 rounded-md overflow-hidden">
+                            <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} fill sizes="(max-width: 768px) 90vw, 448px" className="object-contain"/>
+                        </div>
                     </Link>
                 ))}
             </div>
