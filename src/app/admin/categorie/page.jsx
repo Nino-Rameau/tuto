@@ -17,7 +17,7 @@ const PageCategories = async () => {
     });
 
     return (
-        <div className="flex flex-col max-w-2xl gap-8 mx-auto my-10">
+        <div className="flex flex-col max-w-2xl mx-auto my-10 gap-8">
             <div className="flex items-center justify-between">
                 <h1>Gestion des <span className="text-[2rem] font-titre font-black text-bleu">catégories</span></h1>
                 <Btn lien="/admin" variante="secondaire">Retour</Btn>
@@ -34,7 +34,7 @@ const PageCategories = async () => {
                 ) : (
                     <div className="flex flex-col gap-3">
                         {categories.map((cat) => (
-                            <div key={cat.id} className="flex items-center justify-between gap-4 p-3 border rounded border-bleu-clair">
+                            <div key={cat.id} className="flex items-center justify-between p-3 border rounded gap-4 border-bleu-clair">
                                 <div className="flex items-center gap-2">
                                     <p className="font-semibold">{cat.nom}</p>
                                     <span className="ml-3 text-xs text-bleu-clair">
