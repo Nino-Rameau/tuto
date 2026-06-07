@@ -15,7 +15,7 @@ export default async function NouveauTutorielPage() {
 
     return (
         <div className="p-2 md:p-5">
-            <h1 className="mb-6">Créer un nouveau tutoriel :</h1>
+            <h1 className="mb-6">Créer un <span className="text-[2rem] font-titre font-black text-bleu">nouveau tutoriel :</span></h1>
             <FormTuto categories={categories} />
         </div>
     );

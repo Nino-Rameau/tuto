@@ -203,6 +203,30 @@ export async function mettreAJourTutoriel(donneesRecues) {
 }
 
 
+export async function supprimerCategorie(id) {
+    const erreurConnexion = await verifierAdmin();
+    if (erreurConnexion) return erreurConnexion;
+
+    const categorieId = Number(id);
+    if (!Number.isInteger(categorieId) || categorieId <= 0) {
+        return { success: false, error: "Identifiant invalide." };
+    }
+
+    try {
+        await prisma.categorie.delete({ where: { id: categorieId } });
+
+        revalidatePath("/admin");
+        revalidatePath("/admin/categorie");
+        revalidatePath("/");
+        revalidatePath("/tutoriels");
+
+        return { success: true };
+    } catch (error) {
+        console.error("Erreur suppression catégorie:", error);
+        return { success: false, error: "Erreur serveur lors de la suppression." };
+    }
+}
+
 
 export async function creerCategorie(nom) {
     const erreurConnexion = await verifierAdmin();
@@ -224,6 +248,9 @@ export async function creerCategorie(nom) {
         return { success: true, categorie };
     } catch (error) {
         console.error("Erreur création catégorie:", error);
+        if (error?.code === "P2002") {
+            return { success: false, error: `La catégorie "${nomNettoye}" existe déjà.` };
+        }
         return { success: false, error: "Erreur serveur lors de la création de la catégorie." };
     }
 }

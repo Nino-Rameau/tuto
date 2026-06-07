@@ -8,7 +8,7 @@ const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, 
             
             <Image src={image || "/img/placeholder-img.png"} alt="Visuel d'un tutoriel" width={200} height={120} className="object-cover w-auto mx-auto rounded h-50" />
             
-            <div className="flex flex-col justify-between md:max-w-[50%] text-center md:text-left">
+            <div className="flex flex-col justify-between md:max-w-[50%] text-center md:text-left gap-3 md:gap-8">
                 <h2>{titre}</h2>
                 <p>{chapo}</p>
 
@@ -21,14 +21,10 @@ const EditListe = ({id, titre, chapo, tags, dateMaj, dateCreation, slug, image, 
                 </ul>
             </div>
 
-            <div className="flex flex-col justify-between">
-                <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-8">
                     <p>MAJ : {dateMaj}</p>
                     <p>Créé le : {dateCreation}</p>
-                </div>
-                <div>
                     <p>Statut : {statut}</p>
-                </div>
             </div>
 
             <div className="flex flex-col justify-around gap-5">

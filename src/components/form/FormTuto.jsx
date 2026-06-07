@@ -181,7 +181,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                             </div>
 
                             {afficherFormNouvelleCategorie && (
-                                <div className="flex flex-col mt-2 gap-1">
+                                <div className="flex flex-col gap-1 mt-2">
                                     <div className="flex gap-2">
                                         <input
                                             type="text"
@@ -217,7 +217,7 @@ const FormTuto = ({ categories, initialData = null }) => {
 
                         <label htmlFor="image" className="mb-1 font-semibold">Image :</label>
                         <div className="h-full min-w-min md:w-[50%] rounded-lg bg-gray-50 justify-center items-center">
-                            <div className="relative flex flex-col items-center justify-center h-full p-4 gap-2">
+                            <div className="relative flex flex-col items-center justify-center h-full gap-2 p-4">
                                 {imagePreview ? (
                                     <>
                                         <Image src={imagePreview} alt="Aperçu" width={120} height={120} className="object-cover rounded" />
@@ -248,7 +248,7 @@ const FormTuto = ({ categories, initialData = null }) => {
 
                     <div className="flex flex-col flex-1 gap-4">
                         <div className="flex flex-col">
-                            <div className="flex flex-row items-center pb-2 gap-2">
+                            <div className="flex flex-row items-center gap-2 pb-2">
                                 <label htmlFor="prerequis" className="font-semibold">Prérequis :</label>
                                 <InfoInputFormTuto texte="Ce champ est facultatif, saisis un prerequis par ligne, sans point ou tiret, il seront ajoutés automatiquement." />
                             </div>
@@ -262,7 +262,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                         </div>
 
                         <div className="flex flex-col">
-                            <div className="flex flex-row items-center pb-2 gap-2">
+                            <div className="flex flex-row items-center gap-2 pb-2">
                                 <label htmlFor="chapo" className="font-semibold">Chapo :</label>
                                 <InfoInputFormTuto texte="Affiché comme mini introduction pensée CTA. Doit faire max 200 caractères." />
                             </div>
@@ -271,7 +271,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                         </div>
                         
                         <div className="flex flex-col">
-                            <div className="flex flex-row items-center pb-2 gap-2">
+                            <div className="flex flex-row items-center gap-2 pb-2">
                                 <label htmlFor="introduction" className="font-semibold">Introduction :</label>
                                 <InfoInputFormTuto texte="Introduction affiché sous le chapo sur la page du tutoriel. Plus détaillé que le chapo, visible uniquement sur la page du tutoriel." />
                             </div>
@@ -283,9 +283,9 @@ const FormTuto = ({ categories, initialData = null }) => {
 
             <div className='py-8 max-w-[95%] rounded-md bg-bleu-fonce'>
                 <h2 className='px-8 pb-4'>Balise meta pour le SEO du tutoriel :</h2>
-                <div className='flex flex-col justify-between px-8 pt-4 border-t gap-8 md:flex-row'>
+                <div className='flex flex-col justify-between gap-8 px-8 pt-4 border-t md:flex-row'>
                     <div className="flex flex-col flex-1">
-                        <div className="flex flex-row items-center pb-2 gap-2">
+                        <div className="flex flex-row items-center gap-2 pb-2">
                             <label htmlFor="MetaTitle" className="font-semibold">Title :</label>
                             <InfoInputFormTuto texte="Doit contenir les mots-clés principaux du tutoriel et donner envie de cliquer. Doit faire environ 60 caractères." />
                         </div>
@@ -293,7 +293,7 @@ const FormTuto = ({ categories, initialData = null }) => {
                     </div>
                     
                     <div className="flex flex-col flex-1">
-                        <div className="flex flex-row items-center pb-2 gap-2">
+                        <div className="flex flex-row items-center gap-2 pb-2">
                             <label htmlFor="MetaDescription" className="font-semibold">Meta description :</label>
                             <InfoInputFormTuto texte="Résumé du contenu du tutoriel qui doit donner envie de cliquer. Doit faire environ 150 caractères." />
                         </div>

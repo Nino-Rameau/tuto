@@ -27,6 +27,7 @@ Le projet est conteneurisé avec Docker et est déployé sur un VPS.
 | `/profil` | Profil utilisateur + historique de progression |
 | `/admin` | Back-office — liste & gestion des tutoriels (admin) |
 | `/admin/nouveau` | Créer un tutoriel (admin) |
+| `/admin/categories` | Gérer les catégories (admin) |
 | `/admin/[id]` | Modifier un tutoriel (admin) |
 | `/livrables` | Liste des livrables |
 | `/livrables/[slug]` | Détail d'un livrable |
