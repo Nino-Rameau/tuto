@@ -59,7 +59,7 @@ const profil = async ({ searchParams }) => {
 
             <div className="flex flex-col md:flex-row">
                 <div className="w-full bg-linear-to-l from-bleu-clair via-bleu to-bleu-fonce md:w-100">
-                    <div className="sticky flex flex-col gap-5 py-5 pl-5 top-40">
+                    <div className="sticky flex flex-col py-5 pl-5 gap-5 top-40">
                         <a href="#tutoriels" className="cursor-pointer hover:text-bleu-clair hover:font-semibold">Mes Tutoriels</a>
                         <a href="#securite" className="cursor-pointer hover:text-bleu-clair hover:font-semibold">Sécurité</a>
                         <a href="#changer-pseudo" className="ml-2 cursor-pointer hover:text-bleu-clair hover:font-semibold">Changer de pseudo</a>
@@ -92,7 +92,7 @@ const profil = async ({ searchParams }) => {
                             </div>
 
                             {progressionsAffichees.length > 0 ? (
-                                <div className="flex flex-col justify-center gap-5 my-5">
+                                <div className="flex flex-col justify-center my-5 gap-5">
                                     {progressionsAffichees.map((progression) => (
                                         <div key={progression.id} className="flex flex-col justify-center gap-6 p-3 border-2 rounded md:gap-0 md:justify-between md:flex-row border-bleu-fonce max-w-[90%]">
                                             <div className="flex flex-col gap-4 md:max-w-[80%]">

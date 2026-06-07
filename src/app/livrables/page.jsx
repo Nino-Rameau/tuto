@@ -17,9 +17,9 @@ const Livrables = () => {
     return (
         <div className="flex flex-col gap-16 mx-auto max-w-[90%] lg:max-w-full mt-10 mb-16">
 
-            <div className="flex flex-col gap-4 text-center">
+            <div className="flex flex-col text-center gap-4">
                 <h1>Livrables</h1>
-                <p className="text-white mx-auto">
+                <p className="mx-auto text-white">
                     Retrouvez ici l&apos;ensemble des documents et pages dans le cadre du projet de semestre 2.
                 </p>
             </div>

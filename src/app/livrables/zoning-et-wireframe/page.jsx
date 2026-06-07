@@ -49,13 +49,13 @@ const ZoningEtWireframe = () => {
     return (
         <div className="flex flex-col gap-16 mx-auto max-w-[90%] lg:max-w-full mt-10 mb-16">
 
-            <div className="flex flex-col gap-4 text-center">
+            <div className="flex flex-col text-center gap-4">
                 <h1>Zoning & Wireframe</h1>
-                <p className="text-white mx-auto max-w-2xl">
+                <p className="max-w-2xl mx-auto text-white">
                     Pour chaque page du site, retrouvez le zoning et le wireframe.
                 </p>
                 <p>Les pages sont :</p>
-                <ul className="list-disc mx-auto text-left">
+                <ul className="mx-auto text-left list-disc">
                     <li>Accueil</li>
                     <li>Tutoriels</li>
                     <li>Contenu Tutoriel</li>
@@ -73,12 +73,12 @@ const ZoningEtWireframe = () => {
 
                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                             <div className="flex flex-col gap-3">
-                                <p className="uppercase text-white">Zoning</p>
+                                <p className="text-white uppercase">Zoning</p>
                                 <Image src={page.zoning} alt={`Zoning – ${page.nom}`} width={500} height={300} className="w-full h-auto" />
                             </div>
 
                             <div className="flex flex-col gap-3">
-                                <p className="uppercase text-white">Wireframe</p>
+                                <p className="text-white uppercase">Wireframe</p>
                                 <Image src={page.wireframe} alt={`Wireframe – ${page.nom}`} width={500} height={300} className="w-full h-auto" />
                             </div>
                         </div>

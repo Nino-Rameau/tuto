@@ -31,12 +31,12 @@ const accueil = async () => {
         
         <div className="absolute inset-0 bg-bleu/60" />
         
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-24 text-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center gap-24">
           <h1 className="text-5xl sm:text-8xl md:text-10xl">
             Apprenez, créez, progressez
           </h1>
           
-          <p className="font-semibold text-xl sm:text-2xl md:text-4xl">
+          <p className="text-xl font-semibold sm:text-2xl md:text-4xl">
             Des tutoriels concrets sur le développement web.
           </p>
 
@@ -48,12 +48,12 @@ const accueil = async () => {
       
       <div className="flex flex-col gap-8">
         <h2 className="text-center text-bleu-clair">Nos derniers tutoriels :</h2>
-        <div className="flex flex-col justify-center gap-6 m-4 md:m-0 md:flex-row">
+        <div className="flex flex-col justify-center m-4 gap-6 md:m-0 md:flex-row">
           {derniersTutos.map((tuto) => (
             <Link
               key={tuto.slug}
               href={`/tutoriels/${tuto.slug}`}
-              className="flex flex-col items-center gap-3 overflow-hidden transition-colors duration-200 rounded-xl bg-bleu-fonce hover:bg-bleu border-animee md:w-1/3"
+              className="flex flex-col items-center overflow-hidden gap-3 transition-colors duration-200 rounded-xl bg-bleu-fonce hover:bg-bleu border-animee md:w-1/3"
             >
               <div className="relative w-full aspect-[3/2]">
                 <Image
@@ -64,7 +64,7 @@ const accueil = async () => {
                   className="object-contain"
                 />
               </div>
-              <div className="flex flex-col gap-2 p-4">
+              <div className="flex flex-col p-4 gap-2">
                 <h3 className="text-lg font-bold line-clamp-2">{tuto.titre}</h3>
                 <p className="text-sm text-white/70 line-clamp-3">{tuto.chapo}</p>
               </div>
@@ -73,7 +73,7 @@ const accueil = async () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-8 p-8 m-4 transition-transform duration-200 md:m-0 rounded-xl bg-radial border-animee from-bleu-clair via-bleu to-bleu-fonce">
+      <div className="flex flex-col p-8 m-4 gap-8 transition-transform duration-200 md:m-0 rounded-xl bg-radial border-animee from-bleu-clair via-bleu to-bleu-fonce">
         <h2 className="text-center text-bleu-clair">Pourquoi suivre nos tutoriels ?</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
           <Avantage icone={<TbCurrencyEuroOff className="w-16 h-auto"/>} titre="Gratuit" texte="Accédez gratuitement à tous les tutoriels du site." />
@@ -88,7 +88,7 @@ const accueil = async () => {
         
         <div className="absolute inset-0 bg-bleu-fonce/80" />
         
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-12 py-5 text-center md:py-0">
+        <div className="absolute inset-0 flex flex-col items-center justify-center py-5 text-center gap-12 md:py-0">
           <h2 className="text-xl sm:text-3xl md:text-5xl">Prêt à commencer ?</h2>
           <p className='text-xl'>Rejoignez notre communauté et commencez votre parcours d&apos;apprentissage dès aujourd&apos;hui !</p>
           <Btn lien="/tutoriels" taille="lg" arrondi='rounded-2xl'>

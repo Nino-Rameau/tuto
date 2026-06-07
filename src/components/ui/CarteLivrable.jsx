@@ -2,8 +2,8 @@ import Btn from "@/components/ui/Btn";
 
 const CarteLivrable = ({ titre, description, icone, lien, externe = false, TexteBtn }) => {
     return (
-        <div className="flex flex-col gap-5 p-6 rounded-xl bg-bleu-fonce hover:border-bleu-clair">
-            <div className="flex items-center justify-center w-14 h-14 rounded-lg bg-bleu-fonce2">
+        <div className="flex flex-col p-6 gap-5 rounded-xl bg-bleu-fonce hover:border-bleu-clair">
+            <div className="flex items-center justify-center rounded-lg w-14 h-14 bg-bleu-fonce2">
                 {icone}
             </div>
             <div className="flex flex-col gap-2 grow">

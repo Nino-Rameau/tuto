@@ -76,7 +76,7 @@ const tutoriel = async ({ searchParams }) => {
     return (
         <div className="flex flex-col items-center md:p-5">
 
-            <div className="flex flex-col items-center justify-center gap-10 mx-5 my-5 mt-5 md:mx-0 md:flex-row">
+            <div className="flex flex-col items-center justify-center mx-5 my-5 mt-5 gap-10 md:mx-0 md:flex-row">
                 <div className="md:max-w-[40%] flex flex-col gap-5">
                     <h1 className="font-bold text-center">Tous les <span className="text-[2rem] font-titre font-black text-bleu">tutoriels</span> :</h1>
                     <p>Apprends à référencer et déployer tes projets web efficacement.</p>
@@ -93,7 +93,7 @@ const tutoriel = async ({ searchParams }) => {
                 <p className="mt-5 text-bleu-clair">Connectez-vous pour filtrer par progression.</p>
             )}
 
-            <div className="flex flex-wrap justify-center gap-8 mt-5 md:gap-4">
+            <div className="flex flex-wrap justify-center mt-5 gap-8 md:gap-4">
                 {tutos.map((item) => (
                     <Link
                         key={item.id}
@@ -109,7 +109,7 @@ const tutoriel = async ({ searchParams }) => {
                                 </span>
                             ))}
                         </div>
-                        <div className="relative w-full aspect-3/2 rounded-md overflow-hidden">
+                        <div className="relative w-full overflow-hidden aspect-3/2 rounded-md">
                             <Image src={item.image || "/img/placeholder-img.png"} alt={`Image du tutoriel ${item.titre}`} fill sizes="(max-width: 768px) 90vw, 448px" className="object-contain"/>
                         </div>
                     </Link>
