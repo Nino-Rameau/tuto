@@ -58,6 +58,7 @@ services:
       - internal
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
       - "traefik.http.routers.tuto.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.tuto.entrypoints=websecure"
       - "traefik.http.routers.tuto.tls.certresolver=letsencrypt"
