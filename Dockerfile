@@ -1,32 +1,40 @@
-FROM node:20-bullseye AS builder
-
+FROM node:22-alpine AS deps
 WORKDIR /app
-
-COPY package*.json ./
+COPY package.json package-lock.json ./
 RUN npm ci
 
+
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npx prisma generate && npm run build
 
 
-FROM node:20-bullseye
+FROM node:22-alpine AS migrate
+WORKDIR /app
+COPY package-lock.json ./
+RUN npm install --no-save --no-package-lock --no-audit --no-fund \
+      "prisma@$(node -p "require('./package-lock.json').packages['node_modules/prisma'].version")" \
+      "dotenv@$(node -p "require('./package-lock.json').packages['node_modules/dotenv'].version")" \
+    && rm package-lock.json && npm cache clean --force
+COPY prisma.config.ts ./
+COPY prisma ./prisma
+CMD ["npx", "prisma", "migrate", "deploy"]
 
+
+FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000
 
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY docker/entrypoint.sh ./entrypoint.sh
+RUN addgroup -g 1001 -S nextjs && adduser -S -u 1001 -G nextjs nextjs
 
-RUN useradd -r -u 1001 nextjs && \
-    chmod +x ./entrypoint.sh && \
-    mkdir -p ./public/img/img-tuto && \
-    chown -R nextjs:nextjs .next public entrypoint.sh package.json
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nextjs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nextjs /app/.next/static ./.next/static
+
+RUN mkdir -p ./public/img/img-tuto && chown nextjs:nextjs ./public/img/img-tuto
 
 USER nextjs
 EXPOSE 3000
-ENTRYPOINT ["/bin/sh", "./entrypoint.sh"]
+CMD ["node", "server.js"]
